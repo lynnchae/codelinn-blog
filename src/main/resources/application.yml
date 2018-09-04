@@ -9,18 +9,18 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
 
 
-###########################mybatisÅäÖÃ###############################
-#È«¾ÖÓ³ÉäÆ÷ÆôÓÃ»º´æ
+###########################mybatisé…ç½®###############################
+#å…¨å±€æ˜ å°„å™¨å¯ç”¨ç¼“å­˜
 # mybatis.configuration.cache-enabled=true
-#²éÑ¯Ê±,¹Ø±Õ¹ØÁª¶ÔÏó¼°Ê±¼ÓÔØÒÔÌá¸ßĞÔÄÜ
+#æŸ¥è¯¢æ—¶,å…³é—­å…³è”å¯¹è±¡åŠæ—¶åŠ è½½ä»¥æé«˜æ€§èƒ½
 #mybatis.configuration.lazy-loading-enabled=false
-#°´Ğè¼ÓÔØ×Ö¶Î(¼ÓÔØ×Ö¶ÎÓÉSQLÖ¸¶¨),²»»á¼ÓÔØ¹ØÁª±íµÄËùÓĞ×Ö¶Î,ÒÔÌá¸ßĞÔÄÜ
+#æŒ‰éœ€åŠ è½½å­—æ®µ(åŠ è½½å­—æ®µç”±SQLæŒ‡å®š),ä¸ä¼šåŠ è½½å…³è”è¡¨çš„æ‰€æœ‰å­—æ®µ,ä»¥æé«˜æ€§èƒ½
 #mybatis.configuration.aggressive-lazy-loading=false
-#ÔÊĞí·µ»Ø²»Í¬µÄ½á¹û¼¯ÒÔ´ïµ½Í¨ÓÃµÄĞ§¹û
+#å…è®¸è¿”å›ä¸åŒçš„ç»“æœé›†ä»¥è¾¾åˆ°é€šç”¨çš„æ•ˆæœ
 #mybatis.configuration.multiple-result-sets-enabled=true
-#¶ÔÓÚÅúÁ¿¸üĞÂ²Ù×÷»º´æSQLÒÔÌá¸ßĞÔÄÜ
+#å¯¹äºæ‰¹é‡æ›´æ–°æ“ä½œç¼“å­˜SQLä»¥æé«˜æ€§èƒ½
 #mybatis.configuration.default-executor-type=REUSE
-#Êı¾İ¿âÖ´ĞĞ³¬Ê±Ê±¼ä
+#æ•°æ®åº“æ‰§è¡Œè¶…æ—¶æ—¶é—´
 #mybatis.configuration.default-statement-timeout=25000
 #mybatis.mapper-locations=classpath:mapping/*.xml
 #mybatis.type-aliases-package=com.etc.po
