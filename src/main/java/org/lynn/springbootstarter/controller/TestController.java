@@ -55,4 +55,12 @@ public class TestController {
         return userDao.insert(user);
     }
 
+    @GetMapping(value = "/getByUserId")
+    public User getByUserId(Long userId){
+        if (userId == null) {
+            return null;
+        }
+        return userDao.getByUserId(userId);
+    }
+
 }

@@ -12,4 +12,7 @@ import org.lynn.springbootstarter.model.User;
  */
 @Mapper
 public interface UserDao extends BaseDao<User> {
+
+    User getByUserId(Long userId);
+
 }

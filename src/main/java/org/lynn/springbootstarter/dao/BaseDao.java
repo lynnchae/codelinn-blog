@@ -1,6 +1,7 @@
 package org.lynn.springbootstarter.dao;
 
 import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.lynn.springbootstarter.model.base.Entity;
 import org.lynn.springbootstarter.model.core.SqlProvider;
@@ -19,6 +20,7 @@ import java.util.List;
 public interface BaseDao<T extends Entity> {
 
     @SelectProvider(type = SqlProvider.class, method = "get")
+    @ResultMap(value = "resultMap")
     T getByObject(T findParam);
 
     //    T getById(Long id);
@@ -26,6 +28,7 @@ public interface BaseDao<T extends Entity> {
 //    T count(T countParam);
 //
     @SelectProvider(type = SqlProvider.class, method = "get")
+    @ResultMap(value = "resultMap")
     List<T> query(T findParam);
 
     //
