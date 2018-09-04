@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,6 +37,13 @@ public class TestController {
         User user = new User();
         user.setName("lynn");
         return userDao.getByObject(user);
+    }
+
+    @GetMapping(value = "/getUsers")
+    public List<User> getUsers(){
+        User user = new User();
+        user.setName("lynn");
+        return userDao.query(user);
     }
 
 }
