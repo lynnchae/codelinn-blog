@@ -42,8 +42,18 @@ public class TestController {
     @GetMapping(value = "/getUsers")
     public List<User> getUsers(){
         User user = new User();
-        user.setName("lynn");
+        user.setSex("1");
         return userDao.query(user);
+    }
+
+    @GetMapping(value = "/insertUser")
+    public int insertUser(Long userId,String name,String sex,String birthday){
+        User user = new User();
+        user.setUser_id(userId);
+        user.setName(name);
+        user.setSex(sex);
+        user.setBirthday(birthday);
+        return userDao.insert(user);
     }
 
 }

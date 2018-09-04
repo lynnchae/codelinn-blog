@@ -1,5 +1,6 @@
 package org.lynn.springbootstarter.dao;
 
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.lynn.springbootstarter.model.base.Entity;
 import org.lynn.springbootstarter.model.core.SqlProvider;
@@ -26,8 +27,10 @@ public interface BaseDao<T extends Entity> {
 //
     @SelectProvider(type = SqlProvider.class, method = "get")
     List<T> query(T findParam);
-//
-//    T insert(T object);
+
+    //
+    @InsertProvider(type = SqlProvider.class, method = "insert")
+    int insert(T object);
 //
 //    T update(T object);
 //
