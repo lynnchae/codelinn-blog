@@ -29,11 +29,19 @@ public class Property {
 
     private Field field;
 
+    @Getter
+    private String columnName;
+
     public Property(Class clazz, PropertyDescriptor pd) {
         name = pd.getName();
         readMethod = pd.getReadMethod();
         tableName = ((Table) clazz.getAnnotation(Table.class)).name();
+        columnName = getColumnName(pd.getName());
         setField(clazz, pd);
+    }
+
+    private String getColumnName(String name) {
+        return name.replaceAll("([A-Z])", "_$1").toUpperCase();
     }
 
     private void setField(Class clazz, PropertyDescriptor pd) {
@@ -68,4 +76,5 @@ public class Property {
         return true;
 
     }
+
 }

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @ToString
 public class User extends Entity {
 
-    private Long user_id;
+    private Long userId;
 
     private String name;
 

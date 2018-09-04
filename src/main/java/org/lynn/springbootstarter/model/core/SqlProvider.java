@@ -28,28 +28,28 @@ public class SqlProvider<T extends Entity> {
     }
 
     public String insert(T o) {
-        if (o.getCreate_time() == null) {
+        if (o.getCreateTime() == null) {
             DateTime now = DateTime.now();
-            o.setCreate_time(now.toDate());
-            o.setUpdate_time(now.toDate());
+            o.setCreateTime(now.toDate());
+            o.setUpdateTime(now.toDate());
         }
 
-        if (StringUtils.isEmpty(o.getCreate_user())) {
-            o.setCreate_user("system");
+        if (StringUtils.isEmpty(o.getCreateUser())) {
+            o.setCreateUser("system");
         }
-        if (StringUtils.isEmpty(o.getUpdate_user())) {
-            o.setUpdate_user("system");
+        if (StringUtils.isEmpty(o.getUpdateUser())) {
+            o.setUpdateUser("system");
         }
         Class modelClazz = o.getClass();
-        SQL sql = new SQL(){
+        SQL sql = new SQL() {
             {
                 INSERT_INTO(((Table) modelClazz.getAnnotation(Table.class)).name());
-                Map<String,Property> propertyMap = ClazzUtils.getProperties(modelClazz,Operation.INSERT);
-                for(Property p : propertyMap.values()){
-                    if(p.isId() || p.isNullValue(o)){
+                Map<String, Property> propertyMap = ClazzUtils.getProperties(modelClazz, Operation.INSERT);
+                for (Property p : propertyMap.values()) {
+                    if (p.isId() || p.isNullValue(o)) {
                         continue;
                     }
-                    VALUES(p.getName(),"#{" + p.getName() + "}");
+                    VALUES(p.getColumnName(), "#{" + p.getName() + "}");
                 }
             }
         };
@@ -61,7 +61,7 @@ public class SqlProvider<T extends Entity> {
         return new SQL() {
             {
                 for (Property p : properties.values()) {
-                    SELECT(p.getName());
+                    SELECT(p.getColumnName());
                 }
                 FROM(((Table) clazz.getAnnotation(Table.class)).name());
             }
@@ -71,7 +71,7 @@ public class SqlProvider<T extends Entity> {
     private SQL WHERE(Object findParam, SQL sql) {
         final Map<String, Property> properties = ClazzUtils.getPropertiesCondition(findParam, Operation.WHERE);
         for (Property property : properties.values()) {
-            sql.WHERE(property.getName() + OPERATION_EQUALS + "#{" + property.getName() + "}");
+            sql.WHERE(property.getColumnName() + OPERATION_EQUALS + "#{" + property.getName() + "}");
         }
         return sql;
     }

@@ -24,6 +24,6 @@ spring:
 #mybatis.configuration.default-statement-timeout=25000
 #mybatis.mapper-locations=classpath:mapping/*.xml
 #mybatis.type-aliases-package=com.etc.po
-#mybatis:
-#  configuration:
-#    map-underscore-to-camel-case: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

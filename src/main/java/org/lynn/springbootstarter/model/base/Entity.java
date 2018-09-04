@@ -18,12 +18,12 @@ public class Entity {
     @Id
     private Long id;
 
-    private Date create_time;
+    private Date createTime;
 
-    private String create_user;
+    private String createUser;
 
-    private Date update_time;
+    private Date updateTime;
 
-    private String update_user;
+    private String updateUser;
 
 }
