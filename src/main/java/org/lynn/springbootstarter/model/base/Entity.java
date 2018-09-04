@@ -1,7 +1,8 @@
-package org.lynn.springbootstarter.model;
+package org.lynn.springbootstarter.model.base;
 
 import lombok.Data;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -14,10 +15,15 @@ import java.util.Date;
 @Data
 public class Entity {
 
+    @Id
     private Long id;
+
     private Date create_time;
+
     private String create_user;
+
     private Date update_time;
+
     private String update_user;
 
 }

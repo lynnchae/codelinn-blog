@@ -1,8 +1,8 @@
 package org.lynn.springbootstarter.dao;
 
 import org.apache.ibatis.annotations.SelectProvider;
-import org.lynn.springbootstarter.model.Entity;
-import org.lynn.springbootstarter.model.SqlProvider;
+import org.lynn.springbootstarter.model.base.Entity;
+import org.lynn.springbootstarter.model.core.SqlProvider;
 import org.springframework.stereotype.Repository;
 
 /**

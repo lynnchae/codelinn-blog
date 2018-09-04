@@ -2,6 +2,7 @@ package org.lynn.springbootstarter.model;
 
 import lombok.Data;
 import lombok.ToString;
+import org.lynn.springbootstarter.model.base.Entity;
 
 import javax.persistence.Table;
 
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "t_user")
 @Data
 @ToString
-public class User extends Entity{
+public class User extends Entity {
 
     private Long user_id;
 
