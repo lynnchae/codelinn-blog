@@ -23,8 +23,11 @@ public interface BaseDao<T extends Entity> {
     @ResultMap(value = "resultMap")
     T getByObject(T findParam);
 
-    //    T getById(Long id);
-//
+    @SelectProvider(type = SqlProvider.class, method = "getById")
+    @ResultMap(value = "resultMap")
+    T getById(Long id);
+
+    //
 //    T count(T countParam);
 //
     @SelectProvider(type = SqlProvider.class, method = "get")

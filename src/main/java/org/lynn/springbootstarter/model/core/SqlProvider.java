@@ -18,16 +18,36 @@ import java.util.Map;
  */
 public class SqlProvider<T extends Entity> {
 
+    private String tableName;
+
+    private Class<?> modelClazz;
+
+    private static ThreadLocal<Class<?>> modelClazzHolder = new ThreadLocal<>();
+
     private static String OPERATION_EQUALS = "=";
 
+    private void init() {
+        modelClazz = modelClazzHolder.get();
+        tableName = modelClazz.getAnnotation(Table.class).name();
+    }
+
+    public static void setModelClazz(Class clazz){
+        modelClazzHolder.set(clazz);
+    }
+
+    public static void removeModelClazz(){
+        modelClazzHolder.remove();
+    }
+
     public String get(T findParam) {
-        Class modelClazz = findParam.getClass();
-        SQL sql = SELECT_FROM(modelClazz);
+        init();
+        SQL sql = SELECT_FROM();
         WHERE(findParam, sql);
         return sql.toString();
     }
 
     public String insert(T o) {
+        init();
         if (o.getCreateTime() == null) {
             DateTime now = DateTime.now();
             o.setCreateTime(now.toDate());
@@ -40,10 +60,9 @@ public class SqlProvider<T extends Entity> {
         if (StringUtils.isEmpty(o.getUpdateUser())) {
             o.setUpdateUser("system");
         }
-        Class modelClazz = o.getClass();
         SQL sql = new SQL() {
             {
-                INSERT_INTO(((Table) modelClazz.getAnnotation(Table.class)).name());
+                INSERT_INTO(tableName);
                 Map<String, Property> propertyMap = ClazzUtils.getProperties(modelClazz, Operation.INSERT);
                 for (Property p : propertyMap.values()) {
                     if (p.isId() || p.isNullValue(o)) {
@@ -56,14 +75,19 @@ public class SqlProvider<T extends Entity> {
         return sql.toString();
     }
 
-    private SQL SELECT_FROM(Class clazz) {
-        final Map<String, Property> properties = ClazzUtils.getProperties(clazz, Operation.SELECT);
+    public String getById(Long id){
+        init();
+        return SELECT_FROM().WHERE("ID = #{id}").toString();
+    }
+
+    private SQL SELECT_FROM() {
+        final Map<String, Property> properties = ClazzUtils.getProperties(modelClazz, Operation.SELECT);
         return new SQL() {
             {
                 for (Property p : properties.values()) {
                     SELECT(p.getColumnName());
                 }
-                FROM(((Table) clazz.getAnnotation(Table.class)).name());
+                FROM(tableName);
             }
         };
     }

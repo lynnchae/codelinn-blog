@@ -26,27 +26,27 @@ public class TestController {
     private UserDao userDao;
 
     @RequestMapping(value = "/echo")
-    public Map echo(){
-        Map<String,Object> resultMap = new HashMap<>();
-        resultMap.put("hello","hello,Spring-boot");
+    public Map echo() {
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("hello", "hello,Spring-boot");
         return resultMap;
     }
 
     @GetMapping(value = "/getUser")
-    public User getUser(){
+    public User getUser() {
         User user = new User();
         user.setName("lynn");
         return userDao.getByObject(user);
     }
 
     @GetMapping(value = "/getUsers")
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         User user = new User();
         return userDao.query(user);
     }
 
     @GetMapping(value = "/insertUser")
-    public int insertUser(Long userId,String name,String sex,String birthday){
+    public int insertUser(Long userId, String name, String sex, String birthday) {
         User user = new User();
         user.setUserId(userId);
         user.setName(name);
@@ -56,11 +56,19 @@ public class TestController {
     }
 
     @GetMapping(value = "/getByUserId")
-    public User getByUserId(Long userId){
+    public User getByUserId(Long userId) {
         if (userId == null) {
             return null;
         }
         return userDao.getByUserId(userId);
+    }
+
+    @GetMapping(value = "/getById")
+    public User getById(Long id) {
+        if (id == null) {
+            return null;
+        }
+        return userDao.getById(id);
     }
 
 }
