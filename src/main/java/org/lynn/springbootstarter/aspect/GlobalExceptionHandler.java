@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Class Name : org.lynn.springbootstarter.aspect
- * Description :
+ * Description :全局异常处理类
  *
  * @author : cailinfeng
  * Date : 2018/9/5 15:32

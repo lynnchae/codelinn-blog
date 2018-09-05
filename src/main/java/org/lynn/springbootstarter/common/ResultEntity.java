@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * Class Name : org.lynn.springbootstarter.common
- * Description :
+ * Description :公用返回结果
  *
  * @author : cailinfeng
  * Date : 2018/9/5 15:36

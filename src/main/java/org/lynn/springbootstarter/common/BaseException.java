@@ -5,7 +5,7 @@ import lombok.Setter;
 
 /**
  * Class Name : org.lynn.springbootstarter.common
- * Description :
+ * Description :公共异常
  *
  * @author : cailinfeng
  * Date : 2018/9/5 15:33

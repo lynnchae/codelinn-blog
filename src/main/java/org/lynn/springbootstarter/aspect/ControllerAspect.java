@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Class Name : org.lynn.springbootstarter.aspect
- * Description :
+ * Description :Controller请求日志切面
  *
  * @author : cailinfeng
  * Date : 2018/9/5 15:10

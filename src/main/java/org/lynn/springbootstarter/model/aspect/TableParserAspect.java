@@ -13,7 +13,7 @@ import java.lang.reflect.Proxy;
 
 /**
  * Class Name : org.lynn.springbootstarter.model.aspect
- * Description :
+ * Description : tableName 解析器
  *
  * @author : cailinfeng
  * Date : 2018/9/5 10:03
