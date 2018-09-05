@@ -1,5 +1,7 @@
 package org.lynn.springbootstarter.controller;
 
+import org.lynn.springbootstarter.common.BaseException;
+import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.dao.UserDao;
 import org.lynn.springbootstarter.model.User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,42 +35,47 @@ public class TestController {
     }
 
     @GetMapping(value = "/getUser")
-    public User getUser() {
+    public ResultEntity<User> getUser() {
         User user = new User();
         user.setName("lynn");
-        return userDao.getByObject(user);
+        return ResultEntity.success(userDao.getByObject(user));
     }
 
     @GetMapping(value = "/getUsers")
-    public List<User> getUsers() {
+    public ResultEntity<List<User>> getUsers() {
         User user = new User();
-        return userDao.query(user);
+        return ResultEntity.success(userDao.query(user));
     }
 
     @GetMapping(value = "/insertUser")
-    public int insertUser(Long userId, String name, String sex, String birthday) {
+    public ResultEntity insertUser(Long userId, String name, String sex, String birthday) {
         User user = new User();
         user.setUserId(userId);
         user.setName(name);
         user.setSex(sex);
         user.setBirthday(birthday);
-        return userDao.insert(user);
+        return ResultEntity.success(userDao.insert(user));
     }
 
     @GetMapping(value = "/getByUserId")
-    public User getByUserId(Long userId) {
+    public ResultEntity getByUserId(Long userId) {
         if (userId == null) {
             return null;
         }
-        return userDao.getByUserId(userId);
+        return ResultEntity.success(userDao.getByUserId(userId));
     }
 
     @GetMapping(value = "/getById")
-    public User getById(Long id) {
+    public ResultEntity getById(Long id) {
         if (id == null) {
             return null;
         }
-        return userDao.getById(id);
+        return ResultEntity.success(userDao.getById(id));
+    }
+
+    @GetMapping(value = "/testException")
+    public ResultEntity testException() {
+        throw new BaseException(0,"rpc invoke error!");
     }
 
 }
