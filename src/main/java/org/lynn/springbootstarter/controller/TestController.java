@@ -48,12 +48,10 @@ public class TestController {
     }
 
     @GetMapping(value = "/insertUser")
-    public ResultEntity insertUser(Long userId, String name, String sex, String birthday) {
-        User user = new User();
-        user.setUserId(userId);
-        user.setName(name);
-        user.setSex(sex);
-        user.setBirthday(birthday);
+    public ResultEntity insertUser(User user) {
+        if (user == null) {
+            throw new BaseException(0,"user is empty");
+        }
         return ResultEntity.success(userDao.insert(user));
     }
 
