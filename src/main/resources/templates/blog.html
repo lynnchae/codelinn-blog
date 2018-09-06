@@ -14,7 +14,7 @@
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
 
-<title>Contact</title>
+<title>Blog</title>
 
 <!-- Main style sheet -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
 <!-- Theme-Color css -->
 <link rel="stylesheet" id="jssDefault" th:href="@{/css/color.css}">
+<link id="linkstyle" rel='stylesheet' th:href="@{/css/markdown.css}"/>
 
 
 <!-- Fix Internet Explorer ______________________________________-->
@@ -37,7 +38,7 @@
 
 <body>
 
-<div class="main-page-wrapper">
+<div class="">
 	<!-- ===================================================
 		Loading Transition
 	==================================================== -->
@@ -57,21 +58,7 @@
 	<div class="user-blog">
 		<div class="back-to-home"><a href="/index"><i class="flaticon-left-arrow"></i> Back to home</a></div>
 		<div class="main-text-wrapper">
-			<div class="container">
-				<div class="user-blog-form">
-					<h2 th:text="${blog.title}"></h2>
-					<p th:text="${blog.content}" ></p>
-					<!--<form action="inc/sendemail.php" class="form-validation" autocomplete="off">-->
-						<!--<label>full Name</label>-->
-						<!--<input type="text" placeholder="Lynn Chae" name="name" autofocus>-->
-						<!--<label>Email address</label>-->
-						<!--<input type="email" placeholder="107890073@qq.com" name="email">-->
-						<!--<label>Your message</label>-->
-						<!--<textarea placeholder="Message" name="message"></textarea>-->
-						<!--<button class="theme-button-one">Submit</button>-->
-					<!--</form>-->
-				</div> <!-- /.contact-form -->
-			</div> <!-- /.container -->
+			<div class="md-content" th:utext="${blog.content}" ></div>
 		</div> <!-- /.main-text-wrapper -->
 		<!--Contact Form Validation Markup -->
 		<!-- Contact alert -->
@@ -92,7 +79,9 @@
 			</div>
 		</div> <!-- End of .alert_wrapper -->
 	</div> <!-- /.contact-us -->
-
+	<button class="scroll-top tran3s">
+		<i class="fa fa-angle-up" aria-hidden="true"></i>
+	</button>
 <!-- Optional JavaScript _____________________________  -->
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
