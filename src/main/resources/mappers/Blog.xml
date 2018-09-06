@@ -5,9 +5,13 @@
     </resultMap>
 
     <select id="getUserBlogsWithoutContent" resultType="org.lynn.springbootstarter.controller.response.SimpleBlogResponse">
-        select id,user_id,title,tags
+        select id,user_id,title,tags,create_time,content
         from t_blog
         where user_id=#{userId}
+        order by create_time desc
+    </select>
 
+    <select id="getTags" resultType="java.lang.String">
+        select distinct(tags) from t_blog
     </select>
 </mapper>

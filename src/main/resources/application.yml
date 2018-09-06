@@ -6,7 +6,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   jackson:
     time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd
+  thymeleaf:
+    prefix: classpath:/templates/
 
 
 ###########################mybatis配置###############################

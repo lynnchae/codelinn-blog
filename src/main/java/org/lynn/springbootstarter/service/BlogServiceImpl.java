@@ -30,4 +30,9 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
         }
         return blogDao.getUserBlogsWithoutContent(userId);
     }
+
+    @Override
+    public List<String> getTags() {
+        return blogDao.getTags();
+    }
 }

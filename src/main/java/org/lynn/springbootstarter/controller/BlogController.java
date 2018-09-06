@@ -4,10 +4,9 @@ import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
  * @author : cailinfeng
  * Date : 2018/9/6 14:51
  */
-@RestController
+@Controller
 @RequestMapping("/blog")
 public class BlogController {
 
@@ -29,14 +28,20 @@ public class BlogController {
     private BlogService blogService;
 
     @GetMapping("/getUserBlogs")
+    @ResponseBody
     public ResultEntity<List<SimpleBlogResponse>> getUserBlogs(Long userId){
         return ResultEntity.success(blogService.getUserBlogsWithoutContent(userId));
     }
 
     @PostMapping("/saveBlog")
+    @ResponseBody
     public ResultEntity<List<Blog>> saveBlog(Blog blog){
         return ResultEntity.success(blogService.insert(blog));
     }
 
-
+    @GetMapping("/getBlogDetail")
+    public String getUserBlogs(Long id, Model model){
+        model.addAttribute("blog",blogService.getById(id));
+        return "blog";
+    }
 }

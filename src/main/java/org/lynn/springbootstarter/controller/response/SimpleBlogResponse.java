@@ -2,6 +2,8 @@ package org.lynn.springbootstarter.controller.response;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * Class Name : org.lynn.springbootstarter.controller.response
  * Description :
@@ -19,5 +21,9 @@ public class SimpleBlogResponse {
     private String title;
 
     private String tags;
+
+    private Date createTime;
+
+    private String content;
 
 }

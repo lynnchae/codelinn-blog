@@ -21,4 +21,5 @@ public interface BlogDao extends BaseDao<Blog> {
 
     List<SimpleBlogResponse> getUserBlogsWithoutContent(Long userId);
 
+    List<String> getTags();
 }

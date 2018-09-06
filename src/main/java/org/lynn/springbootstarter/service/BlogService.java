@@ -17,4 +17,6 @@ public interface BlogService extends BaseService<Blog> {
 
     List<SimpleBlogResponse> getUserBlogsWithoutContent(Long userId);
 
+    List<String> getTags();
+
 }
