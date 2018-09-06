@@ -28,7 +28,7 @@
    left: 0;
    bottom: 0; }
 
-.md-content h1,.md-content  h2,.md-content  h3,.md-content  h4,.md-content  h5,.md-content  h6 {
+.md-content h1,.md-content h2,.md-content h3,.md-content h4,.md-content h5,.md-content h6 {
    margin: 20px 0 10px;
    padding: 0;
    font-weight: bold;
@@ -36,25 +36,25 @@
    cursor: text;
    position: relative; }
 
-.md-content h1:hover a.anchor,.md-content  h2:hover a.anchor,.md-content  h3:hover a.anchor,.md-content  h4:hover a.anchor,.md-content  h5:hover a.anchor,.md-content  h6:hover a.anchor {
+.md-content h1:hover a.anchor,.md-content h2:hover a.anchor,.md-content h3:hover a.anchor,.md-content h4:hover a.anchor,.md-content h5:hover a.anchor,.md-content h6:hover a.anchor {
    text-decoration: none; }
 
-.md-content h1 tt,.md-content  h1 code {
+.md-content h1 tt,.md-content h1 code {
    font-size: inherit; }
 
-.md-content h2 tt,.md-content  h2 code {
+.md-content h2 tt,.md-content h2 code {
    font-size: inherit; }
 
-.md-content h3 tt,.md-content  h3 code {
+.md-content h3 tt,.md-content h3 code {
    font-size: inherit; }
 
-.md-content h4 tt,.md-content  h4 code {
+.md-content h4 tt,.md-content h4 code {
    font-size: inherit; }
 
-.md-content h5 tt,.md-content  h5 code {
+.md-content h5 tt,.md-content h5 code {
    font-size: inherit; }
 
-.md-content h6 tt,.md-content  h6 code {
+.md-content h6 tt,.md-content h6 code {
    font-size: inherit; }
 
 .md-content h1 {
@@ -63,7 +63,7 @@
 
 .md-content h2 {
    font-size: 24px;
-   border-bottom: 1px solid #cccccc;
+   /*border-bottom: 1px solid #cccccc;*/
    color: black; }
 
 .md-content h3 {
@@ -76,10 +76,10 @@
    font-size: 14px; }
 
 .md-content h6 {
-   color: #777777;
+   /*color: #777777;*/
    font-size: 14px; }
 
-.md-content p,.md-content  blockquote,.md-content  ul,.md-content  ol,.md-content  dl,.md-content  li,.md-content  table,.md-content  pre {
+.md-content p,.md-content blockquote,.md-content ul,.md-content ol,.md-content dl,.md-content li,.md-content table,.md-content pre {
    margin: 15px 0; }
 
 .md-content hr {
@@ -95,28 +95,30 @@
 .md-content body > h1:first-child {
    margin-top: 0;
    padding-top: 0; }
-.md-content body > h1:first-child + h2 {
-   margin-top: 0;
-   padding-top: 0; }
-.md-content body > h3:first-child,.md-content  body > h4:first-child,.md-content  body > h5:first-child,.md-content  body > h6:first-child {
-   margin-top: 0;
-   padding-top: 0; }
-
-.md-content a:first-child h1,.md-content  a:first-child h2,.md-content  a:first-child h3,.md-content  a:first-child h4,.md-content  a:first-child h5,.md-content  a:first-child h6 {
+/*.md-content body > h1:first-child + h2 {*/
+   /*margin-top: 0;*/
+   /*padding-top: 0; }*/
+.md-content body > h3:first-child,.md-content body > h4:first-child,.md-content body > h5:first-child,.md-content body > h6:first-child {
    margin-top: 0;
    padding-top: 0; }
 
-.md-content h1 p,.md-content  h2 p,.md-content  h3 p,.md-content  h4 p,.md-content  h5 p,.md-content  h6 p {
+.md-content a:first-child h1,.md-content a:first-child h2,.md-content a:first-child h3,.md-content a:first-child h4,.md-content a:first-child h5,.md-content a:first-child h6 {
+   margin-top: 0;
+   padding-top: 0; }
+
+.md-content h1 p,.md-content h2 p,.md-content h3 p,.md-content h4 p,.md-content h5 p,.md-content h6 p {
    margin-top: 0; }
 
 .md-content li p.first {
    display: inline-block; }
 .md-content li {
    margin: 0; }
-.md-content ul,.md-content  ol {
-   padding-left: 30px; }
+.md-content ul,.md-content ol {
+   padding-left: 30px;
+   list-style-type: disc ;
+}
 
-.md-content ul :first-child,.md-content  ol :first-child {
+.md-content ul :first-child,.md-content ol :first-child {
    margin-top: 0; }
 
 .md-content dl {
@@ -237,7 +239,7 @@
    margin: 13px auto 0;
    text-align: right; }
 
-.md-content code,.md-content  tt {
+.md-content code,.md-content tt {
    margin: 0 2px;
    padding: 0 5px;
    white-space: nowrap;
@@ -269,7 +271,7 @@
    overflow: auto;
    padding: 6px 10px;
    border-radius: 3px; }
-.md-content pre code,.md-content  pre tt {
+.md-content pre code,.md-content pre tt {
    background-color: transparent;
    border: none; }
 
