@@ -4,7 +4,6 @@ import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
-import org.markdownj.MarkdownProcessor;
 import org.pegdown.PegDownProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,10 +45,8 @@ public class BlogController {
 
     @GetMapping("/getBlogDetail")
     public String getUserBlogs(Long id, Model model) {
-        MarkdownProcessor markdownProcessor = new MarkdownProcessor();
         PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
         Blog b = blogService.getById(id);
-//        b.setContent(markdownProcessor.markdown(b.getContent()));
         b.setContent(pdp.markdownToHtml(b.getContent()));
         model.addAttribute("blog", b);
         return "blog";

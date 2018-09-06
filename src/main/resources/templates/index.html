@@ -226,7 +226,7 @@
 						</ul>
 						<h4 class="title" ><a href="blog.html" th:href="@{/blog/getBlogDetail(id=${blog.id})}" th:text="${blog.title}"></a></h4>
 
-						<p th:text="${#strings.abbreviate(blog.content,66)}" ></p>
+						<!--<p th:utext="${#strings.abbreviate(blog.content,66)}" ></p>-->
 					</div> <!-- /.post-meta-box -->
 				</div> <!-- /.single-blog-post -->
 

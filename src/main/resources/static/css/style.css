@@ -137,7 +137,11 @@ animation-delay: .8s;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 80%);
 }
 /*______________________ Global stlye ___________________*/
-html,body,.main-page-wrapper {height: 100%;}
+html,body,.main-page-wrapper {
+  height: 100%;
+  width:100%;
+}
+
  body {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
@@ -515,7 +519,7 @@ body .theme-button-one:hover {background: #fff;}
        -o-transform: scale3D(1.1,1.1,1);
           transform: scale3D(1.1,1.1,1);
 }
-.blog-grid-style .single-blog-post .post-meta-box {padding: 40px 22px 45px 35px;}
+.blog-grid-style .single-blog-post .post-meta-box {padding: 10px 22px 0px 15px;}
 .blog-grid-style .single-blog-post .author-meta {margin: 0 -5px;}
 .blog-grid-style .single-blog-post .author-meta li {float: left;padding: 0 5px;line-height: 25px;}
 .blog-grid-style .single-blog-post .author-meta li.tag a {
@@ -717,13 +721,13 @@ body .theme-button-one:hover {background: #fff;}
 .blog-image-cover-post .single-blog-post .overlay:hover .theme-button-one {opacity: 1;left:20px;}
 .blog-image-cover-post .single-blog-post .overlay .theme-button-one:hover {color: #fff;}
 /*------------------------- Theme Sidebar -----------------------*/
-.theme-main-sidebar .sidebar-box {padding: 30px 40px 40px 40px;margin-bottom: 40px;}
+.theme-main-sidebar .sidebar-box {padding: 0px 0px 0px 0px;margin-bottom: 10px;}
 .theme-main-sidebar .sidebar-title {
   text-transform: uppercase;
   position: relative;
   letter-spacing: 0.8px;
   padding-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .theme-main-sidebar .sidebar-title:first-letter {font-size: 16px;}
 .theme-main-sidebar .sidebar-title:before {
@@ -737,7 +741,8 @@ body .theme-button-one:hover {background: #fff;}
 .theme-main-sidebar .about-me p {
   font-size: 13px;
   line-height: 24px;
-  padding-top: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .theme-main-sidebar .about-me p:first-letter {font-size: 20px;}
 .theme-main-sidebar .about-me .signature {margin-top: 15px;}
@@ -1359,14 +1364,14 @@ body .theme-button-one:hover {background: #fff;}
 }
 .user-blog .main-text-wrapper {
   position: relative;
-  top:10%;
+  top:15%;
   overflow-y:auto;
 }
-.user-blog .back-to-home a {color: rgba(0,0,0,0.6);}
+.user-blog .back-to-home a {color: rgba(15,168,35,0.6);}
 .user-blog .user-blog-form {
-  width: 600px;
+  width: 100%;
   margin: 0 auto;
-  padding: 50px 40px;
+  padding: 30px 10px;
   background: #fff;
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.03);
 }

@@ -1,110 +1,115 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<!-- For IE -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- For Resposive Device -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- For Window Tab Color -->
-<!-- Chrome, Firefox OS and Opera -->
-<meta name="theme-color" content="#2c2c2c">
-<!-- Windows Phone -->
-<meta name="msapplication-navbutton-color" content="#2c2c2c">
-<!-- iOS Safari -->
-<meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- For Window Tab Color -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#2c2c2c">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#2c2c2c">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
 
-<title>Blog</title>
+    <title>Blog</title>
 
-<!-- Main style sheet -->
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-<!-- responsive style sheet -->
-<link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
-<!-- Theme-Color css -->
-<link rel="stylesheet" id="jssDefault" th:href="@{/css/color.css}">
-<link id="linkstyle" rel='stylesheet' th:href="@{/css/markdown.css}"/>
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+    <!-- Theme-Color css -->
+    <link rel="stylesheet" id="jssDefault" th:href="@{/css/color.css}">
+    <link id="linkstyle" rel='stylesheet' th:href="@{/css/markdown.css}"/>
 
 
-<!-- Fix Internet Explorer ______________________________________-->
+    <!-- Fix Internet Explorer ______________________________________-->
 
-<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script th:src="@{/vendor/html5shiv.js}"></script>
-	<script th:src="@{/vendor/respond.js}"></script>
-<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script th:src="@{/vendor/html5shiv.js}"></script>
+    <script th:src="@{/vendor/respond.js}"></script>
+    <![endif]-->
 
-	
+
 </head>
 
 <body>
 
-<div class="">
-	<!-- ===================================================
-		Loading Transition
-	==================================================== -->
-	<div id="loader-wrapper">
-		<div id="loader">
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</div>
+<div class="main-page-wrapper">
+    <!-- ===================================================
+        Loading Transition
+    ==================================================== -->
+    <div id="loader-wrapper">
+        <div id="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
-	<!-- ===================================================
-		About Me Wrapper
-	==================================================== -->
-	<div class="user-blog">
-		<div class="back-to-home"><a href="/index"><i class="flaticon-left-arrow"></i> Back to home</a></div>
-		<div class="main-text-wrapper">
-			<div class="md-content" th:utext="${blog.content}" ></div>
-		</div> <!-- /.main-text-wrapper -->
-		<!--Contact Form Validation Markup -->
-		<!-- Contact alert -->
-		<div class="alert-wrapper" id="alert-success">
-			<div id="success">
-				<button class="closeAlert"><i class="fas fa-window-close"></i></button>
-				<div class="wrapper">
-					<p>Your message was sent successfully.</p>
-				 </div>
-			</div>
-		</div> <!-- End of .alert_wrapper -->
-		<div class="alert-wrapper" id="alert-error">
-			<div id="error">
-				<button class="closeAlert"><i class="fas fa-window-close"></i></button>
-				<div class="wrapper">
-					<p>Sorry!Something Went Wrong.</p>
-				</div>
-			</div>
-		</div> <!-- End of .alert_wrapper -->
-	</div> <!-- /.contact-us -->
-	<button class="scroll-top tran3s">
-		<i class="fa fa-angle-up" aria-hidden="true"></i>
-	</button>
-<!-- Optional JavaScript _____________________________  -->
+    <!-- ===================================================
+        About Me Wrapper
+    ==================================================== -->
+    <div class="user-blog">
+        <div class="back-to-home"><a href="/index"><i class="flaticon-left-arrow"></i> Back to home</a></div>
+        <div class="main-text-wrapper">
+            <div class="container">
+                <div class="user-blog-form">
+                    <h3 th:text="${blog.title}"></h3>
+                    <div class="md-content" th:utext="${blog.content}"></div>
+                </div>
+            </div>
+        </div> <!-- /.main-text-wrapper -->
+        <!--Contact Form Validation Markup -->
+        <!-- Contact alert -->
+        <div class="alert-wrapper" id="alert-success">
+            <div id="success">
+                <button class="closeAlert"><i class="fas fa-window-close"></i></button>
+                <div class="wrapper">
+                    <p>Your message was sent successfully.</p>
+                </div>
+            </div>
+        </div> <!-- End of .alert_wrapper -->
+        <div class="alert-wrapper" id="alert-error">
+            <div id="error">
+                <button class="closeAlert"><i class="fas fa-window-close"></i></button>
+                <div class="wrapper">
+                    <p>Sorry!Something Went Wrong.</p>
+                </div>
+            </div>
+        </div> <!-- End of .alert_wrapper -->
+    </div> <!-- /.contact-us -->
+    <button class="scroll-top tran3s">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </button>
+    <!-- Optional JavaScript _____________________________  -->
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!-- jQuery -->
-<script th:src="@{/vendor/jquery.2.2.3.min.js}"></script>
-<!-- Popper js -->
-<script th:src="@{/vendor/popper.js/popper.min.js}"></script>
-<!-- Bootstrap JS -->
-<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
-<!-- Style-switcher  -->
-<script th:src="@{/vendor/jQuery.style.switcher.min.js}"></script>
-<!-- jquery-easy-ticker-master -->
-<script th:src="@{/vendor/jquery-easy-ticker-master/jquery.easy-ticker.min.js}"></script>
-<!-- jquery easing -->
-<script th:src="@{/vendor/jquery.easing.1.3.js}"></script>
-<!-- Font Awesome -->
-<script th:src="@{/fonts/font-awesome/fontawesome-all.min.js}"></script>
-<!-- Validation -->
-<script type="text/javascript" th:src="@{/vendor/contact-form/validate.js}"></script>
-<script type="text/javascript" th:src="@{/vendor/contact-form/jquery.form.js}"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery -->
+    <script th:src="@{/vendor/jquery.2.2.3.min.js}"></script>
+    <!-- Popper js -->
+    <script th:src="@{/vendor/popper.js/popper.min.js}"></script>
+    <!-- Bootstrap JS -->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- Style-switcher  -->
+    <script th:src="@{/vendor/jQuery.style.switcher.min.js}"></script>
+    <!-- jquery-easy-ticker-master -->
+    <script th:src="@{/vendor/jquery-easy-ticker-master/jquery.easy-ticker.min.js}"></script>
+    <!-- jquery easing -->
+    <script th:src="@{/vendor/jquery.easing.1.3.js}"></script>
+    <!-- Font Awesome -->
+    <script th:src="@{/fonts/font-awesome/fontawesome-all.min.js}"></script>
+    <!-- Validation -->
+    <script type="text/javascript" th:src="@{/vendor/contact-form/validate.js}"></script>
+    <script type="text/javascript" th:src="@{/vendor/contact-form/jquery.form.js}"></script>
 
-<!-- Theme js -->
-<script th:src="@{/js/theme.js}"></script>
+    <!-- Theme js -->
+    <script th:src="@{/js/theme.js}"></script>
 </div> <!-- /.main-page-wrapper -->
 </body>
 </html>

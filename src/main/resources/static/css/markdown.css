@@ -283,7 +283,7 @@
 }
 @media screen and (min-width: 914px) {
    body {
-      width: 854px;
+      width: 90%;
       margin:0 auto;
    }
 }
