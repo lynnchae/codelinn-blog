@@ -1,9 +1,7 @@
-package org.lynn.springbootstarter.dao;
+package org.lynn.springbootstarter.model.base;
 
 import org.apache.ibatis.annotations.*;
-import org.lynn.springbootstarter.model.base.Entity;
 import org.lynn.springbootstarter.model.core.SqlProvider;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,7 +12,6 @@ import java.util.List;
  * @author : cailinfeng
  * Date : 2018/9/4 14:22
  */
-@Repository
 public interface BaseDao<T extends Entity> {
 
     @SelectProvider(type = SqlProvider.class, method = "get")
@@ -39,6 +36,6 @@ public interface BaseDao<T extends Entity> {
     T update(T object);
 
     @DeleteProvider(type = SqlProvider.class, method = "delete")
-    T delete(Long id);
+    void delete(Long id);
 
 }

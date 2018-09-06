@@ -4,11 +4,11 @@ import org.lynn.springbootstarter.common.BaseException;
 import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.dao.UserDao;
 import org.lynn.springbootstarter.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ import java.util.Map;
 @RequestMapping("/test")
 public class TestController {
 
-    @Resource
+    @Autowired
     private UserDao userDao;
 
     @RequestMapping(value = "/echo")

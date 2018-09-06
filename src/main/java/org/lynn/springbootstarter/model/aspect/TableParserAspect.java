@@ -22,7 +22,7 @@ import java.lang.reflect.Proxy;
 @Component
 public class TableParserAspect {
 
-    @Around("execution(* org.lynn.springbootstarter.dao.BaseDao.*(..))")
+    @Around("execution(* org.lynn.springbootstarter.model.base.BaseDao.*(..))")
     public Object invoke(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
         if (proceedingJoinPoint.getArgs() != null
                 && proceedingJoinPoint.getArgs().length > 0
