@@ -1,5 +1,6 @@
 package org.lynn.springbootstarter.service;
 
+import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.dao.BlogDao;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.base.BaseServiceImpl;
@@ -23,12 +24,10 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
     private BlogDao blogDao;
 
     @Override
-    public List<Blog> getUserBlogs(Long userId) {
+    public List<SimpleBlogResponse> getUserBlogsWithoutContent(Long userId) {
         if (userId == null) {
             return new ArrayList<>();
         }
-        Blog blog = new Blog();
-        blog.setUserId(userId);
-        return blogDao.query(blog);
+        return blogDao.getUserBlogsWithoutContent(userId);
     }
 }

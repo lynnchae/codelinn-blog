@@ -21,8 +21,6 @@ mybatis:
     map-underscore-to-camel-case: true
     #查询时,关闭关联对象及时加载以提高性能
     lazy-loading-enabled: false
-    #全局映射器启用缓存
-    cache-enabled: true
     #数据库执行超时时间
     default-statement-timeout: 30000
   mapper-locations: classpath:mappers/*.xml

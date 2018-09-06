@@ -1,6 +1,7 @@
 package org.lynn.springbootstarter.controller;
 
 import org.lynn.springbootstarter.common.ResultEntity;
+import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,8 @@ public class BlogController {
     private BlogService blogService;
 
     @GetMapping("/getUserBlogs")
-    public ResultEntity<List<Blog>> getUserBlogs(Long userId){
-        return ResultEntity.success(blogService.getUserBlogs(userId));
+    public ResultEntity<List<SimpleBlogResponse>> getUserBlogs(Long userId){
+        return ResultEntity.success(blogService.getUserBlogsWithoutContent(userId));
     }
 
     @PostMapping("/saveBlog")

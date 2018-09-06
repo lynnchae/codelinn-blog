@@ -3,4 +3,11 @@
 <mapper namespace="org.lynn.springbootstarter.dao.BlogDao">
     <resultMap id="resultMap" type="org.lynn.springbootstarter.model.Blog">
     </resultMap>
+
+    <select id="getUserBlogsWithoutContent" resultType="org.lynn.springbootstarter.controller.response.SimpleBlogResponse">
+        select id,user_id,title,tags
+        from t_blog
+        where user_id=#{userId}
+
+    </select>
 </mapper>
