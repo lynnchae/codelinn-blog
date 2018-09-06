@@ -4,9 +4,14 @@ import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
+import org.markdownj.MarkdownProcessor;
+import org.pegdown.PegDownProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -29,19 +34,24 @@ public class BlogController {
 
     @GetMapping("/getUserBlogs")
     @ResponseBody
-    public ResultEntity<List<SimpleBlogResponse>> getUserBlogs(Long userId){
+    public ResultEntity<List<SimpleBlogResponse>> getUserBlogs(Long userId) {
         return ResultEntity.success(blogService.getUserBlogsWithoutContent(userId));
     }
 
     @PostMapping("/saveBlog")
     @ResponseBody
-    public ResultEntity<List<Blog>> saveBlog(Blog blog){
+    public ResultEntity<List<Blog>> saveBlog(Blog blog) {
         return ResultEntity.success(blogService.insert(blog));
     }
 
     @GetMapping("/getBlogDetail")
-    public String getUserBlogs(Long id, Model model){
-        model.addAttribute("blog",blogService.getById(id));
+    public String getUserBlogs(Long id, Model model) {
+        MarkdownProcessor markdownProcessor = new MarkdownProcessor();
+        PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
+        Blog b = blogService.getById(id);
+//        b.setContent(markdownProcessor.markdown(b.getContent()));
+        b.setContent(pdp.markdownToHtml(b.getContent()));
+        model.addAttribute("blog", b);
         return "blog";
     }
 }
