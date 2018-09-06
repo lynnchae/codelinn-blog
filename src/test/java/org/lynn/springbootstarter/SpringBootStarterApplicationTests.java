@@ -49,4 +49,11 @@ public class SpringBootStarterApplicationTests {
 		userDao.query(new User());
 	}
 
+	@Test
+	public void testDaoCount(){
+		User user = new User();
+		user.setSex("1");
+		System.out.println(userDao.count(user));
+	}
+
 }
