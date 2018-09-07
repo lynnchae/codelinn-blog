@@ -576,7 +576,7 @@ body .theme-button-one:hover {background: #fff;}
 .single-blog-post .share-meta li.share-option .share-icon li {display: inline-block;}
 .single-blog-post .share-meta li.share-option .share-icon li a {font-size: 12px;padding: 0 5px;}
 .single-blog-post .share-meta li button {background: transparent;}
-.blog-grid-style .single-blog-post .title a {text-transform: uppercase;margin: 25px 0 15px 0;}
+.blog-grid-style .single-blog-post .title a {margin: 25px 0 15px 0;}
 .blog-grid-style .single-blog-post .post-meta-box p {padding-top: 30px;}
 .single-blog-post .image-box .tag a {
   position: absolute;
