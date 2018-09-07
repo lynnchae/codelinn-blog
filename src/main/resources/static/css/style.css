@@ -1171,7 +1171,7 @@ body .theme-button-one:hover {background: #fff;}
   overflow-y:auto;
 }
 .contact-us .back-to-home a {
-  color: rgba(15,168,35,0.6);
+  color: #343a40;
   margin: 10px;
 }
 .contact-us .contact-form {
@@ -1371,7 +1371,7 @@ body .theme-button-one:hover {background: #fff;}
   overflow-x: hidden;
 }
 .user-blog .back-to-home a {
-  color: rgba(15,168,35,0.6);
+  color: #343a40;
   margin: 10px;
 }
 .user-blog .user-blog-form {

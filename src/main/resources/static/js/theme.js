@@ -21,11 +21,11 @@
                 sticky.removeClass('fixed');
             }
 
-            if (scroll >= 50) {
-                stickyBackHome.addClass('fixed');
-            } else {
-                stickyBackHome.removeClass('fixed');
-            }
+            // if (scroll >= 50) {
+            //     stickyBackHome.addClass('fixed');
+            // } else {
+            //     stickyBackHome.removeClass('fixed');
+            // }
 
         });
 
