@@ -153,10 +153,16 @@
    margin-bottom: 0; }
 
 .md-content table {
-   padding: 0;border-collapse: collapse; }
+   padding: 0;
+   border-collapse: collapse;
+   table-layout: fixed;
+   width: 100%;
+   word-break: break-word;
+}
 .md-content table tr {
    border-top: 1px solid #cccccc;
    background-color: white;
+   word-break: break-word;
    margin: 0;
    padding: 0; }
 .md-content table tr:nth-child(2n) {
