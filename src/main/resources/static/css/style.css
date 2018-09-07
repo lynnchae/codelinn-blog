@@ -1365,6 +1365,7 @@ body .theme-button-one:hover {background: #fff;}
   position: relative;
   top:10%;
   overflow-y:auto;
+  overflow-x: hidden;
 }
 .user-blog .back-to-home a {color: rgba(15,168,35,0.6);}
 .user-blog .user-blog-form {
