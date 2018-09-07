@@ -1132,7 +1132,7 @@ body .theme-button-one:hover {background: #fff;}
   position: fixed;
   width:100%;
   top:0px;
-  left:10px;
+  left:0px;
   z-index: 9;
   padding: 10px 10px 5px 0;
 }
@@ -1170,7 +1170,10 @@ body .theme-button-one:hover {background: #fff;}
   top:10%;
   overflow-y:auto;
 }
-.contact-us .back-to-home a {color: rgba(15,168,35,0.6);}
+.contact-us .back-to-home a {
+  color: rgba(15,168,35,0.6);
+  margin: 10px;
+}
 .contact-us .contact-form {
   width: 600px;
   margin: 0 auto;
@@ -1367,7 +1370,10 @@ body .theme-button-one:hover {background: #fff;}
   overflow-y:auto;
   overflow-x: hidden;
 }
-.user-blog .back-to-home a {color: rgba(15,168,35,0.6);}
+.user-blog .back-to-home a {
+  color: rgba(15,168,35,0.6);
+  margin: 10px;
+}
 .user-blog .user-blog-form {
   width: 100%;
   margin: 0 auto;
