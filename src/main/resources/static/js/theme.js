@@ -10,13 +10,11 @@
 (function ($) {
     "use strict";
 
-
     $(document).ready(function () {
-
         // -------------------- Navigation Scroll
         $(window).scroll(function () {
             var sticky = $('.theme-main-header'),
-                scroll = $(window).scrollTop(), stickyBackHome = $('.back-to-home');
+                scroll = $(window).scrollTop(), stickyBackHome = $('.back-to-home')
             if (scroll >= 100) {
                 sticky.addClass('fixed');
             } else {
@@ -152,7 +150,7 @@
 
             masterslider.setup("main-slider-one", {
                 width: 1700,
-                height: 700,
+                height: 500,
                 minHeight: 0,
                 space: 0,
                 start: 1,

@@ -721,7 +721,7 @@ body .theme-button-one:hover {background: #fff;}
 .blog-image-cover-post .single-blog-post .overlay:hover .theme-button-one {opacity: 1;left:20px;}
 .blog-image-cover-post .single-blog-post .overlay .theme-button-one:hover {color: #fff;}
 /*------------------------- Theme Sidebar -----------------------*/
-.theme-main-sidebar .sidebar-box {padding: 0px 0px 0px 0px;margin-bottom: 10px;}
+.theme-main-sidebar .sidebar-box {padding: 30px 40px 40px 40px;margin-bottom: 40px;}
 .theme-main-sidebar .sidebar-title {
   text-transform: uppercase;
   position: relative;
@@ -779,7 +779,7 @@ body .theme-button-one:hover {background: #fff;}
 .theme-main-sidebar .sidebar-trending-post .single-trending-post {margin-bottom: 20px;}
 .theme-main-sidebar .sidebar-trending-post .single-trending-post:last-child {margin: 0;}
 .theme-main-sidebar .sidebar-tags ul {margin: 0 -4px;}
-.theme-main-sidebar .sidebar-tags ul li {float: left;padding: 0 4px;margin-bottom: 8px;}
+.theme-main-sidebar .sidebar-tags ul li {float: left;padding: 4px 4px;margin-bottom: 8px;}
 .theme-main-sidebar .sidebar-tags ul li a {
   line-height: 30px;
   font-size: 12px;
@@ -1140,7 +1140,7 @@ body .theme-button-one:hover {background: #fff;}
   position: fixed !important;
   width:100%;
   top:0;
-  left:10px;
+  left:0px;
   z-index: 999;
   background: #fff;
   padding: 10px 10px 5px 0;
@@ -1154,6 +1154,7 @@ body .theme-button-one:hover {background: #fff;}
   font-size: 12px;
   letter-spacing: 1.2px;
   font-weight: 600;
+  left: 10px;
 }
 /*--------------------- Contact US --------------------*/
 .contact-us {
@@ -1166,12 +1167,10 @@ body .theme-button-one:hover {background: #fff;}
 }
 .contact-us .main-text-wrapper {
   position: relative;
-  top:50%;
-  transform:translateY(-50%);
-  max-height: 100%;
+  top:10%;
   overflow-y:auto;
 }
-.contact-us .back-to-home a {color: rgba(0,0,0,0.6);}
+.contact-us .back-to-home a {color: rgba(15,168,35,0.6);}
 .contact-us .contact-form {
   width: 600px;
   margin: 0 auto;
@@ -1364,7 +1363,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 .user-blog .main-text-wrapper {
   position: relative;
-  top:15%;
+  top:10%;
   overflow-y:auto;
 }
 .user-blog .back-to-home a {color: rgba(15,168,35,0.6);}
