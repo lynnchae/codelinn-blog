@@ -150,7 +150,7 @@
 
             masterslider.setup("main-slider-one", {
                 width: 1700,
-                height: 500,
+                height: 650,
                 minHeight: 0,
                 space: 0,
                 start: 1,
