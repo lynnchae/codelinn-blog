@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface BlogService extends BaseService<Blog> {
 
-    List<Blog> getUserBlogsWithoutContent(Long userId);
+    List<Blog> getUserBlogs(Long userId);
 
     List<String> getTags();
 

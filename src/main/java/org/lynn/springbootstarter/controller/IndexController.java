@@ -24,7 +24,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        List<Blog> list = blogService.getUserBlogsWithoutContent(1L);
+        List<Blog> list = blogService.getUserBlogs(1L);
         model.addAttribute("blogs", list);
         model.addAttribute("tags", blogService.getTags());
         return "index";

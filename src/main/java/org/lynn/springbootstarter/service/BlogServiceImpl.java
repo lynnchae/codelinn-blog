@@ -23,11 +23,11 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
     private BlogDao blogDao;
 
     @Override
-    public List<Blog> getUserBlogsWithoutContent(Long userId) {
+    public List<Blog> getUserBlogs(Long userId) {
         if (userId == null) {
             return new ArrayList<>();
         }
-        return blogDao.getUserBlogsWithoutContent(userId);
+        return blogDao.getUserBlogs(userId);
     }
 
     @Override

@@ -4,7 +4,7 @@
     <resultMap id="resultMap" type="org.lynn.springbootstarter.model.Blog">
     </resultMap>
 
-    <select id="getUserBlogsWithoutContent" resultMap="resultMap">
+    <select id="getUserBlogs" resultMap="resultMap">
         select id,user_id,title,tags,likes,create_time,content
         from t_blog
         where user_id=#{userId}

@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public interface BlogDao extends BaseDao<Blog> {
 
-    List<Blog> getUserBlogsWithoutContent(Long userId);
+    List<Blog> getUserBlogs(Long userId);
 
     List<String> getTags();
 

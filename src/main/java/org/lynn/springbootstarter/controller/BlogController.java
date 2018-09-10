@@ -40,7 +40,7 @@ public class BlogController {
     @GetMapping("/getUserBlogs")
     @ResponseBody
     public ResultEntity<List<Blog>> getUserBlogs(Long userId) {
-        return ResultEntity.success(blogService.getUserBlogsWithoutContent(userId));
+        return ResultEntity.success(blogService.getUserBlogs(userId));
     }
 
     @PostMapping("/saveBlog")
