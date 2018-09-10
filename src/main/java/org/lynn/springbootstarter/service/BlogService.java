@@ -1,6 +1,5 @@
 package org.lynn.springbootstarter.service;
 
-import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.base.BaseService;
 
@@ -15,8 +14,10 @@ import java.util.List;
  */
 public interface BlogService extends BaseService<Blog> {
 
-    List<SimpleBlogResponse> getUserBlogsWithoutContent(Long userId);
+    List<Blog> getUserBlogsWithoutContent(Long userId);
 
     List<String> getTags();
+
+    void updateLikes(Long id);
 
 }

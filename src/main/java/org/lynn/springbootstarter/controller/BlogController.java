@@ -8,7 +8,6 @@ import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 import org.lynn.springbootstarter.common.ResultEntity;
-import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
 import org.springframework.stereotype.Controller;
@@ -40,7 +39,7 @@ public class BlogController {
 
     @GetMapping("/getUserBlogs")
     @ResponseBody
-    public ResultEntity<List<SimpleBlogResponse>> getUserBlogs(Long userId) {
+    public ResultEntity<List<Blog>> getUserBlogs(Long userId) {
         return ResultEntity.success(blogService.getUserBlogsWithoutContent(userId));
     }
 
@@ -68,5 +67,12 @@ public class BlogController {
          */
         model.addAttribute("blog", b);
         return "blog";
+    }
+
+    @PostMapping("/likeIt")
+    @ResponseBody
+    public String likeIt(Long id) {
+        blogService.updateLikes(id);
+        return "success";
     }
 }

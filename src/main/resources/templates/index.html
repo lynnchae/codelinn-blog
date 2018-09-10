@@ -1,326 +1,367 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<!-- For IE -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- For Resposive Device -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- For Window Tab Color -->
-	<!-- Chrome, Firefox OS and Opera -->
-	<meta name="theme-color" content="#2c2c2c">
-	<!-- Windows Phone -->
-	<meta name="msapplication-navbutton-color" content="#2c2c2c">
-	<!-- iOS Safari -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- For Window Tab Color -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#2c2c2c">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#2c2c2c">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
 
-	<title>Home</title>
+    <title>Home</title>
 
-	<!-- Main style sheet -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- responsive style sheet -->
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-	<!-- Theme-Color css -->
-	<link rel="stylesheet" id="jssDefault" href="css/color.css">
+    <!-- Main style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <!-- Theme-Color css -->
+    <link rel="stylesheet" id="jssDefault" href="css/color.css">
 
 
-	<!-- Fix Internet Explorer ______________________________________-->
+    <!-- Fix Internet Explorer ______________________________________-->
 
-	<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="vendor/html5shiv.js"></script>
-	<script src="vendor/respond.js"></script>
-	<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="vendor/html5shiv.js"></script>
+    <script src="vendor/respond.js"></script>
+    <![endif]-->
 
 
 </head>
 
 <body>
 <div class="search-box" id="searchWrapper">
-	<div id="close-button"></div>
-	<div class="container">
-		<form action="#">
-			<div class="greeting-text"><span class="greeting"></span></div>
-			<div class="input-wrapper">
-				<input type="text" placeholder="type your keyword" autofocus>
-			</div>
-		</form>
-	</div>
+    <div id="close-button"></div>
+    <div class="container">
+        <form action="#">
+            <div class="greeting-text"><span class="greeting"></span></div>
+            <div class="input-wrapper">
+                <input type="text" placeholder="type your keyword" autofocus>
+            </div>
+        </form>
+    </div>
 </div> <!-- /.search-box -->
 
 
 <div class="main-page-wrapper">
-	<!-- ===================================================
-		Loading Transition
-	==================================================== -->
-	<div id="loader-wrapper">
-		<div id="loader">
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</div>
+    <!-- ===================================================
+        Loading Transition
+    ==================================================== -->
+    <div id="loader-wrapper">
+        <div id="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
 
-	<!--
-	=============================================
-		Top Header
-	==============================================
-	-->
+    <!--
+    =============================================
+        Top Header
+    ==============================================
+    -->
 
 
+    <!--
+    =============================================
+        Theme Header
+    ==============================================
+    -->
+    <header class="theme-main-header">
+        <div class="container">
+            <div class="content-holder clearfix">
+                <!-- <div class="logo"><a href="index.html"><img src="images/logo/logo.png" alt=""></a></div> -->
+                <!-- ============== Menu Warpper ================ -->
+                <div class="menu-wrapper">
+                    <nav id="mega-menu-holder" class="clearfix">
+                        <ul class="clearfix">
+                            <li><a href="/">主页</a></li>
+                            <li><a href="/aboutMe">关于我</a></li>
+                            <li><a href="/contact">联系我</a></li>
+                        </ul>
+                    </nav> <!-- /#mega-menu-holder -->
+                </div> <!-- /.menu-wrapper -->
+            </div> <!-- /.content-holder -->
+        </div> <!-- /.container -->
+    </header> <!-- /.theme-main-header -->
 
 
-	<!--
-	=============================================
-		Theme Header
-	==============================================
-	-->
-	<header class="theme-main-header">
-		<div class="container">
-			<div class="content-holder clearfix">
-				<!-- <div class="logo"><a href="index.html"><img src="images/logo/logo.png" alt=""></a></div> -->
-				<!-- ============== Menu Warpper ================ -->
-				<div class="menu-wrapper">
-					<nav id="mega-menu-holder" class="clearfix">
-						<ul class="clearfix">
-							<li><a href="/">主页</a></li>
-							<li><a href="/aboutMe">关于我</a></li>
-							<li><a href="/contact">联系我</a></li>
-						</ul>
-					</nav> <!-- /#mega-menu-holder -->
-				</div> <!-- /.menu-wrapper -->
-			</div> <!-- /.content-holder -->
-		</div> <!-- /.container -->
-	</header> <!-- /.theme-main-header -->
+    <!--
+    =============================================
+        Theme Main Banner
+    ==============================================
+    -->
+    <div class="theme-banner-section-one section-margin-bottom">
+        <!-- MasterSlider -->
+        <div id="P_masterslider" class="master-slider-parent ms-panorama ms-parent-id-30">
+            <!-- MasterSlider Main -->
+            <div id="main-slider-one" class="master-slider ms-skin-default">
+                <div class="ms-slide" data-delay="25" data-fill-mode="fill">
+                    <img class="ms-layer"
+                         src="images/blank.gif"
+                         data-src="images/home/panaroma1.jpg"
+                         alt=""
+                         style=""
+                         data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="30200"
+                         data-ease="linear"
+                         data-parallax="6"
+                         data-type="image"
+                         data-offset-x="-519"
+                         data-offset-y="-1"
+                         data-origin="mc"
+                         data-position="normal"/>
+                    <div class="ms-layer main-heading"
+                         style=""
+                         data-effect="t(true,n,20,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="3000"
+                         data-delay="400"
+                         data-ease="easeOutQuint"
+                         data-parallax="60"
+                         data-offset-x="115"
+                         data-offset-y="-95"
+                         data-origin="ml"
+                         data-position="normal"
+                         data-masked="true"
+                         data-mask-width="auto">CAMPING
+                    </div>
+                    <div class="ms-layer main-text"
+                         style=""
+                         data-effect="t(true,n,50,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="5000"
+                         data-delay="2500"
+                         data-ease="easeOutQuint"
+                         data-parallax="120"
+                         data-offset-x="120"
+                         data-offset-y="35"
+                         data-origin="ml"
+                         data-position="normal"
+                         data-masked="true"
+                         data-mask-width="450">The group launched a campaign to protect the area from commercial
+                        development.
+                    </div>
+                    <div class="ms-layer read-more"
+                         style=""
+                         data-effect="t(true,n,n,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="5000"
+                         data-delay="3500"
+                         data-ease="easeOutQuint"
+                         data-parallax="80"
+                         data-offset-x="120"
+                         data-offset-y="90"
+                         data-origin="ml"
+                         data-position="normal"><!-- <a href="#">Read More</a> --></div>
+                </div>
+                <div class="ms-slide" data-delay="25" data-fill-mode="fill">
+                    <img class="ms-layer"
+                         src="images/blank.gif"
+                         data-src="images/home/panaroma2.jpg"
+                         alt=""
+                         style=""
+                         data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="30000"
+                         data-ease="linear"
+                         data-parallax="6"
+                         data-type="image"
+                         data-offset-x="-630"
+                         data-offset-y="0"
+                         data-origin="mc"
+                         data-position="normal"/>
+                    <div class="ms-layer main-heading"
+                         style=""
+                         data-effect="t(true,n,20,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="3000"
+                         data-delay="400"
+                         data-ease="easeOutQuint"
+                         data-parallax="60"
+                         data-offset-x="115"
+                         data-offset-y="-95"
+                         data-origin="ml"
+                         data-position="normal"
+                         data-masked="true"
+                         data-mask-width="auto">TREKKING
+                    </div>
+                    <div class="ms-layer main-text"
+                         style=""
+                         data-effect="t(true,n,50,n,n,n,n,n,n,n,n,n,n,n,n)"
+                         data-duration="5000"
+                         data-delay="2500"
+                         data-ease="easeOutQuint"
+                         data-parallax="120"
+                         data-offset-x="120"
+                         data-offset-y="35"
+                         data-origin="ml"
+                         data-position="normal"
+                         data-masked="true"
+                         data-mask-width="450">Trekking is walking for long distances as well, though unlike hiking it
+                        is always a multi-day affair.
+                    </div>
+                </div>
+            </div> <!-- /#main-slider-one -->
+        </div>
+    </div> <!-- /.theme-banner-section-one -->
 
 
-	<!--
-	=============================================
-		Theme Main Banner
-	==============================================
-	-->
-	<div class="theme-banner-section-one section-margin-bottom">
-		<!-- MasterSlider -->
-		<div id="P_masterslider" class="master-slider-parent ms-panorama ms-parent-id-30" >
-			<!-- MasterSlider Main -->
-			<div id="main-slider-one" class="master-slider ms-skin-default" >
-				<div class="ms-slide" data-delay="25" data-fill-mode="fill" >
-					<img class="ms-layer"
-						 src="images/blank.gif"
-						 data-src="images/home/panaroma1.jpg"
-						 alt=""
-						 style=""
-						 data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="30200"
-						 data-ease="linear"
-						 data-parallax="6"
-						 data-type="image"
-						 data-offset-x="-519"
-						 data-offset-y="-1"
-						 data-origin="mc"
-						 data-position="normal" />
-					<div class="ms-layer main-heading"
-						 style=""
-						 data-effect="t(true,n,20,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="3000"
-						 data-delay="400"
-						 data-ease="easeOutQuint"
-						 data-parallax="60"
-						 data-offset-x="115"
-						 data-offset-y="-95"
-						 data-origin="ml"
-						 data-position="normal"
-						 data-masked="true"
-						 data-mask-width="auto">CAMPING</div>
-					<div class="ms-layer main-text"
-						 style=""
-						 data-effect="t(true,n,50,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="5000"
-						 data-delay="2500"
-						 data-ease="easeOutQuint"
-						 data-parallax="120"
-						 data-offset-x="120"
-						 data-offset-y="35"
-						 data-origin="ml"
-						 data-position="normal"
-						 data-masked="true"
-						 data-mask-width="450">The group launched a campaign to protect the area from commercial development.</div>
-					<div class="ms-layer read-more"
-						 style=""
-						 data-effect="t(true,n,n,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="5000"
-						 data-delay="3500"
-						 data-ease="easeOutQuint"
-						 data-parallax="80"
-						 data-offset-x="120"
-						 data-offset-y="90"
-						 data-origin="ml"
-						 data-position="normal" ><!-- <a href="#">Read More</a> --></div>
-				</div>
-				<div class="ms-slide" data-delay="25" data-fill-mode="fill" >
-					<img class="ms-layer"
-						 src="images/blank.gif"
-						 data-src="images/home/panaroma2.jpg"
-						 alt=""
-						 style=""
-						 data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="30000"
-						 data-ease="linear"
-						 data-parallax="6"
-						 data-type="image"
-						 data-offset-x="-630"
-						 data-offset-y="0"
-						 data-origin="mc"
-						 data-position="normal" />
-					<div class="ms-layer main-heading"
-						 style=""
-						 data-effect="t(true,n,20,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="3000"
-						 data-delay="400"
-						 data-ease="easeOutQuint"
-						 data-parallax="60"
-						 data-offset-x="115"
-						 data-offset-y="-95"
-						 data-origin="ml"
-						 data-position="normal"
-						 data-masked="true"
-						 data-mask-width="auto">TREKKING</div>
-					<div class="ms-layer main-text"
-						 style=""
-						 data-effect="t(true,n,50,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="5000"
-						 data-delay="2500"
-						 data-ease="easeOutQuint"
-						 data-parallax="120"
-						 data-offset-x="120"
-						 data-offset-y="35"
-						 data-origin="ml"
-						 data-position="normal"
-						 data-masked="true"
-						 data-mask-width="450">Trekking is walking for long distances as well, though unlike hiking it is always a multi-day affair.</div>
-				</div>
-			</div> <!-- /#main-slider-one -->
-		</div>
-	</div> <!-- /.theme-banner-section-one -->
+    <!--
+    =============================================
+        Main Blog Post Wrapper
+    ==============================================
+    -->
+    <div class="container">
+        <div class="row">
+            <div id="blog-outline" class="col-lg-8 col-12 blog-grid-style hover-effect-one">
+                <div class="single-blog-post" th:each="blog:${blogs}">
+                    <div class="image-box"><!-- <img src="images/blog/1.jpg" alt=""> --></div>
+                    <div class="post-meta-box bg-box">
+                        <ul class="author-meta clearfix">
+                            <li class="tag"><a href="#" th:text="${blog.tags}"></a></li>
+                            <li class="date"><a href="#" th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></a>
+                            </li>
+                        </ul>
+                        <h4 class="title"><a href="blog.html" th:href="@{/blog/getBlogDetail(id=${blog.id})}"
+                                             th:text="${blog.title}"></a></h4>
+                        <ul class="share-meta clearfix">
+                            <!--<li><a href="#"><i class="icon flaticon-comment"></i>Comments (04)</a></li>-->
+                            <li><a href="javascript:;"
+                                   th:onclick="'javascript:likeIt('+${blog.id}+','+${blog.likes}+',this)'"><i
+                                    class="icon flaticon-like-heart" th:text="${'Likes ('+blog.likes+')'}"></i></a></li>
+                            <!--<li class="share-option">-->
+                            <!--<button><i class="icon flaticon-arrows"></i> Share</button>-->
+                            <!--<ul class="share-icon">-->
+                            <!--<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+                            <!--<li><a href="#"><i class="fab fa-twitter"></i></a></li>-->
+                            <!--<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>-->
+                            <!--<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>-->
+                            <!--</ul>-->
+                            <!--</li> &lt;!&ndash; /.share-option &ndash;&gt;-->
+                        </ul>
+                        <!--<p th:utext="${#strings.abbreviate(blog.content,66)}" ></p>-->
+                    </div> <!-- /.post-meta-box -->
+                </div> <!-- /.single-blog-post -->
+
+            </div> <!-- /.col- -->
+            <div class="alert-wrapper" id="alert-success">
+                <div id="success">
+                    <!--<button class="closeAlert"><i class="fas fa-window-close"></i></button>-->
+                    <div class="wrapper">
+                        <p>Like it!</p>
+                    </div>
+                </div>
+            </div> <!-- End of .alert_wrapper -->
+
+            <!-- ======================== Theme Sidebar =============================== -->
+            <div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
+                <div class="sidebar-box bg-box about-me">
+                    <h6 class="sidebar-title">关于 我</h6>
+                    <!-- <img src="images/home/1.jpg" alt=""> -->
+                    <p>Hi，我是一位来自魔都的程序员，这是我的第一个简单博客网站，很久没接触前端，springboot+thymeleaf也是第一次尝试，还请各位多多指教</p>
+                    <div class="clearfix">
+                        <!-- <img src="images/home/sign.png" alt="" class="signature float-right"> --></div>
+                </div> <!-- /.about-me -->
+                <div class="sidebar-box bg-box sidebar-tags">
+                    <h6 class="sidebar-title">标签</h6>
+                    <ul class="clearfix" th:each="tag:${tags}">
+                        <li><a href="#" th:text="${tag}"></a></li>
+
+                    </ul>
+                </div> <!-- /.sidebar-tags -->
+                <div class="sidebar-box bg-box sidebar-newsletter">
+                    <h6 class="sidebar-title">newsletter</h6>
+                    <form action="#">
+                        <input type="email" placeholder="Your email address" required>
+                        <button class="theme-button-one">Sign up</button>
+                    </form>
+                </div> <!-- /.sidebar-newsletter -->
+            </div> <!-- /.theme-main-sidebar -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
 
 
-
-	<!--
-	=============================================
-		Main Blog Post Wrapper
-	==============================================
-	-->
-	<div class="container">
-		<div class="row">
-			<div id="blog-outline" class="col-lg-8 col-12 blog-grid-style hover-effect-one"
-				 th:each="blog:${blogs}">
-				<div class="single-blog-post">
-					<div class="image-box"><!-- <img src="images/blog/1.jpg" alt=""> --></div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag" ><a href="#" th:text="${blog.tags}"></a></li>
-							<li class="date"><a href="#" th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></a></li>
-						</ul>
-						<h4 class="title" ><a href="blog.html" th:href="@{/blog/getBlogDetail(id=${blog.id})}" th:text="${blog.title}"></a></h4>
-
-						<!--<p th:utext="${#strings.abbreviate(blog.content,66)}" ></p>-->
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
-
-			</div> <!-- /.col- -->
-
-			<!-- ======================== Theme Sidebar =============================== -->
-			<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
-				<div class="sidebar-box bg-box about-me">
-					<h6 class="sidebar-title">关于 我</h6>
-					<!-- <img src="images/home/1.jpg" alt=""> -->
-					<p>Hi，我是一位来自魔都的程序员，这是我的第一个简单博客网站，很久没接触前端，springboot+thymeleaf也是第一次尝试，还请各位多多指教</p>
-					<div class="clearfix"><!-- <img src="images/home/sign.png" alt="" class="signature float-right"> --></div>
-				</div> <!-- /.about-me -->
-				<div class="sidebar-box bg-box sidebar-tags">
-					<h6 class="sidebar-title">标签</h6>
-					<ul class="clearfix" th:each="tag:${tags}">
-						<li><a href="#" th:text="${tag}" ></a></li>
-
-					</ul>
-				</div> <!-- /.sidebar-tags -->
-				<div class="sidebar-box bg-box sidebar-newsletter">
-					<h6 class="sidebar-title">newsletter</h6>
-					<form action="#">
-						<input type="email" placeholder="Your email address" required>
-						<button class="theme-button-one">Sign up</button>
-					</form>
-				</div> <!-- /.sidebar-newsletter -->
-			</div> <!-- /.theme-main-sidebar -->
-		</div> <!-- /.row -->
-	</div> <!-- /.container -->
+    <!--
+    =====================================================
+        Footer
+    =====================================================
+    -->
+    <footer class="theme-footer">
+        <div class="container">
+            <div class="logo"><a href="index.html"><!-- <img src="images/logo/logo.png" alt=""> --></a></div>
+            <p class="footer-text">Blog and Portfolio Theme</p>
+            <ul class="social-icon">
+                <li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                <li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+            <p class="copyright">Copyright &copy; 2018.Company name All rights reserved.</p>
+        </div> <!-- /.container -->
+    </footer> <!-- /.theme-footer -->
 
 
-	<!--
-	=====================================================
-		Footer
-	=====================================================
-	-->
-	<footer class="theme-footer">
-		<div class="container">
-			<div class="logo"><a href="index.html"><!-- <img src="images/logo/logo.png" alt=""> --></a></div>
-			<p class="footer-text">Blog and Portfolio Theme</p>
-			<ul class="social-icon">
-				<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-			</ul>
-			<p class="copyright">Copyright &copy; 2018.Company name All rights reserved.</p>
-		</div> <!-- /.container -->
-	</footer> <!-- /.theme-footer -->
+    <!-- Scroll Top Button -->
+    <button class="scroll-top tran3s">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+    </button>
 
 
+    <!-- Optional JavaScript _____________________________  -->
 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery -->
+    <script src="vendor/jquery.2.2.3.min.js"></script>
+    <!-- Popper js -->
+    <script src="vendor/popper.js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Style-switcher  -->
+    <script src="vendor/jQuery.style.switcher.min.js"></script>
+    <!-- jquery-easy-ticker-master -->
+    <script src="vendor/jquery-easy-ticker-master/jquery.easy-ticker.min.js"></script>
+    <!-- jquery easing -->
+    <script src="vendor/jquery.easing.1.3.js"></script>
+    <!-- Font Awesome -->
+    <script src="fonts/font-awesome/fontawesome-all.min.js"></script>
+    <!-- Master Slider -->
+    <script src="vendor/masterslider/masterslider.min.js"></script>
+    <!-- menu  -->
+    <script src="vendor/menu/src/js/jquery.slimmenu.js"></script>
+    <!-- owl.carousel -->
+    <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+    <!-- Fancybox -->
+    <script src="vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+    <!-- Youtube Video -->
+    <script src="vendor/jquery.fitvids.js"></script>
 
-	<!-- Scroll Top Button -->
-	<button class="scroll-top tran3s">
-		<i class="fa fa-angle-up" aria-hidden="true"></i>
-	</button>
+    <!-- Theme js -->
+    <script src="js/theme.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        function likeIt(blogId, likes, obj) {
+            $.ajax({
+                url: "/blog/likeIt",
+                data: {
+                    id: blogId
+                },
+                type: "post",
+                dataType: "text",
+                success: function (text) {
+                    $('#alert-success').fadeIn(1000, function () {
+                        var afterLikes = likes + 1;
+                        obj.outerHTML = '<a href="javascript:;" onclick="javascript:likeIt(' + blogId + ',' + afterLikes + ',this)"><i class="icon flaticon-like-heart">Likes (' + afterLikes + ')</i></a>';
+                        $('#alert-success').fadeOut(1000);
+                    });
+                }
+            });
 
-
-
-	<!-- Optional JavaScript _____________________________  -->
-
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<!-- jQuery -->
-	<script src="vendor/jquery.2.2.3.min.js"></script>
-	<!-- Popper js -->
-	<script src="vendor/popper.js/popper.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!-- Style-switcher  -->
-	<script src="vendor/jQuery.style.switcher.min.js"></script>
-	<!-- jquery-easy-ticker-master -->
-	<script src="vendor/jquery-easy-ticker-master/jquery.easy-ticker.min.js"></script>
-	<!-- jquery easing -->
-	<script src="vendor/jquery.easing.1.3.js"></script>
-	<!-- Font Awesome -->
-	<script src="fonts/font-awesome/fontawesome-all.min.js"></script>
-	<!-- Master Slider -->
-	<script src="vendor/masterslider/masterslider.min.js"></script>
-	<!-- menu  -->
-	<script src="vendor/menu/src/js/jquery.slimmenu.js"></script>
-	<!-- owl.carousel -->
-	<script src="vendor/owl-carousel/owl.carousel.min.js"></script>
-	<!-- Fancybox -->
-	<script src="vendor/fancybox/dist/jquery.fancybox.min.js"></script>
-	<!-- Youtube Video -->
-	<script src="vendor/jquery.fitvids.js"></script>
-
-	<!-- Theme js -->
-	<script src="js/theme.js"></script>
-	<script type="text/javascript">
-
-	</script>
+        }
+    </script>
 </div> <!-- /.main-page-wrapper -->
 </body>
 </html>

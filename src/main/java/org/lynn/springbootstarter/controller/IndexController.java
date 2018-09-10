@@ -1,6 +1,6 @@
 package org.lynn.springbootstarter.controller;
 
-import org.lynn.springbootstarter.controller.response.SimpleBlogResponse;
+import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        List<SimpleBlogResponse> list = blogService.getUserBlogsWithoutContent(1L);
+        List<Blog> list = blogService.getUserBlogsWithoutContent(1L);
         model.addAttribute("blogs", list);
         model.addAttribute("tags", blogService.getTags());
         return "index";
