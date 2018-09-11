@@ -28,6 +28,9 @@
 		<hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
 		<lombok.version>1.16.10</lombok.version>
 		<jodatime.version>2.9.4</jodatime.version>
+		<druid.version>1.1.10</druid.version>
+		<pegdown.version>1.6.0</pegdown.version>
+		<flexmark-all.version>0.34.24</flexmark-all.version>
 	</properties>
 
 	<dependencies>
@@ -92,12 +95,17 @@
 		<dependency>
 			<groupId>org.pegdown</groupId>
 			<artifactId>pegdown</artifactId>
-			<version>1.6.0</version>
+			<version>${pegdown.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vladsch.flexmark</groupId>
 			<artifactId>flexmark-all</artifactId>
-			<version>0.34.24</version>
+			<version>${flexmark-all.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
 		</dependency>
 	</dependencies>
 
