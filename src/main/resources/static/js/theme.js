@@ -331,10 +331,15 @@
         var closeButton = $(".closeAlert");
         if (closeButton.length) {
             closeButton.on('click', function () {
+                $('.form-validation :input').removeAttr('disabled');
+                $('.form-validation :button').removeAttr('disabled');
                 $(".alert-wrapper").fadeOut();
             });
             closeButton.on('click', function () {
+                $('.form-validation :input').removeAttr('disabled');
+                $('.form-validation :button').removeAttr('disabled');
                 $(".alert-wrapper").fadeOut();
+                window.location.href='/';
             })
         }
 

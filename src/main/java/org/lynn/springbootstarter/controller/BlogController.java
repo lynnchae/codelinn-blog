@@ -12,10 +12,7 @@ import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -43,10 +40,11 @@ public class BlogController {
         return ResultEntity.success(blogService.getUserBlogs(userId));
     }
 
-    @PostMapping("/saveBlog")
-    @ResponseBody
-    public ResultEntity<List<Blog>> saveBlog(Blog blog) {
-        return ResultEntity.success(blogService.insert(blog));
+    @RequestMapping(value = "/saveBlog", method = RequestMethod.POST)
+    public String saveBlog(@ModelAttribute(name = "blog") Blog blog, Model model) {
+        blog.setUserId(1L);
+        blogService.insert(blog);
+        return "index";
     }
 
     @GetMapping("/getBlogDetail")

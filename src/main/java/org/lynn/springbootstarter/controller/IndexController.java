@@ -40,4 +40,9 @@ public class IndexController {
         return "contact";
     }
 
+    @RequestMapping("/blogeditor")
+    public String blogeditor(Model model) {
+        return "blogeditor";
+    }
+
 }
