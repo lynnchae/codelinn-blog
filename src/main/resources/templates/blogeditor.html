@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- For Window Tab Color -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#2c2c2c">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#2c2c2c">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
+
+    <title>BlogEditor</title>
+
+    <!-- Main style sheet -->
+    <link rel="stylesheet" th:href="@{/css/blogeditor.css}"/>
+    <link rel="stylesheet" th:href="@{/editor/examples/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/editor/css/editormd.css}"/>
+    <!-- responsive style sheet -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+    <!-- Theme-Color css -->
+    <link rel="stylesheet" id="jssDefault" th:href="@{/css/color.css}">
+
+
+    <!-- Fix Internet Explorer ______________________________________-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script th:src="@{/vendor/html5shiv.js}"></script>
+    <script th:src="@{/vendor/respond.js}"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+<div class="main-page-wrapper">
+    <div class="user-blog">
+        <div class="back-to-home fixed"><a href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
+        <form th:action="@{/blog/saveBlog}"  method="post" class="form-validation" autocomplete="off">
+            <div class="main-text-wrapper">
+                <div class="container">
+                    <div style="padding-top: 55px">
+                        <input type="text" name="title" placeholder="Title" autofocus>
+                        <input type="text" name="tags" placeholder="Tag" autofocus>
+                        <div id="md-editor">
+                            <textarea style="display:none;" name="content" class="editormd-html-textarea" id="editormd"></textarea>
+                            <textarea class="editormd-html-textarea" name="text" id="editormdhtml"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.main-text-wrapper -->
+
+            <button class="theme-button-one">Submit</button>
+        </form>
+        <p></p>
+        <br/>
+        <!--blogeditor Form Validation Markup -->
+        <!-- blogeditor alert -->
+        <div class="alert-wrapper" id="alert-success">
+            <div id="success">
+                <button class="closeAlert">
+                    <svg class="svg-inline--fa fa-window-close fa-w-16" aria-hidden="true" data-prefix="fas"
+                         data-icon="window-close" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                         data-fa-i2svg="">
+                        <path fill="currentColor"
+                              d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-83.6 290.5c4.8 4.8 4.8 12.6 0 17.4l-40.5 40.5c-4.8 4.8-12.6 4.8-17.4 0L256 313.3l-66.5 67.1c-4.8 4.8-12.6 4.8-17.4 0l-40.5-40.5c-4.8-4.8-4.8-12.6 0-17.4l67.1-66.5-67.1-66.5c-4.8-4.8-4.8-12.6 0-17.4l40.5-40.5c4.8-4.8 12.6-4.8 17.4 0l66.5 67.1 66.5-67.1c4.8-4.8 12.6-4.8 17.4 0l40.5 40.5c4.8 4.8 4.8 12.6 0 17.4L313.3 256l67.1 66.5z"></path>
+                    </svg>
+                </button>
+                <div class="wrapper">
+                    <p>Your message was sent successfully.</p>
+                </div>
+            </div>
+        </div> <!-- End of .alert_wrapper -->
+        <div class="alert-wrapper" id="alert-error">
+            <div id="error">
+                <button class="closeAlert">
+                    <svg class="svg-inline--fa fa-window-close fa-w-16" aria-hidden="true" data-prefix="fas"
+                         data-icon="window-close" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                         data-fa-i2svg="">
+                        <path fill="currentColor"
+                              d="M464 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-83.6 290.5c4.8 4.8 4.8 12.6 0 17.4l-40.5 40.5c-4.8 4.8-12.6 4.8-17.4 0L256 313.3l-66.5 67.1c-4.8 4.8-12.6 4.8-17.4 0l-40.5-40.5c-4.8-4.8-4.8-12.6 0-17.4l67.1-66.5-67.1-66.5c-4.8-4.8-4.8-12.6 0-17.4l40.5-40.5c4.8-4.8 12.6-4.8 17.4 0l66.5 67.1 66.5-67.1c4.8-4.8 12.6-4.8 17.4 0l40.5 40.5c4.8 4.8 4.8 12.6 0 17.4L313.3 256l67.1 66.5z"></path>
+                    </svg>
+                </button>
+                <div class="wrapper">
+                    <p>Sorry!Something Went Wrong.</p>
+                </div>
+            </div>
+        </div> <!-- End of .alert_wrapper -->
+    </div> <!-- /.blog-editor -->
+    <!-- Optional JavaScript _____________________________  -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery -->
+    <script th:src="@{/vendor/jquery.2.2.3.min.js}"></script>
+    <script th:src="@{/editor/editormd.min.js}"></script>
+    <!-- Popper js -->
+    <script th:src="@{/vendor/popper.js/popper.min.js}"></script>
+    <!-- Bootstrap JS -->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- Style-switcher  -->
+    <script th:src="@{/vendor/jQuery.style.switcher.min.js}"></script>
+    <!-- jquery-easy-ticker-master -->
+    <script th:src="@{/vendor/jquery-easy-ticker-master/jquery.easy-ticker.min.js}"></script>
+    <!-- jquery easing -->
+    <script th:src="@{/vendor/jquery.easing.1.3.js}"></script>
+    <!-- Validation -->
+    <script type="text/javascript" th:src="@{/vendor/contact-form/validate.js}"></script>
+    <script type="text/javascript" th:src="@{/vendor/contact-form/jquery.form.js}"></script>
+
+    <!-- Theme js -->
+    <script th:src="@{/js/theme.js}"></script>
+    <!--<script th:src="@{/fonts/font-awesome/fontawesome-all.min.js}"></script>-->
+    <script type="text/javascript">
+        var mdeditor;
+        $(function () {
+            mdeditor = editormd("md-editor", {
+                width: "90%",
+                height: 450,
+                syncScrolling: "single",
+                path: "/editor/lib/",
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL: "PicSvl",
+                saveHTMLToTextarea: true
+            });
+
+            /*
+            // or
+            testEditor = editormd({
+                id      : "md-editor",
+                width   : "90%",
+                height  : 640,
+                path    : "../lib/"
+            });
+            */
+        });
+    </script>
+</div> <!-- /.main-page-wrapper -->
+</body>
+</html>

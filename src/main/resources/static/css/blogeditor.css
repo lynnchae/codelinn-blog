@@ -1,0 +1,132 @@
+.back-to-home a {
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    color: #343a40;
+    margin: 10px;
+    text-align: left;
+}
+
+.back-to-home {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 9;
+    padding: 10px 10px 5px 0;
+}
+
+.back-to-home a {
+    color: #838383;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    left: 10px;
+}
+
+body .theme-button-one {
+    line-height: 30px;
+    font-size: 12px;
+    padding: 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #fff;
+    border-width: 1px;
+    text-align: center;
+}
+
+body .theme-button-one:hover {
+    background: #fff;
+}
+
+.theme-button-one:hover {
+    background: transparent;
+}
+
+/*======================= Form Validation ===================*/
+.alert-wrapper {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+}
+
+#success, #error {
+    position: relative;
+    width: 250px;
+    height: 100px;
+    top: calc(50% - 50px);
+    left: calc(50% - 150px);
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    border-radius: 20px;
+}
+
+#success .wrapper, #error .wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#success .wrapper p, #error .wrapper p {
+    display: table-cell;
+    vertical-align: middle;
+    letter-spacing: 1px;
+}
+
+#success p {
+    color: #212529;
+}
+
+#error p {
+    color: #C9182B;
+}
+
+#error button,
+#success button {
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 20px;
+    border:none;
+    outline:none;
+    box-shadow:none;
+    cursor:pointer;
+    display:block;
+}
+#form-validation label {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9e9e9e;
+}
+form input {
+    width: 50%;
+    height: 35px;
+    padding: 0 15px;
+    font-size: 15px;
+    border:1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+input:focus {border-bottom-color:#d0344e;}
+input {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
+input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #efefef;
+    letter-spacing: 1px;
+    margin-bottom: 35px;
+    font-size: 13px;
+}
