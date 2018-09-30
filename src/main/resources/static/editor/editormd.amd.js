@@ -2670,7 +2670,6 @@
          */
         
         fullscreen : function() {
-            
             var _this            = this;
             var state            = this.state;
             var editor           = this.editor;
@@ -2703,7 +2702,6 @@
                     width    : $(window).width(),
                     height   : $(window).height()
                 }).addClass(fullscreenClass);
-
                 this.resize();
     
                 $.proxy(settings.onfullscreen, this)();

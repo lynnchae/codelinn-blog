@@ -2601,7 +2601,7 @@
          */
         
         fullscreen : function() {
-            
+            $('#backhome').css("display","none");
             var _this            = this;
             var state            = this.state;
             var editor           = this.editor;
@@ -2658,7 +2658,7 @@
          */
         
         fullscreenExit : function() {
-            
+            $('#backhome').css("display","block");
             var editor            = this.editor;
             var settings          = this.settings;
             var toolbar           = this.toolbar;

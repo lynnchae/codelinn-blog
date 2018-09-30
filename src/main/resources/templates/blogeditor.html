@@ -41,7 +41,7 @@
 
 <div class="main-page-wrapper">
     <div class="user-blog">
-        <div class="back-to-home fixed"><a href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
+        <div id="backhome" class="back-to-home fixed"><a href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
         <form th:action="@{/blog/saveBlog}"  method="post" class="form-validation" autocomplete="off">
             <div class="main-text-wrapper">
                 <div class="container">
@@ -98,7 +98,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- jQuery -->
     <script th:src="@{/vendor/jquery.2.2.3.min.js}"></script>
-    <script th:src="@{/editor/editormd.min.js}"></script>
+    <script th:src="@{/editor/editormd.js}"></script>
     <!-- Popper js -->
     <script th:src="@{/vendor/popper.js/popper.min.js}"></script>
     <!-- Bootstrap JS -->
