@@ -34,4 +34,4 @@ insert  into `t_blog`(`user_id`,`title`,`tags`,`content`,`create_time`,`create_u
 
 
 ALTER TABLE `lynn`.`t_blog`
-  ADD COLUMN `like` INT(8) DEFAULT 0 NOT NULL COMMENT '喜欢' AFTER `content`;
+  ADD COLUMN `likes` INT(8) DEFAULT 0 NOT NULL COMMENT '喜欢' AFTER `content`;
