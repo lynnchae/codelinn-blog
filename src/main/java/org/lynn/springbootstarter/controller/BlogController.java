@@ -15,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,10 +44,17 @@ public class BlogController {
     }
 
     @RequestMapping(value = "/saveBlog", method = RequestMethod.POST)
-    public String saveBlog(@ModelAttribute(name = "blog") Blog blog, Model model) {
-        blog.setUserId(1L);
-        blogService.insert(blog);
-        return "index";
+    public String saveBlog(HttpServletRequest request, HttpServletResponse response, @ModelAttribute(name = "blog") Blog blog, Model model) throws IOException {
+        String password = request.getParameter("password");
+        if (!"lynnchae".equals(password)){
+            response.sendError(500,"Please enter the wright password to submit the article!");
+            return "blogeditor";
+        }else{
+            blog.setUserId(1L);
+            blogService.insert(blog);
+            return "index";
+        }
+
     }
 
     @GetMapping("/getBlogDetail")

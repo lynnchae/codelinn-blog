@@ -316,8 +316,10 @@
                                 $('#alert-success').fadeIn();
                             });
                         },
-                        error: function () {
+                        error: function (jqHXR) {
+                            var res = JSON.parse(jqHXR.responseText);
                             $('.form-validation').fadeTo("slow", 1, function () {
+                                $('#alert-error').find("p").html(res.message)
                                 $('#alert-error').fadeIn();
                             });
                         }
@@ -334,12 +336,16 @@
                 $('.form-validation :input').removeAttr('disabled');
                 $('.form-validation :button').removeAttr('disabled');
                 $(".alert-wrapper").fadeOut();
+                var idVal = $(this).parent().attr('id');
+                if (idVal == 'success'){
+                    window.location.href='/';
+                }
             });
             closeButton.on('click', function () {
                 $('.form-validation :input').removeAttr('disabled');
                 $('.form-validation :button').removeAttr('disabled');
                 $(".alert-wrapper").fadeOut();
-                window.location.href='/';
+                // window.location.href='/';
             })
         }
 
