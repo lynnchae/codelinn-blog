@@ -1,5 +1,6 @@
 package org.lynn.springbootstarter.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.service.BlogService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class Name : org.lynn.springbootstarter.controller
@@ -18,6 +20,7 @@ import java.util.List;
  * Date : 2018/9/6 16:46
  */
 @Controller
+@Slf4j
 public class IndexController {
 
     @Resource
@@ -25,15 +28,10 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(@RequestParam(required = false) String tag, Model model) {
-        List<Blog> list;
-        if (!"".equals(tag)) {
-            Blog b = new Blog();
-            b.setUserId(1L);
-            b.setTags(tag);
-            list = blogService.query(b);
-        } else {
-            list = blogService.getUserBlogs(1L);
-        }
+        Blog b = new Blog();
+        b.setUserId(1L);
+        b.setTags(tag);
+        List<Blog> list = blogService.query(b).stream().sorted( (o1,o2) -> o2.getId().compareTo(o1.getId())).collect(Collectors.toList());
         model.addAttribute("blogs", list);
         model.addAttribute("tags", blogService.getTags());
         return "index";

@@ -83,4 +83,13 @@ public class BlogController {
         blogService.updateLikes(id);
         return "success";
     }
+
+    @PostMapping("/tagIt")
+    @ResponseBody
+    public List<Blog> tagIt(String tag) {
+        Blog b = new Blog();
+        b.setUserId(1L);
+        b.setTags(tag);
+        return blogService.query(b);
+    }
 }
