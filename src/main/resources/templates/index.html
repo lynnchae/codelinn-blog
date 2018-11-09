@@ -271,7 +271,7 @@
                 <div class="sidebar-box bg-box sidebar-tags">
                     <h6 class="sidebar-title">标签</h6>
                     <ul class="clearfix" th:each="tag:${tags}">
-                        <li><a href="#" th:text="${tag}"></a></li>
+                        <li><a href="index.html" th:href="@{/(tag=${tag})}"  th:text="${tag}"></a></li>
 
                     </ul>
                 </div> <!-- /.sidebar-tags -->

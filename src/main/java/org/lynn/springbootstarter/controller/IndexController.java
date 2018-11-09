@@ -5,6 +5,7 @@ import org.lynn.springbootstarter.service.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,8 +24,16 @@ public class IndexController {
     private BlogService blogService;
 
     @RequestMapping("/")
-    public String index(Model model) {
-        List<Blog> list = blogService.getUserBlogs(1L);
+    public String index(@RequestParam(required = false) String tag, Model model) {
+        List<Blog> list;
+        if (!"".equals(tag)) {
+            Blog b = new Blog();
+            b.setUserId(1L);
+            b.setTags(tag);
+            list = blogService.query(b);
+        } else {
+            list = blogService.getUserBlogs(1L);
+        }
         model.addAttribute("blogs", list);
         model.addAttribute("tags", blogService.getTags());
         return "index";
