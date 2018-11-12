@@ -99,15 +99,18 @@
 
                 <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
                 <h3 ><strong>留下你的评论</strong></h3>
-                <div class="comment-form" style="margin-top: 20px">
-                    <form>
+                <div  class="comment-form" style="margin-top: 20px">
+                    <form id="main-comment" method="post" class="form-validation" autocomplete="off">
                         <br/>
-                        <input type="text" placeholder="Name*" name="sender" autofocus>
+                        <input type="text" placeholder="Name*" name="commenter" autofocus>
                         <br/>
-                        <input type="text" placeholder="Email*" name="email" autofocus>
+                        <input type="text" placeholder="Email*" name="commenterEmail" autofocus>
+                        <input type="text" hidden name="blogId" th:value="${blog.id}">
+                        <input type="text" hidden name="repayTo" value="">
+                        <input type="text" hidden name="parentId" value="0">
                         <br/>
-                        <p><textarea placeholder="内容" name="message"></textarea></p>
-                        <button class="theme-button-one" style="margin-bottom: 20px">Post Comment</button>
+                        <p><textarea placeholder="内容" name="comment"></textarea></p>
+                        <button class="theme-button-one" onclick="javascript:sendComment()"  style="margin-bottom: 20px">Post Comment</button>
                     </form>
                 </div>
             </div>
@@ -163,6 +166,22 @@
                 $(this).parent().find(".comment-form").toggle(500,function(){})
             });
         });
+
+        function sendComment(){
+            var form = new FormData(document.getElementById("main-comment"));
+            $.ajax({
+                url:"/comment/sendComment",
+                type:"post",
+                data:form,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    console.log("over..");
+                },
+                error:function(e){
+                }
+            });
+        }
     </script>
 </div> <!-- /.main-page-wrapper -->
 </body>
