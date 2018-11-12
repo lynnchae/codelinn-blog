@@ -62,9 +62,9 @@
                 <div class="contact-form">
                     <h2>Contact</h2>
                     <p>You can contact me almost about anything</p>
-                    <form action="inc/sendemail.php" class="form-validation" autocomplete="off">
+                    <form method="post" th:action="@{/message/leavingMessage}" class="form-validation" autocomplete="off">
                         <label>full Name</label>
-                        <input type="text" placeholder="Lynn Chae" name="name" autofocus>
+                        <input type="text" placeholder="Lynn Chae" name="sender" autofocus>
                         <label>Email address</label>
                         <input type="email" placeholder="107890073@qq.com" name="email">
                         <label>Your message</label>
