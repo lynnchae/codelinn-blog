@@ -292,8 +292,7 @@
                         required: true
                     },
                     email: {
-                        required: true,
-                        email: true
+                        required: true
                     },
                     message: {
                         required: true

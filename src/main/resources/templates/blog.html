@@ -106,7 +106,7 @@
                 <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
                 <h3 ><strong>留下你的评论</strong></h3>
                 <div  class="comment-form" style="margin-top: 20px">
-                    <form id="main-comment" method="post" class="form-validation" autocomplete="off">
+                    <form  method="post" class="form-validation"  autocomplete="off">
                         <br/>
                         <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
                         <br/>
@@ -116,7 +116,7 @@
                         <input type="text" hidden name="parentId" value="0">
                         <br/>
                         <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
-                        <button class="theme-button-one" onclick="javascript:sendComment(this)"  style="margin-bottom: 20px">Post Comment</button>
+                        <button type="button" class="theme-button-one" onclick="javascript:sendComment(this)"  style="margin-bottom: 20px">Post Comment</button>
                     </form>
                 </div>
             </div>
@@ -166,6 +166,7 @@
 
     <!-- Theme js -->
     <script th:src="@{/js/theme.js}"></script>
+</div> <!-- /.main-page-wrapper -->
     <script type="text/javascript">
         $(document).ready(function(){
             $(".reply").click(function(){
@@ -182,13 +183,12 @@
                 processData:false,
                 contentType:false,
                 success:function(data){
-                    console.log("over..");
+                    // console.log("over..");
                 },
                 error:function(e){
                 }
             });
         }
     </script>
-</div> <!-- /.main-page-wrapper -->
 </body>
 </html>

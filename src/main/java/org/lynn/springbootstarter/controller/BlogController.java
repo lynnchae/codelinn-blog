@@ -64,7 +64,7 @@ public class BlogController {
 
     }
 
-    @GetMapping("/getBlogDetail")
+    @RequestMapping("/getBlogDetail")
     public String getUserBlogs(Long id, Model model) {
         Blog b = blogService.getById(id);
         MutableDataSet options = new MutableDataSet();

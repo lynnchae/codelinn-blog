@@ -16,17 +16,21 @@ public interface BaseDao<T extends Entity> {
 
     @SelectProvider(type = SqlProvider.class, method = "get")
     @ResultMap(value = "resultMap")
+    @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = true)
     T getByObject(T findParam);
 
     @SelectProvider(type = SqlProvider.class, method = "getById")
     @ResultMap(value = "resultMap")
+    @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = true)
     T getById(Long id);
 
     @SelectProvider(type = SqlProvider.class, method = "count")
+    @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = true)
     int count(T countParam);
 
     @SelectProvider(type = SqlProvider.class, method = "get")
     @ResultMap(value = "resultMap")
+    @Options(flushCache = Options.FlushCachePolicy.FALSE,useCache = true)
     List<T> query(T findParam);
 
     @InsertProvider(type = SqlProvider.class, method = "insert")
