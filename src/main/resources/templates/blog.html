@@ -63,6 +63,53 @@
                     <h2 align="center" th:text="${blog.title}"></h2>
                     <div class="md-content" th:utext="${blog.content}"></div>
                 </div>
+
+                <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
+                <h3 ><strong>评论区</strong></h3>
+                <div class="comment-meta" style="margin-top: 20px">
+                    <div class="single-comment" >
+                        <div class="comment">
+                            <h6><a>评论者1</a></h6>
+                            <p>评论内容1</p>
+                            <button class="reply">回复</button>
+                            <div class="comment-form" style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
+                                <form>
+                                    <input type="text" placeholder="Name*" name="sender" autofocus>
+                                    <input type="text" placeholder="Email*" name="email" autofocus>
+                                    <p><textarea placeholder="内容" name="message"></textarea></p>
+                                    <button class="theme-button-one" style="margin-bottom: 20px">提交</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="reply-comment" >
+                            <h6><a>评论者2</a></h6>
+                            <p>回复内容1</p>
+                            <button class="reply">回复</button>
+                            <div class="comment-form" style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
+                                <form>
+                                    <input type="text" placeholder="Name*" name="sender" autofocus>
+                                    <input type="text" placeholder="Email*" name="email" autofocus>
+                                    <p><textarea placeholder="内容" name="message"></textarea></p>
+                                    <button class="theme-button-one" style="margin-bottom: 20px">提交</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
+                <h3 ><strong>留下你的评论</strong></h3>
+                <div class="comment-form" style="margin-top: 20px">
+                    <form>
+                        <br/>
+                        <input type="text" placeholder="Name*" name="sender" autofocus>
+                        <br/>
+                        <input type="text" placeholder="Email*" name="email" autofocus>
+                        <br/>
+                        <p><textarea placeholder="内容" name="message"></textarea></p>
+                        <button class="theme-button-one" style="margin-bottom: 20px">Post Comment</button>
+                    </form>
+                </div>
             </div>
         </div> <!-- /.main-text-wrapper -->
         <!--Contact Form Validation Markup -->
@@ -110,6 +157,13 @@
 
     <!-- Theme js -->
     <script th:src="@{/js/theme.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".reply").click(function(){
+                $(this).parent().find(".comment-form").toggle(500,function(){})
+            });
+        });
+    </script>
 </div> <!-- /.main-page-wrapper -->
 </body>
 </html>
