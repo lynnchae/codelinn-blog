@@ -20,11 +20,11 @@ public class Comment extends Entity {
 
     private String commenterEmail;
 
-    private Integer blogId;
+    private Long blogId;
 
     private String comment;
 
-    private Integer parentId;
+    private Long parentId;
 
     private String replyTo;
 

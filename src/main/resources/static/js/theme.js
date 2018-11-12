@@ -297,6 +297,15 @@
                     },
                     message: {
                         required: true
+                    },
+                    commenter: {
+                        required: true
+                    },
+                    commenterEmail: {
+                        required: true
+                    },
+                    comment: {
+                        required: true
                     }
                 },
                 submitHandler: function (form) {
@@ -331,7 +340,12 @@
                 $(".alert-wrapper").fadeOut();
                 var idVal = $(this).parent().attr('id');
                 if (idVal == 'success'){
-                    window.location.href='/';
+                    if($("#blogdetail").length){
+                        window.location.reload();
+                    }else{
+                        window.location.href='/';
+                    }
+
                 }
             });
             closeButton.on('click', function () {

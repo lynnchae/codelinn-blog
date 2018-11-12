@@ -1012,15 +1012,20 @@ body .theme-button-one:hover {background: #fff;}
 }
 .comment-meta .single-comment .comment h6 a {
   text-transform: uppercase;
-  color: #313131;
+  color: #20c997;
   margin: 10px 0 5px 0;
+  font-size:17px;
 }
 .comment-meta .single-comment .comment .date {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 11px;
 }
-.comment-meta .single-comment .comment p {line-height: 24px;margin-top: 15px;}
+.comment-meta .single-comment .comment p {
+  line-height: 24px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
 .comment-meta .single-comment {
   padding-bottom: 40px;
   margin-bottom: 40px;
@@ -1035,7 +1040,9 @@ body .theme-button-one:hover {background: #fff;}
 .comment-meta .single-comment:last-child {
   margin: 0;
   padding: 0;
-  border:none;
+  border-left: dotted;
+  border-radius: 15px;
+  border-left-color: #E2E3E1;
 }
 .comment-meta .single-comment .comment .reply {
   position: absolute;
@@ -1063,9 +1070,19 @@ body .theme-button-one:hover {background: #fff;}
   font-weight: 600;
   border-radius:5px;
 }
+
+.comment-meta .single-comment .reply-comment p {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
 .comment-meta .single-comment .reply-comment .reply:hover {
   color: #fff;
   background: #dc3545;
+}
+
+.comment-meta .single-comment .reply-comment h6 a {
+  color: #20c997;
 }
 
 .comment-form form input {

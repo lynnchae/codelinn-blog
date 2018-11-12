@@ -55,7 +55,7 @@
     <!-- ===================================================
         About Me Wrapper
     ==================================================== -->
-    <div class="user-blog">
+    <div id="blogdetail" class="user-blog">
         <div class="back-to-home fixed"><a href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
         <div class="main-text-wrapper">
             <div class="container">
@@ -66,31 +66,37 @@
 
                 <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
                 <h3 ><strong>评论区</strong></h3>
-                <div class="comment-meta" style="margin-top: 20px">
+                <div class="comment-meta" style="margin-top: 20px" th:each="comment:${comments}">
                     <div class="single-comment" >
                         <div class="comment">
-                            <h6><a>评论者1</a></h6>
-                            <p>评论内容1</p>
+                            <h6><a th:text="${comment.commenter}"></a></h6>
+                            <p th:utext="${comment.comment}"></p>
                             <button class="reply">回复</button>
                             <div class="comment-form" style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
-                                <form>
-                                    <input type="text" placeholder="Name*" name="sender" autofocus>
-                                    <input type="text" placeholder="Email*" name="email" autofocus>
-                                    <p><textarea placeholder="内容" name="message"></textarea></p>
-                                    <button class="theme-button-one" style="margin-bottom: 20px">提交</button>
+                                <form method="post" class="form-validation" autocomplete="off">
+                                    <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
+                                    <input type="text" required="true" placeholder="Email*" name="commenterEmail" autofocus>
+                                    <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                                    <input type="text" hidden name="blogId" th:value="${blog.id}">
+                                    <input type="text" hidden name="replyTo" th:value="${comment.commenter}">
+                                    <input type="text" hidden name="parentId" th:value="${comment.id}">
+                                    <button class="theme-button-one" onclick="javascript:sendComment(this)"    style="margin-bottom: 20px">提交</button>
                                 </form>
                             </div>
                         </div>
-                        <div class="reply-comment" >
-                            <h6><a>评论者2</a></h6>
-                            <p>回复内容1</p>
+                        <div class="reply-comment" th:each="childComment:${comment.comments}">
+                            <h6><a th:text="${childComment.commenter}"></a></h6>
+                            <p th:utext="${childComment.comment}"></p>
                             <button class="reply">回复</button>
                             <div class="comment-form" style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
-                                <form>
-                                    <input type="text" placeholder="Name*" name="sender" autofocus>
-                                    <input type="text" placeholder="Email*" name="email" autofocus>
-                                    <p><textarea placeholder="内容" name="message"></textarea></p>
-                                    <button class="theme-button-one" style="margin-bottom: 20px">提交</button>
+                                <form method="post" class="form-validation" autocomplete="off">
+                                    <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
+                                    <input type="text" required="true" placeholder="Email*" name="commenterEmail" autofocus>
+                                    <input type="text" hidden name="blogId" th:value="${blog.id}">
+                                    <input type="text" hidden name="replyTo" th:value="${childComment.commenter}">
+                                    <input type="text" hidden name="parentId" th:value="${comment.id}">
+                                    <p><textarea  required="true" placeholder="内容" name="comment"></textarea></p>
+                                    <button class="theme-button-one" onclick="javascript:sendComment(this)"   style="margin-bottom: 20px">提交</button>
                                 </form>
                             </div>
                         </div>
@@ -102,15 +108,15 @@
                 <div  class="comment-form" style="margin-top: 20px">
                     <form id="main-comment" method="post" class="form-validation" autocomplete="off">
                         <br/>
-                        <input type="text" placeholder="Name*" name="commenter" autofocus>
+                        <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
                         <br/>
-                        <input type="text" placeholder="Email*" name="commenterEmail" autofocus>
+                        <input type="text" required="true" placeholder="Email*" name="commenterEmail" autofocus>
                         <input type="text" hidden name="blogId" th:value="${blog.id}">
-                        <input type="text" hidden name="repayTo" value="">
+                        <input type="text" hidden name="replyTo" value="">
                         <input type="text" hidden name="parentId" value="0">
                         <br/>
-                        <p><textarea placeholder="内容" name="comment"></textarea></p>
-                        <button class="theme-button-one" onclick="javascript:sendComment()"  style="margin-bottom: 20px">Post Comment</button>
+                        <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                        <button class="theme-button-one" onclick="javascript:sendComment(this)"  style="margin-bottom: 20px">Post Comment</button>
                     </form>
                 </div>
             </div>
@@ -167,8 +173,8 @@
             });
         });
 
-        function sendComment(){
-            var form = new FormData(document.getElementById("main-comment"));
+        function sendComment(obj){
+            var form = new FormData(obj.parentNode);
             $.ajax({
                 url:"/comment/sendComment",
                 type:"post",

@@ -8,8 +8,13 @@ import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 import org.lynn.springbootstarter.common.ResultEntity;
+import org.lynn.springbootstarter.controller.dto.BlogCommentsDto;
 import org.lynn.springbootstarter.model.Blog;
+import org.lynn.springbootstarter.model.Comment;
 import org.lynn.springbootstarter.service.BlogService;
+import org.lynn.springbootstarter.service.CommentService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +23,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,12 +38,13 @@ import java.util.List;
 @RequestMapping("/blog")
 public class BlogController {
 
-//    private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
-
     @Resource
     private BlogService blogService;
 
-    @GetMapping("/getUserBlogs")
+    @Autowired
+    private CommentService commentService;
+
+    @RequestMapping("/getUserBlogs")
     @ResponseBody
     public ResultEntity<List<Blog>> getUserBlogs(Long userId) {
         return ResultEntity.success(blogService.getUserBlogs(userId));
@@ -46,10 +53,10 @@ public class BlogController {
     @RequestMapping(value = "/saveBlog", method = RequestMethod.POST)
     public String saveBlog(HttpServletRequest request, HttpServletResponse response, @ModelAttribute(name = "blog") Blog blog, Model model) throws IOException {
         String password = request.getParameter("password");
-        if (!"lynnchae".equals(password)){
-            response.sendError(500,"Please enter the wright password to submit the article!");
+        if (!"lynnchae".equals(password)) {
+            response.sendError(500, "Please enter the wright password to submit the article!");
             return "blogeditor";
-        }else{
+        } else {
             blog.setUserId(1L);
             blogService.insert(blog);
             return "index";
@@ -74,6 +81,25 @@ public class BlogController {
          * b.setContent(pdp.markdownToHtml(b.getContent()));
          */
         model.addAttribute("blog", b);
+        Comment comment = new Comment();
+        comment.setBlogId(id);
+        comment.setParentId(0L);
+        List<Comment> comments = commentService.query(comment);
+        List<BlogCommentsDto> bcomments = new ArrayList<>();
+        for (Comment c : comments) {
+            BlogCommentsDto bc = new BlogCommentsDto();
+            BeanUtils.copyProperties(c, bc);
+            comment.setBlogId(null);
+            comment.setParentId(bc.getId());
+            bc.setComments(commentService.query(comment));
+            bc.getComments().stream().forEach(co -> {
+                if (null != co.getReplyTo() && !"".equals(co.getReplyTo())) {
+                    co.setComment("<strong>@" + co.getReplyTo() + "</strong> " + co.getComment());
+                }
+            });
+            bcomments.add(bc);
+        }
+        model.addAttribute("comments", bcomments);
         return "blog";
     }
 

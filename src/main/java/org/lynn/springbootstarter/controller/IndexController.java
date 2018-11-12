@@ -1,14 +1,20 @@
 package org.lynn.springbootstarter.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.model.Blog;
+import org.lynn.springbootstarter.model.Comment;
 import org.lynn.springbootstarter.service.BlogService;
+import org.lynn.springbootstarter.service.CommentService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,13 +32,25 @@ public class IndexController {
     @Resource
     private BlogService blogService;
 
+    @Autowired
+    private CommentService commentService;
+
     @RequestMapping("/")
     public String index(@RequestParam(required = false) String tag, Model model) {
         Blog b = new Blog();
         b.setUserId(1L);
         b.setTags(tag);
         List<Blog> list = blogService.query(b).stream().sorted( (o1,o2) -> o2.getId().compareTo(o1.getId())).collect(Collectors.toList());
-        model.addAttribute("blogs", list);
+        List<BlogDto> blogs = new ArrayList<>();
+        Comment c =new Comment();
+        for(Blog blog : list){
+            BlogDto bd = new BlogDto();
+            BeanUtils.copyProperties(blog,bd);
+            c.setBlogId(blog.getId());
+            bd.setComments(commentService.count(c));
+            blogs.add(bd);
+        }
+        model.addAttribute("blogs", blogs);
         model.addAttribute("tags", blogService.getTags());
         return "index";
     }
