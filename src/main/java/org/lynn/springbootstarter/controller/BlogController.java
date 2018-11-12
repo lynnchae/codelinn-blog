@@ -92,11 +92,6 @@ public class BlogController {
             comment.setBlogId(null);
             comment.setParentId(bc.getId());
             bc.setComments(commentService.query(comment));
-            bc.getComments().stream().forEach(co -> {
-                if (null != co.getReplyTo() && !"".equals(co.getReplyTo())) {
-                    co.setComment("<strong>@" + co.getReplyTo() + "</strong> " + co.getComment());
-                }
-            });
             bcomments.add(bc);
         }
         model.addAttribute("comments", bcomments);
