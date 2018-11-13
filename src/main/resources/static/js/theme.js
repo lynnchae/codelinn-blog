@@ -296,15 +296,6 @@
                     },
                     message: {
                         required: true
-                    },
-                    commenter: {
-                        required: true
-                    },
-                    commenterEmail: {
-                        required: true
-                    },
-                    comment: {
-                        required: true
                     }
                 },
                 submitHandler: function (form) {
@@ -355,6 +346,67 @@
             })
         }
 
+        // --------------------------------- Comment Form Validation
+        // if ($('.comment-form-validation').length) {
+        //     $('.comment-form-validation').validate({ // initialize the plugin
+        //         debug:true,
+        //         rules: {
+        //             commenter: {
+        //                 required: true
+        //             },
+        //             commenterEmail: {
+        //                 required: true
+        //             },
+        //             comment: {
+        //                 required: true
+        //             }
+        //         },
+        //         submitHandler: function (form) {
+        //             $(form).ajaxSubmit({
+        //                 success: function () {
+        //                     $('.comment-form-validation :input').attr('disabled', 'disabled');
+        //                     $('.comment-form-validation').fadeTo("slow", 1, function () {
+        //                         $(this).find(':input').attr('disabled', 'disabled');
+        //                         $(this).find('label').css('cursor', 'default');
+        //                         $('#alert-success').fadeIn();
+        //                     });
+        //                 },
+        //                 error: function (jqHXR) {
+        //                     var res = JSON.parse(jqHXR.responseText);
+        //                     $('.comment-form-validation').fadeTo("slow", 1, function () {
+        //                         $('#alert-error').find("p").html(res.message)
+        //                         $('#alert-error').fadeIn();
+        //                     });
+        //                 }
+        //             });
+        //         }
+        //     });
+        // }
+
+
+        // ---------------------------------- Validation Alert
+        var closeButton = $(".closeAlert");
+        if (closeButton.length) {
+            closeButton.on('click', function () {
+                $('.comment-form-validation :input').removeAttr('disabled');
+                $('.comment-form-validation :button').removeAttr('disabled');
+                $(".alert-wrapper").fadeOut();
+                var idVal = $(this).parent().attr('id');
+                if (idVal == 'success'){
+                    if($("#blogdetail").length){
+                        window.location.reload();
+                    }else{
+                        window.location.href='/';
+                    }
+
+                }
+            });
+            closeButton.on('click', function () {
+                $('.comment-form-validation :input').removeAttr('disabled');
+                $('.comment-form-validation :button').removeAttr('disabled');
+                $(".alert-wrapper").fadeOut();
+            })
+        }
 
     });
 

@@ -63,61 +63,76 @@
                     <h2 align="center" th:text="${blog.title}"></h2>
                     <div class="md-content" th:utext="${blog.content}"></div>
                 </div>
-
-                <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
-                <h3 ><strong>评论区</strong></h3>
-                <div class="comment-meta" style="margin-top: 20px" th:each="comment:${comments}">
-                    <div class="single-comment" >
-                        <div class="comment">
-                            <h6><a th:text="${comment.commenter}"></a></h6>
-                            <p th:utext="${comment.comment}"></p>
-                            <button class="reply">回复</button>
-                            <div class="comment-form" style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
-                                <form method="post" class="form-validation" autocomplete="off">
-                                    <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
-                                    <input type="text" required="true" placeholder="Email*" name="commenterEmail" autofocus>
-                                    <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
-                                    <input type="text" hidden name="blogId" th:value="${blog.id}">
-                                    <input type="text" hidden name="replyTo" th:value="${comment.commenter}">
-                                    <input type="text" hidden name="parentId" th:value="${comment.id}">
-                                    <button class="theme-button-one" onclick="javascript:sendComment(this)"    style="margin-bottom: 20px">提交</button>
-                                </form>
+                <div class="comment-area">
+                    <div class="comment-area-head">
+                        <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#dc3545 SIZE=3>
+                        <h3><strong>评论区</strong></h3>
+                    </div>
+                    <div class="comment-meta" style="margin-top: 20px" th:each="comment:${comments}">
+                        <div class="single-comment">
+                            <div class="comment">
+                                <h6><a th:text="${comment.commenter}"></a></h6>
+                                <p th:utext="${comment.comment}"></p>
+                                <button class="reply">回复</button>
+                                <div class="comment-form"
+                                     style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
+                                    <form method="post" class="comment-form-validation" autocomplete="off">
+                                        <input type="text" required="true" placeholder="Name*" name="commenter">
+                                        <input type="text" required="true" placeholder="Email*" name="commenterEmail">
+                                        <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                                        <input type="text" hidden name="blogId" th:value="${blog.id}">
+                                        <input type="text" hidden name="replyTo" th:value="${comment.commenter}">
+                                        <input type="text" hidden name="parentId" th:value="${comment.id}">
+                                        <button type="button" class="theme-button-one"
+                                                onclick="javascript:sendComment(this,false)"
+                                                style="margin-bottom: 20px">提交
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="reply-comment" th:each="childComment:${comment.comments}">
-                            <h6><a th:text="${childComment.commenter}"></a></h6>
-                            <p th:utext=" (${childComment.replyTo == ''} ? '' : '<strong>@' + ${childComment.replyTo} + '</strong>  ')  + ${childComment.comment}"></p>
-                            <button class="reply">回复</button>
-                            <div class="comment-form" style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
-                                <form method="post" class="form-validation" autocomplete="off">
-                                    <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
-                                    <input type="text" required="true" placeholder="Email*" name="commenterEmail" autofocus>
-                                    <input type="text" hidden name="blogId" th:value="${blog.id}">
-                                    <input type="text" hidden name="replyTo" th:value="${childComment.commenter}">
-                                    <input type="text" hidden name="parentId" th:value="${comment.id}">
-                                    <p><textarea  required="true" placeholder="内容" name="comment"></textarea></p>
-                                    <button class="theme-button-one" onclick="javascript:sendComment(this)"   style="margin-bottom: 20px">提交</button>
-                                </form>
+                            <div class="reply-comment" th:each="childComment:${comment.comments}">
+                                <h6><a th:text="${childComment.commenter}"></a></h6>
+                                <p th:utext=" (${childComment.replyTo == ''} ? '' : '<strong>@' + ${childComment.replyTo} + '</strong>  ')  + ${childComment.comment}"></p>
+                                <button class="reply">回复</button>
+                                <div class="comment-form"
+                                     style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
+                                    <form method="post" class="comment-form-validation" autocomplete="off">
+                                        <input type="text" required="true" placeholder="Name*" name="commenter">
+                                        <input type="text" required="true" placeholder="Email*" name="commenterEmail">
+                                        <input type="text" hidden name="blogId" th:value="${blog.id}">
+                                        <input type="text" hidden name="replyTo" th:value="${childComment.commenter}">
+                                        <input type="text" hidden name="parentId" th:value="${comment.id}">
+                                        <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                                        <button type="button" class="theme-button-one"
+                                                onclick="javascript:sendComment(this,false)"
+                                                style="margin-bottom: 20px">提交
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545 SIZE=3>
-                <h3 ><strong>留下你的评论</strong></h3>
-                <div  class="comment-form" style="margin-top: 20px">
-                    <form  method="post" class="form-validation"  autocomplete="off">
-                        <br/>
-                        <input type="text" required="true" placeholder="Name*" name="commenter" autofocus>
-                        <br/>
-                        <input type="text" required="true" placeholder="Email*" name="commenterEmail" autofocus>
-                        <input type="text" hidden name="blogId" th:value="${blog.id}">
-                        <input type="text" hidden name="replyTo" value="">
-                        <input type="text" hidden name="parentId" value="0">
-                        <br/>
-                        <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
-                        <button type="button" class="theme-button-one" onclick="javascript:sendComment(this)"  style="margin-bottom: 20px">Post Comment</button>
-                    </form>
+                <div class="comment-bottom-area">
+                    <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#dc3545,strength=10)" color=#dc3545
+                        SIZE=3>
+                    <h3><strong>留下你的评论</strong></h3>
+                    <div class="comment-form-bottom" style="margin-top: 20px">
+                        <form method="post" class="comment-form-validation" autocomplete="off">
+                            <br/>
+                            <input type="text" required="true" placeholder="Name*" name="commenter">
+                            <br/>
+                            <input type="text" required="true" placeholder="Email*" name="commenterEmail">
+                            <input type="text" hidden name="blogId" th:value="${blog.id}">
+                            <input type="text" hidden name="replyTo" value="">
+                            <input type="text" hidden name="parentId" value="0">
+                            <br/>
+                            <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                            <button type="button" class="theme-button-one" onclick="javascript:sendComment(this,true)"
+                                    style="margin-bottom: 20px">Post Comment
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div> <!-- /.main-text-wrapper -->
@@ -167,15 +182,28 @@
     <!-- Theme js -->
     <script th:src="@{/js/theme.js}"></script>
 </div> <!-- /.main-page-wrapper -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".reply").click(function(){
-                $(this).parent().find(".comment-form").toggle(500,function(){})
-            });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".reply").click(function () {
+            $(this).parent().find(".comment-form").toggle(500, function () {
+            })
         });
+    });
 
-        function sendComment(obj){
-            var form = new FormData(obj.parentNode);
+    function sendComment(obj, isComment) {
+        var form = new FormData(obj.parentNode);
+        var checkResult = true;
+        $(obj.parentNode).find("[required='true']").each(function () {
+            if ($(this).val() == '') {
+                $(this).focus();
+                checkResult = false;
+                return;
+            }
+        });
+        if(isComment){
+            form.set('replyTo','');
+        }
+        if(checkResult){
             $.ajax({
                 url:"/comment/sendComment",
                 type:"post",
@@ -183,12 +211,82 @@
                 processData:false,
                 contentType:false,
                 success:function(data){
-                    // console.log("over..");
+                    var commentDiv = $(obj).parent().parent().parent();
+                    var replyCommentDiv = $(obj).parent().parent().parent().parent().find(".reply-comment");
+                    if (!isComment) {
+                        var appendHtml =
+                            '<h6><a>' + form.get('commenter') + '</a></h6>\n' +
+                            '   <p><strong>@' + form.get('replyTo') + '</strong> ' + form.get('comment') + '</p>\n' +
+                            '   <button class="reply">回复</button>\n' +
+                            '   <div class="comment-form">\n' +
+                            '   <form method="post" class="comment-form-validation" autocomplete="off">\n' +
+                            '       <input type="text" required="true" placeholder="Name*" name="commenter" >\n' +
+                            '       <input type="text" required="true" placeholder="Email*" name="commenterEmail" >\n' +
+                            '       <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
+                            '       <input type="text" hidden name="replyTo" th:value="' + form.get('replyTo') + '">\n' +
+                            '       <input type="text" hidden name="parentId" th:value="' + form.get('parentId') + '">\n' +
+                            '       <p><textarea  required="true" placeholder="内容" name="comment"></textarea></p>\n' +
+                            '       <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"   style="margin-bottom: 20px">提交</button>\n' +
+                            '   </form>\n' +
+                            ' </div>';
+                        // if (replyCommentDiv.length == 0) {
+                            var finalAppendHtml = '<div class="reply-comment">' + appendHtml + '</div>';
+                            $(commentDiv).parent().append($(finalAppendHtml));
+                        // } else {
+                        //     $(appendHtml).appendTo(replyCommentDiv);
+                        // }
+                    } else {
+                        var commentMetaDiv = $(".comment-meta");
+                        var ht =
+                            '  <div class="single-comment" >\n' +
+                            '    <div class="comment">\n' +
+                            '    <h6><a>' + form.get('commenter') + '</a></h6>\n' +
+                            '    <p >' + form.get('comment') + '</p>\n' +
+                            '    <button class="reply">回复</button>\n' +
+                            '    <div class="comment-form">\n' +
+                            '        <form method="post" class="comment-form-validation" autocomplete="off">\n' +
+                            '            <input type="text" required="true" placeholder="Name*" name="commenter" >\n' +
+                            '            <input type="text" required="true" placeholder="Email*" name="commenterEmail" >\n' +
+                            '            <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>\n' +
+                            '            <input type="text" hidden name="blogId" value="' + form.get('blogiD') + '">\n' +
+                            '            <input type="text" hidden name="replyTo" value="' + form.get('commenter') + '">\n' +
+                            '            <input type="text" hidden name="parentId" vaue="0">\n' +
+                            '            <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"    style="margin-bottom: 20px">提交</button>\n' +
+                            '        </form>\n' +
+                            '    </div>\n' +
+                            '  </div>';
+                        if (commentMetaDiv.length == 0) {
+                            var finalHt = '<div class="comment-meta">' + ht + '</div>';
+                            $('.comment-area-head').append($(finalHt));
+                        } else {
+                            $(ht).appendTo(commentMetaDiv);
+                        }
+                    }
+                    if (!isComment) {
+                        $(obj).parent().parent().toggle(500, function () {
+                        });
+                        obj.parentNode.reset();
+                    } else {
+                        $('.comment-bottom-area').find("textarea").val('');
+                    }
+                    if ($(".reply").length > 0) {
+                        $(".reply").each(function () {
+                            console.info();
+                            if(!$._data(this,'events')){
+                                $(this).on('click', function () {
+                                    $(this).parent().find(".comment-form").toggle(500, function () {
+                                    })
+                                });
+                            }
+                        });
+                    }
                 },
                 error:function(e){
                 }
             });
         }
-    </script>
+
+    }
+</script>
 </body>
 </html>

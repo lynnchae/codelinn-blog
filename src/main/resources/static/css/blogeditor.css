@@ -111,6 +111,14 @@ body .theme-button-one:hover {
     font-weight: 600;
     color: #9e9e9e;
 }
+
+#comment-form-validation label {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+    color: #9e9e9e;
+}
+
 form input {
     width: 50%;
     height: 35px;
