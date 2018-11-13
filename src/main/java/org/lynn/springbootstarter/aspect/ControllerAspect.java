@@ -2,8 +2,13 @@ package org.lynn.springbootstarter.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.joda.time.DateTime;
+import org.lynn.springbootstarter.common.Constant;
+import org.lynn.springbootstarter.model.Metric;
+import org.lynn.springbootstarter.service.MetricService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -23,6 +28,9 @@ public class ControllerAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
 
+    @Autowired
+    private MetricService metricService;
+
     @Pointcut("execution (public * org.lynn.springbootstarter.controller..*(..))")
     public void doLog() {
     }
@@ -32,6 +40,15 @@ public class ControllerAspect {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         logger.info("request uri={{}}, method={{}}, ip={{}}", request.getRequestURI(), request.getMethod(), request.getRemoteAddr());
+        Metric metric = new Metric();
+        metric.setCol(request.getRemoteAddr());
+        DateTime now = DateTime.now();
+        metric.setDate(now.toString("yyyyMMdd"));
+        metric.setType(Constant.MetricType.VISIT.name());
+        if(metricService.count(metric) == 0){
+            metric.setQuota("1");
+            metricService.insert(metric);
+        }
         logger.info("class.method={}#{}", joinpoint.getSignature().getDeclaringTypeName(), joinpoint.getSignature().getName());
         logger.info("args={}", joinpoint.getArgs());
     }

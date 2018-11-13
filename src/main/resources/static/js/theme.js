@@ -335,7 +335,6 @@
                     }else{
                         window.location.href='/';
                     }
-
                 }
             });
             closeButton.on('click', function () {
