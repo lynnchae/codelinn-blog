@@ -200,25 +200,24 @@
                 return;
             }
             var arrtName = $(this).attr('name');
-            if(arrtName == 'comment' && $(this).val().trim().length > 500){
+            if (arrtName == 'comment' && $(this).val().trim().length > 500) {
                 $(this).focus();
                 checkResult = false;
                 return;
             }
         });
-        if(isComment){
-            form.set('replyTo','');
+        if (isComment) {
+            form.set('replyTo', '');
         }
-        if(checkResult){
+        if (checkResult) {
             $.ajax({
-                url:"/comment/sendComment",
-                type:"post",
-                data:form,
-                processData:false,
-                contentType:false,
-                success:function(data){
+                url: "/comment/sendComment",
+                type: "post",
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function (data) {
                     var commentDiv = $(obj).parent().parent().parent();
-                    var replyCommentDiv = $(obj).parent().parent().parent().parent().find(".reply-comment");
                     if (!isComment) {
                         var appendHtml =
                             '<h6><a>' + form.get('commenter') + '</a></h6>\n' +
@@ -235,14 +234,9 @@
                             '       <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"   style="margin-bottom: 20px">提交</button>\n' +
                             '   </form>\n' +
                             ' </div>';
-                        // if (replyCommentDiv.length == 0) {
-                            var finalAppendHtml = '<div class="reply-comment">' + appendHtml + '</div>';
-                            $(commentDiv).parent().append($(finalAppendHtml));
-                        // } else {
-                        //     $(appendHtml).appendTo(replyCommentDiv);
-                        // }
+                        var finalAppendHtml = '<div class="reply-comment">' + appendHtml + '</div>';
+                        $(commentDiv).parent().append($(finalAppendHtml));
                     } else {
-                        var commentMetaDiv = $(".comment-meta");
                         var ht =
                             '  <div class="single-comment" >\n' +
                             '    <div class="comment">\n' +
@@ -261,8 +255,8 @@
                             '        </form>\n' +
                             '    </div>\n' +
                             '  </div>';
-                            var finalHt = '<div class="comment-meta">' + ht + '</div>';
-                            $('.comment-area').append($(finalHt));
+                        var finalHt = '<div class="comment-meta">' + ht + '</div>';
+                        $('.comment-area').append($(finalHt));
                     }
                     if (!isComment) {
                         $(obj).parent().parent().toggle(500, function () {
@@ -273,7 +267,7 @@
                     }
                     if ($(".reply").length > 0) {
                         $(".reply").each(function () {
-                            if(!$._data(this,'events')){
+                            if (!$._data(this, 'events')) {
                                 $(this).on('click', function () {
                                     $(this).parent().find(".comment-form").toggle(500, function () {
                                     })
@@ -282,7 +276,7 @@
                         });
                     }
                 },
-                error:function(e){
+                error: function (e) {
                 }
             });
         }
