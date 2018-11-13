@@ -194,13 +194,13 @@
         var form = new FormData(obj.parentNode);
         var checkResult = true;
         $(obj.parentNode).find("[required='true']").each(function () {
-            if ($(this).val() == '') {
+            if ($(this).val().trim() == '') {
                 $(this).focus();
                 checkResult = false;
                 return;
             }
             var arrtName = $(this).attr('name');
-            if(arrtName == 'comment' && $(this).val().length > 500){
+            if(arrtName == 'comment' && $(this).val().trim().length > 500){
                 $(this).focus();
                 checkResult = false;
                 return;
