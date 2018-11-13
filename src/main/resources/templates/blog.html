@@ -127,7 +127,7 @@
                             <input type="text" hidden name="replyTo" value="">
                             <input type="text" hidden name="parentId" value="0">
                             <br/>
-                            <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                            <p><textarea required="true" placeholder="500字以内评论" name="comment"></textarea></p>
                             <button type="button" class="theme-button-one" onclick="javascript:sendComment(this,true)"
                                     style="margin-bottom: 20px">Post Comment
                             </button>
@@ -199,6 +199,12 @@
                 checkResult = false;
                 return;
             }
+            var arrtName = $(this).attr('name');
+            if(arrtName == 'comment' && $(this).val().length > 500){
+                $(this).focus();
+                checkResult = false;
+                return;
+            }
         });
         if(isComment){
             form.set('replyTo','');
@@ -225,7 +231,7 @@
                             '       <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
                             '       <input type="text" hidden name="replyTo" th:value="' + form.get('replyTo') + '">\n' +
                             '       <input type="text" hidden name="parentId" th:value="' + form.get('parentId') + '">\n' +
-                            '       <p><textarea  required="true" placeholder="内容" name="comment"></textarea></p>\n' +
+                            '       <p><textarea  required="true" placeholder="500字以内评论" name="comment"></textarea></p>\n' +
                             '       <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"   style="margin-bottom: 20px">提交</button>\n' +
                             '   </form>\n' +
                             ' </div>';
@@ -247,20 +253,16 @@
                             '        <form method="post" class="comment-form-validation" autocomplete="off">\n' +
                             '            <input type="text" required="true" placeholder="Name*" name="commenter" >\n' +
                             '            <input type="text" required="true" placeholder="Email*" name="commenterEmail" >\n' +
-                            '            <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>\n' +
-                            '            <input type="text" hidden name="blogId" value="' + form.get('blogiD') + '">\n' +
+                            '            <p><textarea required="true" placeholder="500字以内评论" name="comment"></textarea></p>\n' +
+                            '            <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
                             '            <input type="text" hidden name="replyTo" value="' + form.get('commenter') + '">\n' +
                             '            <input type="text" hidden name="parentId" vaue="0">\n' +
                             '            <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"    style="margin-bottom: 20px">提交</button>\n' +
                             '        </form>\n' +
                             '    </div>\n' +
                             '  </div>';
-                        if (commentMetaDiv.length == 0) {
                             var finalHt = '<div class="comment-meta">' + ht + '</div>';
-                            $('.comment-area-head').append($(finalHt));
-                        } else {
-                            $(ht).appendTo(commentMetaDiv);
-                        }
+                            $('.comment-area').append($(finalHt));
                     }
                     if (!isComment) {
                         $(obj).parent().parent().toggle(500, function () {
@@ -271,7 +273,6 @@
                     }
                     if ($(".reply").length > 0) {
                         $(".reply").each(function () {
-                            console.info();
                             if(!$._data(this,'events')){
                                 $(this).on('click', function () {
                                     $(this).parent().find(".comment-form").toggle(500, function () {
