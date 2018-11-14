@@ -71,11 +71,18 @@
                     <div class="comment-meta" style="margin-top: 20px" th:each="comment:${comments}">
                         <div class="single-comment">
                             <div class="comment">
-                                <h6><a th:text="${comment.commenter}"></a></h6>
+                                <h6>
+                                    <div>
+                                        <a th:text="${comment.commenter}"></a>
+                                    </div>
+                                    <div>
+                                        <i class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}" ></i>
+                                    </div>
+                                </h6>
+
                                 <p th:utext="${comment.comment}"></p>
                                 <button class="reply">回复</button>
-                                <div class="comment-form"
-                                     style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
+                                <div class="comment-form">
                                     <form method="post" class="comment-form-validation" autocomplete="off">
                                         <input type="text" required="true" placeholder="Name*" name="commenter">
                                         <input type="text" required="true" placeholder="Email*" name="commenterEmail">
@@ -91,11 +98,17 @@
                                 </div>
                             </div>
                             <div class="reply-comment" th:each="childComment:${comment.comments}">
-                                <h6><a th:text="${childComment.commenter}"></a></h6>
+                                <h6>
+                                    <div>
+                                        <a th:text="${childComment.commenter}"></a>
+                                    </div>
+                                    <div>
+                                        <i class="date" th:text="${#dates.format(childComment.createTime,'yyyy-MM-dd HH:mm')}" ></i>
+                                    </div>
+                                </h6>
                                 <p th:utext=" (${childComment.replyTo == ''} ? '' : '<strong>@' + ${childComment.replyTo} + '</strong>  ')  + ${childComment.comment}"></p>
                                 <button class="reply">回复</button>
-                                <div class="comment-form"
-                                     style="width:60%;margin-top: 20px;margin-left: 70px;display: none;">
+                                <div class="comment-form">
                                     <form method="post" class="comment-form-validation" autocomplete="off">
                                         <input type="text" required="true" placeholder="Name*" name="commenter">
                                         <input type="text" required="true" placeholder="Email*" name="commenterEmail">
@@ -220,7 +233,7 @@
                     var commentDiv = $(obj).parent().parent().parent();
                     if (!isComment) {
                         var appendHtml =
-                            '<h6><a>' + form.get('commenter') + '</a></h6>\n' +
+                            '<h6><div><a>' + form.get('commenter') + '</a></div><div><i class="date" >'+ new Date().Format("yyyy-MM-dd HH:mm") +'</i></div></h6>\n' +
                             '   <p><strong>@' + form.get('replyTo') + '</strong> ' + form.get('comment') + '</p>\n' +
                             '   <button class="reply">回复</button>\n' +
                             '   <div class="comment-form">\n' +
@@ -240,7 +253,7 @@
                         var ht =
                             '  <div class="single-comment" >\n' +
                             '    <div class="comment">\n' +
-                            '    <h6><a>' + form.get('commenter') + '</a></h6>\n' +
+                            '    <h6><div><a>' + form.get('commenter') + '</a></div><div><i class="date" >'+ new Date().Format("yyyy-MM-dd HH:mm") + '</i></div></h6>\n' +
                             '    <p >' + form.get('comment') + '</p>\n' +
                             '    <button class="reply">回复</button>\n' +
                             '    <div class="comment-form">\n' +
