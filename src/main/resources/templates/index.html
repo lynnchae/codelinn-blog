@@ -299,9 +299,12 @@
         <div class="container">
             <div class="logo"><a href="index.html"><!-- <img src="images/logo/logo.png" alt=""> --></a></div>
             <ul class="social-icon">
-                <li class="icon"><a href="#"><i class="fab fa-weixin"></i></a></li>
+                <li class="icon"><a href="javascript:wechat();" ><i class="fab fa-weixin"></i></a></li>
                 <li class="icon"><a href="https://www.weibo.com/lynnchae" target="_blank"><i class="fab fa-weibo"></i></a></li>
             </ul>
+            <div style="margin:0 auto;width:100px;display: none" class="wechat-block">
+                <img class="wechat-img" src="images/wechat.jpeg" height="100" width="100" />
+            </div>
             <p class="copyright">Copyright &copy; 2018.LynnChae All rights reserved.</p>
         </div> <!-- /.container -->
     </footer> <!-- /.theme-footer -->
@@ -399,6 +402,18 @@
 
                 }
             });
+        }
+
+        function wechat(){
+            // var imgheight = $(".wechat-img").height();
+            // console.info(imgheight);
+            // if(imgheight > 0 ){
+            //     $(".wechat-img").animate({height:"0px"});
+            // }else{
+            //     $(".wechat-img").animate({height:"100px"});
+            // }
+            $(".wechat-block").slideToggle();
+
         }
     </script>
 </div> <!-- /.main-page-wrapper -->

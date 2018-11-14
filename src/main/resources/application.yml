@@ -42,3 +42,6 @@ mybatis:
     default-statement-timeout: 30000
   mapper-locations: classpath:mappers/*.xml
   type-aliases-package: org.lynn.springbootstarter.model
+
+server:
+  port: 80
