@@ -231,7 +231,7 @@
                         <h4 class="title"><a href="blog.html" th:href="@{/blog/getBlogDetail(id=${blog.id})}"
                                              th:text="${blog.title}"></a></h4>
                         <ul class="share-meta clearfix">
-                            <li><a ><i class="icon flaticon-comment" th:text="${'Comments ('+ blog.comments +')'}" ></i></a></li>
+                            <li><i class="icon flaticon-comment" th:text="${'Comments ('+ blog.comments +')'}" ></i></li>
                             <li><a href="javascript:;"
                                    th:onclick="'javascript:likeIt('+${blog.id}+','+${blog.likes}+',this)'"><i
                                     class="icon flaticon-like-heart" th:text="${'Likes ('+blog.likes+')'}"></i></a></li>
@@ -377,6 +377,7 @@
                     var totalHtml = '';
                     for (var i = 0; i < jsonData.length; i++) {
                         var d = jsonData[i];
+                        console.info(d);
                         var html = '<div class="single-blog-post">\n' +
                             '    <div class="image-box"></div>\n' +
                             '    <div class="post-meta-box bg-box">\n' +
@@ -387,6 +388,7 @@
                             '        </ul>\n' +
                             '        <h4 class="title"><a href="/blog/getBlogDetail?id='+ d.id +'">'+d.title+'</a></h4>\n' +
                             '        <ul class="share-meta clearfix">\n' +
+                            '        <li><i class="icon flaticon-comment">Comments ('+ d.comments +')</i></li>'+
                             '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart">Likes ('+ d.likes +')</i></a></li>\n' +
                             '        </ul>\n' +
                             '    </div> \n' +

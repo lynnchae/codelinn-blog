@@ -45,10 +45,10 @@ public class ThymeleafConfig extends WebMvcAutoConfiguration {
     private ITemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(applicationContext);
-        URL resource = this.getClass().getClassLoader().getResource("/templates/");       //这里把系统获取到的Class的path替换为源码对应的Path，这样修改的时候就可以动态刷新
-                String devResource = resource.getFile().toString().replaceAll("target/classes", "src/main/resources");
+        URL resource = this.getClass().getClassLoader().getResource("templates/");       //这里把系统获取到的Class的path替换为源码对应的Path，这样修改的时候就可以动态刷新
+        String devResource = resource.getFile().toString().replaceAll("target/classes", "src/main/resources");
         resolver.setPrefix("file:"+devResource);     //不允许缓存
-                resolver.setCacheable(false);
+        resolver.setCacheable(false);
         resolver.setSuffix(".html");
         resolver.setTemplateMode(TemplateMode.HTML);
         return resolver;

@@ -9,6 +9,7 @@ import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.controller.dto.BlogCommentsDto;
+import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
 import org.lynn.springbootstarter.service.BlogService;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -107,10 +109,22 @@ public class BlogController {
 
     @PostMapping("/tagIt")
     @ResponseBody
-    public List<Blog> tagIt(String tag) {
+    public List<BlogDto> tagIt(String tag) {
         Blog b = new Blog();
         b.setUserId(1L);
         b.setTags(tag);
-        return blogService.query(b);
+        List<Blog> blogs = blogService.query(b);
+        BlogDto bdto;
+        List<BlogDto> resultList = new ArrayList<>();
+        Comment c = new Comment();
+        for (Blog bl : blogs) {
+            bdto = new BlogDto();
+            BeanUtils.copyProperties(bl, bdto);
+            c.setBlogId(bl.getId());
+            bdto.setComments(commentService.count(c));
+            resultList.add(bdto);
+        }
+        Collections.reverse(resultList);
+        return resultList;
     }
 }

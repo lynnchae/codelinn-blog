@@ -519,7 +519,7 @@ body .theme-button-one:hover {background: #fff;}
        -o-transform: scale3D(1.1,1.1,1);
           transform: scale3D(1.1,1.1,1);
 }
-.blog-grid-style .single-blog-post .post-meta-box {padding: 10px 22px 0px 15px;}
+.blog-grid-style .single-blog-post .post-meta-box {padding: 10px 15px 10px 15px;}
 .blog-grid-style .single-blog-post .author-meta {margin: 0 -5px;}
 .blog-grid-style .single-blog-post .author-meta li {float: left;padding: 0 5px;line-height: 25px;}
 .blog-grid-style .single-blog-post .author-meta li.tag a {
