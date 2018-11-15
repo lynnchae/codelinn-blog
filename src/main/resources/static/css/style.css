@@ -164,7 +164,10 @@ html,body,.main-page-wrapper {
  body a {text-decoration: none; display: inline-block;color:#5e5e5e;}
  a:hover,a:focus,a:visited {text-decoration: none; outline: none;}
  img {max-width: 100%; display: block;}
- button {border:none;outline: none;-webkit-box-shadow: none;box-shadow: none;display: block; padding: 0;cursor: pointer;}
+ button {border:none;outline: none;-webkit-box-shadow: none;box-shadow: none;display: block; padding: 0;cursor: pointer;
+   -webkit-border-radius: 7px;
+   -moz-border-radius: 7px;
+   border-radius: 7px;}
  button:focus {outline: none;}
  input,textarea {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
 .m-top0 {margin-top: 0 !important;}
@@ -1110,6 +1113,7 @@ body .theme-button-one:hover {background: #fff;}
   font-size: 13px;
   border:1px solid #f1f1f1;
   margin-bottom: 25px;
+  border-radius: 10px;
 }
 .comment-form form textarea {
   width: 100%;
@@ -1120,6 +1124,7 @@ body .theme-button-one:hover {background: #fff;}
   border:1px solid #f1f1f1;
   margin-bottom: 25px;
   font-size: 13px;
+  border-radius: 10px;
 }
 
 .comment-form-bottom form input {
@@ -1129,6 +1134,7 @@ body .theme-button-one:hover {background: #fff;}
   font-size: 13px;
   border:1px solid #f1f1f1;
   margin-bottom: 25px;
+  border-radius: 10px;
 }
 .comment-form-bottom form textarea {
   width: 100%;
@@ -1139,6 +1145,7 @@ body .theme-button-one:hover {background: #fff;}
   border:1px solid #f1f1f1;
   margin-bottom: 25px;
   font-size: 13px;
+  border-radius: 10px;
 }
 
 .comment-area {
