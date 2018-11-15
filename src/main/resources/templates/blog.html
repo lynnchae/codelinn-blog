@@ -85,7 +85,7 @@
                                 <div class="comment-form">
                                     <form method="post" class="comment-form-validation" autocomplete="off">
                                         <input type="text" required="true" placeholder="Name*" name="commenter">
-                                        <input type="text" required="true" placeholder="Email*" name="commenterEmail">
+                                        <input type="text" placeholder="Email" name="commenterEmail">
                                         <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
                                         <input type="text" hidden name="blogId" th:value="${blog.id}">
                                         <input type="text" hidden name="replyTo" th:value="${comment.commenter}">
@@ -111,7 +111,7 @@
                                 <div class="comment-form">
                                     <form method="post" class="comment-form-validation" autocomplete="off">
                                         <input type="text" required="true" placeholder="Name*" name="commenter">
-                                        <input type="text" required="true" placeholder="Email*" name="commenterEmail">
+                                        <input type="text" placeholder="Email" name="commenterEmail">
                                         <input type="text" hidden name="blogId" th:value="${blog.id}">
                                         <input type="text" hidden name="replyTo" th:value="${childComment.commenter}">
                                         <input type="text" hidden name="parentId" th:value="${comment.id}">
@@ -135,7 +135,7 @@
                             <br/>
                             <input type="text" required="true" placeholder="Name*" name="commenter">
                             <br/>
-                            <input type="text" required="true" placeholder="Email*" name="commenterEmail">
+                            <input type="text" placeholder="Email" name="commenterEmail">
                             <input type="text" hidden name="blogId" th:value="${blog.id}">
                             <input type="text" hidden name="replyTo" value="">
                             <input type="text" hidden name="parentId" value="0">
@@ -223,6 +223,8 @@
             form.set('replyTo', '');
         }
         if (checkResult) {
+            setCookie('commenter',form.get('commenter'),'d30');
+            setCookie('commenterEmail',form.get('commenterEmail'),'d30');
             $.ajax({
                 url: "/comment/sendComment",
                 type: "post",
@@ -238,8 +240,8 @@
                             '   <button class="reply">回复</button>\n' +
                             '   <div class="comment-form">\n' +
                             '   <form method="post" class="comment-form-validation" autocomplete="off">\n' +
-                            '       <input type="text" required="true" placeholder="Name*" name="commenter" >\n' +
-                            '       <input type="text" required="true" placeholder="Email*" name="commenterEmail" >\n' +
+                            '       <input type="text" required="true" placeholder="Name*" name="commenter" value="'+ form.get('commenter') +'">\n' +
+                            '       <input type="text" placeholder="Email" name="commenterEmail" value="'+ form.get('commenterEmail') +'" >\n' +
                             '       <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
                             '       <input type="text" hidden name="replyTo" th:value="' + form.get('replyTo') + '">\n' +
                             '       <input type="text" hidden name="parentId" th:value="' + form.get('parentId') + '">\n' +
@@ -258,8 +260,8 @@
                             '    <button class="reply">回复</button>\n' +
                             '    <div class="comment-form">\n' +
                             '        <form method="post" class="comment-form-validation" autocomplete="off">\n' +
-                            '            <input type="text" required="true" placeholder="Name*" name="commenter" >\n' +
-                            '            <input type="text" required="true" placeholder="Email*" name="commenterEmail" >\n' +
+                            '            <input type="text" required="true" placeholder="Name*" name="commenter" value="'+ form.get('commenter') +'" >\n' +
+                            '            <input type="text" placeholder="Email" name="commenterEmail" value="'+ form.get('commenterEmail') +'">\n' +
                             '            <p><textarea required="true" placeholder="500字以内评论" name="comment"></textarea></p>\n' +
                             '            <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
                             '            <input type="text" hidden name="replyTo" value="' + form.get('commenter') + '">\n' +
