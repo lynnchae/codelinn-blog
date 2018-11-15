@@ -59,8 +59,12 @@ public class BlogController {
             response.sendError(500, "Please enter the wright password to submit the article!");
             return "blogeditor";
         } else {
-            blog.setUserId(1L);
-            blogService.insert(blog);
+            if(blog.getId() != null) {
+                blogService.update(blog);
+            }else{
+                blog.setUserId(1L);
+                blogService.insert(blog);
+            }
             return "index";
         }
 

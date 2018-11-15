@@ -40,12 +40,12 @@ public class IndexController {
         Blog b = new Blog();
         b.setUserId(1L);
         b.setTags(tag);
-        List<Blog> list = blogService.query(b).stream().sorted( (o1,o2) -> o2.getId().compareTo(o1.getId())).collect(Collectors.toList());
+        List<Blog> list = blogService.query(b).stream().sorted((o1, o2) -> o2.getId().compareTo(o1.getId())).collect(Collectors.toList());
         List<BlogDto> blogs = new ArrayList<>();
-        Comment c =new Comment();
-        for(Blog blog : list){
+        Comment c = new Comment();
+        for (Blog blog : list) {
             BlogDto bd = new BlogDto();
-            BeanUtils.copyProperties(blog,bd);
+            BeanUtils.copyProperties(blog, bd);
             c.setBlogId(blog.getId());
             bd.setComments(commentService.count(c));
             blogs.add(bd);
@@ -66,7 +66,10 @@ public class IndexController {
     }
 
     @RequestMapping("/blogeditor")
-    public String blogeditor(Model model) {
+    public String blogeditor(@RequestParam(required = false) Long id, Model model) {
+        if (id != null) {
+            model.addAttribute("blog", blogService.getById(id));
+        }
         return "blogeditor";
     }
 

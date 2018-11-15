@@ -40,12 +40,13 @@
                 <div class="container" style="overflow: hidden">
                     <div class="contact-form">
                         <form th:action="@{/blog/saveBlog}" method="post" class="form-validation" autocomplete="off">
-                                <input type="text" name="title" placeholder="Title" autofocus>
-                                <input type="text" name="tags" placeholder="Tag" autofocus>
+                                <input type="text" name="title" placeholder="Title" th:value="${blog?.title}"  autofocus>
+                                <input type="text" name="tags" placeholder="Tag" th:value="${blog?.tags}"  autofocus>
+                                <input type="text" name="id" hidden th:value="${blog?.id}"  autofocus>
                                 <input type="password" name="password" placeholder="password" autofocus>
                                 <div id="md-editor">
                                     <textarea style="display:none;" name="content" class="editormd-html-textarea"
-                                              id="editormd"></textarea>
+                                              id="editormd" th:text="${blog?.content}"  > </textarea>
                                     <textarea class="editormd-html-textarea" name="text" id="editormdhtml"></textarea>
                                 </div>
                                 <button class="theme-button-one" style="display:block;margin:0 auto">Submit</button>
