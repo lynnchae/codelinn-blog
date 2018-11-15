@@ -120,12 +120,15 @@ body .theme-button-one:hover {
 }
 
 form input {
-    width: 50%;
+    width: 25%;
     height: 35px;
     padding: 0 15px;
     font-size: 15px;
     border:1px solid #f1f1f1;
-    margin-bottom: 25px;
+    border-radius: 7px;
+    margin:10px auto;
+    box-shadow: 1px 1px 0px 0px #efefff;
+    display: block;
 }
 
 input:focus {border-bottom-color:#d0344e;}
