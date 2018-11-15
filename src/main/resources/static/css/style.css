@@ -1302,6 +1302,14 @@ body .theme-button-one:hover {background: #fff;}
   margin-bottom: 25px;
   font-size: 13px;
 }
+
+.content-update {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+  color: grey;
+  font-style: italic;
+}
 /*======================= Form Validation ===================*/
 .alert-wrapper {
    display: none;

@@ -62,6 +62,7 @@
                 <div style="padding-top: 55px">
                     <h2 align="center" style="word-break: break-word" th:text="${blog.title}"></h2>
                     <div class="md-content" th:utext="${blog.content}"></div>
+                    <p class="content-update" th:utext="'<i class=\'fas fa-history\'></i>  '+${#dates.format(blog.updateTime,'yyyy.MM.dd HH:mm')} + ' .updated'"></p>
                 </div>
                 <div class="comment-area">
                     <div class="comment-area-head">
