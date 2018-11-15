@@ -445,3 +445,72 @@
     }
 })(jQuery)
 
+function likeIt(blogId, likes, obj) {
+    $.ajax({
+        url: "/blog/likeIt",
+        data: {
+            id: blogId
+        },
+        type: "post",
+        dataType: "text",
+        success: function (data) {
+            $('#alert-success').fadeIn(1000, function () {
+                var afterLikes = likes + 1;
+                obj.outerHTML = '<a href="javascript:;" onclick="javascript:likeIt(' + blogId + ',' + afterLikes + ',this)"><i class="icon flaticon-like-heart">Likes (' + afterLikes + ')</i></a>';
+                $('#alert-success').fadeOut(1000);
+            });
+        }
+    });
+
+}
+
+function tagIt(tag){
+    $.ajax({
+        url: "/blog/tagIt",
+        data: {
+            tag: tag
+        },
+        type: "post",
+        dataType: "text",
+        success: function (data) {
+            $('#blog-outline').html('');
+            var jsonData = JSON.parse(data); //jsonData是该下路下的所有区间（json格式）
+            var totalHtml = '';
+            for (var i = 0; i < jsonData.length; i++) {
+                var d = jsonData[i];
+                console.info(d);
+                var html = '<div class="single-blog-post">\n' +
+                    '    <div class="image-box"></div>\n' +
+                    '    <div class="post-meta-box bg-box">\n' +
+                    '        <ul class="author-meta clearfix">\n' +
+                    '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
+                    '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
+                    '            </li>\n' +
+                    '        </ul>\n' +
+                    '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
+                    '        <ul class="share-meta clearfix">\n' +
+                    '        <li><i class="icon flaticon-comment">Comments ('+ d.comments +')</i></li>'+
+                    '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart">Likes ('+ d.likes +')</i></a></li>\n' +
+                    '        </ul>\n' +
+                    '    </div> \n' +
+                    '</div>';
+                totalHtml += html;
+            }
+            $('#blog-outline').html(totalHtml);
+
+        }
+    });
+}
+
+function wechat(){
+    // var imgheight = $(".wechat-img").height();
+    // console.info(imgheight);
+    // if(imgheight > 0 ){
+    //     $(".wechat-img").animate({height:"0px"});
+    // }else{
+    //     $(".wechat-img").animate({height:"100px"});
+    // }
+    $(".wechat-block").slideToggle();
+
+}
+

@@ -66,8 +66,8 @@ public class BlogController {
 
     }
 
-    @RequestMapping("/getBlogDetail")
-    public String getUserBlogs(Long id, Model model) {
+    @RequestMapping("/{id}/b")
+    public String getUserBlogs(@PathVariable Long id, Model model) {
         Blog b = blogService.getById(id);
         MutableDataSet options = new MutableDataSet();
         options.setFrom(ParserEmulationProfile.MARKDOWN);
