@@ -23,7 +23,7 @@ public interface BaseService<T extends Entity> {
 
     int insert(T object);
 
-    T update(T object);
+    int update(T object);
 
     void delete(Long id);
 

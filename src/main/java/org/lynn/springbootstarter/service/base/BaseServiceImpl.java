@@ -45,7 +45,7 @@ public abstract class BaseServiceImpl<T extends Entity> implements BaseService<T
     }
 
     @Override
-    public T update(T object) {
+    public int update(T object) {
         return baseDao.update(object);
     }
 

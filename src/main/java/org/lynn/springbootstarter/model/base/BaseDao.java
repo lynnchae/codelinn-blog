@@ -37,7 +37,7 @@ public interface BaseDao<T extends Entity> {
     int insert(T object);
 
     @UpdateProvider(type = SqlProvider.class, method = "update")
-    T update(T object);
+    int update(T object);
 
     @DeleteProvider(type = SqlProvider.class, method = "delete")
     void delete(Long id);
