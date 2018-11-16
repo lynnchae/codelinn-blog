@@ -1,9 +1,7 @@
 package org.lynn.springbootstarter.controller;
 
 import com.vladsch.flexmark.Extension;
-import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
-import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
@@ -14,6 +12,7 @@ import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
 import org.lynn.springbootstarter.service.BlogService;
 import org.lynn.springbootstarter.service.CommentService;
+import org.pegdown.PegDownProcessor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,16 +75,18 @@ public class BlogController {
         MutableDataSet options = new MutableDataSet();
         options.setFrom(ParserEmulationProfile.MARKDOWN);
         options.set(Parser.EXTENSIONS, Arrays.asList(new Extension[]{TablesExtension.create()}));
-        Parser parser = Parser.builder(options).build();
-        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-        Node document = parser.parse(b.getContent());
-        String html = renderer.render(document);
-        b.setContent(html);
+        //此模块不支持删除线，调整为pegdown模式
+//        Parser parser = Parser.builder(options).build();
+//        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+//        Node document = parser.parse(b.getContent());
+//        String html = renderer.render(document);
+//        b.setContent(html);
         /**
          * pegdown模式
-         * PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
-         * b.setContent(pdp.markdownToHtml(b.getContent()));
-         */
+         * */
+         PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
+         b.setContent(pdp.markdownToHtml(b.getContent()));
+
         model.addAttribute("blog", b);
         Comment comment = new Comment();
         comment.setBlogId(id);
