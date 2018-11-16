@@ -15,6 +15,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
 
     <title>Blog</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/github.css}">
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+
+
     <link rel="shortcut icon" th:href="@{/static/images/logo/favicon.ico}" type="image/x-icon" />
     <!-- Main style sheet -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
@@ -25,6 +29,8 @@
     <link id="linkstyle" rel='stylesheet' th:href="@{/css/markdown.css}"/>
 
 
+
+
     <!-- Fix Internet Explorer ______________________________________-->
 
     <!--[if lt IE 9]>
@@ -32,7 +38,6 @@
     <script th:src="@{/vendor/html5shiv.js}"></script>
     <script th:src="@{/vendor/respond.js}"></script>
     <![endif]-->
-
 
 </head>
 
@@ -195,6 +200,14 @@
 
     <!-- Theme js -->
     <script th:src="@{/js/theme.min.js}"></script>
+    <script>
+        $(document).ready(function() {
+            $("pre code").each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+
 </div>
 </body>
 </html>
