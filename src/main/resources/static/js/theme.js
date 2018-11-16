@@ -409,6 +409,11 @@
         $('input[name=commenter]').val(getCookie('commenter'));
         $('input[name=commenterEmail]').val(getCookie('commenterEmail'));
 
+        $(".reply").click(function () {
+            $(this).parent().find(".comment-form").toggle(500, function () {
+            })
+        });
+
     });
 
     $(window).load(function () { // makes sure the whole site is loaded
@@ -459,7 +464,7 @@ function likeIt(blogId, likes, obj) {
             $('#alert-success').fadeIn(1000, function () {
                 var afterLikes = likes + 1;
                 obj.outerHTML = '<a href="javascript:;" onclick="javascript:likeIt(' + blogId + ',' + afterLikes + ',this)"><i class="icon flaticon-like-heart">Likes (' + afterLikes + ')</i></a>';
-                $('#alert-success').fadeOut(1000);
+                $('#alert-success').fadeOut(500);
             });
         }
     });
@@ -505,13 +510,6 @@ function tagIt(tag){
 }
 
 function wechat(){
-    // var imgheight = $(".wechat-img").height();
-    // console.info(imgheight);
-    // if(imgheight > 0 ){
-    //     $(".wechat-img").animate({height:"0px"});
-    // }else{
-    //     $(".wechat-img").animate({height:"100px"});
-    // }
     $(".wechat-block").slideToggle();
 
 }
@@ -540,5 +538,105 @@ function getsec(str) {
         return str1*60*60*1000;
     }else if (str2=="d"){
         return str1*24*60*60*1000;
+    }
+}
+
+function sendComment(obj, isComment) {
+    var form = new FormData(obj.parentNode);
+    var checkResult = true;
+    $(obj.parentNode).find("[required='true']").each(function () {
+        if ($(this).val().trim() == '') {
+            $(this).focus();
+            checkResult = false;
+            return;
+        }
+        var arrtName = $(this).attr('name');
+        if (arrtName == 'comment' && $(this).val().trim().length > 500) {
+            $(this).focus();
+            checkResult = false;
+            return;
+        }
+    });
+    if (isComment) {
+        form.set('replyTo', '');
+    }
+    if (checkResult) {
+        setCookie('commenter',form.get('commenter'),'d30');
+        setCookie('commenterEmail',form.get('commenterEmail'),'d30');
+        $.ajax({
+            url: "/comment/sendComment",
+            type: "post",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                var commentDiv = $(obj).parent().parent().parent();
+                if (!isComment) {
+                    var appendHtml =
+                        '<h6><div><a>' + form.get('commenter') + '</a></div><div><i class="date" >'+ new Date().Format("yyyy-MM-dd HH:mm") +'</i></div></h6>\n' +
+                        '   <p><strong>@' + form.get('replyTo') + '</strong> ' + form.get('comment') + '</p>\n' +
+                        '   <button class="reply">回复</button>\n' +
+                        '   <div class="comment-form">\n' +
+                        '   <form method="post" class="comment-form-validation" autocomplete="off">\n' +
+                        '       <input type="text" required="true" placeholder="Name*" name="commenter" value="'+ form.get('commenter') +'">\n' +
+                        '       <input type="text" placeholder="Email" name="commenterEmail" value="'+ form.get('commenterEmail') +'" >\n' +
+                        '       <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
+                        '       <input type="text" hidden name="replyTo" th:value="' + form.get('replyTo') + '">\n' +
+                        '       <input type="text" hidden name="parentId" th:value="' + form.get('parentId') + '">\n' +
+                        '       <p><textarea  required="true" placeholder="500字以内评论" name="comment"></textarea></p>\n' +
+                        '       <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"   style="margin-bottom: 20px">提交</button>\n' +
+                        '   </form>\n' +
+                        ' </div>';
+                    var finalAppendHtml = '<div class="reply-comment">' + appendHtml + '</div>';
+                    $(commentDiv).parent().append($(finalAppendHtml));
+                } else {
+                    var ht =
+                        '  <div class="single-comment" >\n' +
+                        '    <div class="comment">\n' +
+                        '    <h6><div><a>' + form.get('commenter') + '</a></div><div><i class="date" >'+ new Date().Format("yyyy-MM-dd HH:mm") + '</i></div></h6>\n' +
+                        '    <p >' + form.get('comment') + '</p>\n' +
+                        '    <button class="reply">回复</button>\n' +
+                        '    <div class="comment-form">\n' +
+                        '        <form method="post" class="comment-form-validation" autocomplete="off">\n' +
+                        '            <input type="text" required="true" placeholder="Name*" name="commenter" value="'+ form.get('commenter') +'" >\n' +
+                        '            <input type="text" placeholder="Email" name="commenterEmail" value="'+ form.get('commenterEmail') +'">\n' +
+                        '            <p><textarea required="true" placeholder="500字以内评论" name="comment"></textarea></p>\n' +
+                        '            <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
+                        '            <input type="text" hidden name="replyTo" value="' + form.get('commenter') + '">\n' +
+                        '            <input type="text" hidden name="parentId" vaue="0">\n' +
+                        '            <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"    style="margin-bottom: 20px">提交</button>\n' +
+                        '        </form>\n' +
+                        '    </div>\n' +
+                        '  </div>';
+                    var finalHt = '<div class="comment-meta">' + ht + '</div>';
+                    $('.comment-area').append($(finalHt));
+                }
+                if (!isComment) {
+                    $(obj).parent().parent().toggle(500, function () {
+                    });
+                    obj.parentNode.reset();
+                } else {
+                    $('.comment-bottom-area').find("textarea").val('');
+                }
+                if ($(".reply").length > 0) {
+                    $(".reply").each(function () {
+                        if (!$._data(this, 'events')) {
+                            $(this).on('click', function () {
+                                $(this).parent().find(".comment-form").toggle(500, function () {
+                                })
+                            });
+                        }
+                    });
+                }
+            },
+            error: function (data) {
+                var res = JSON.parse(data.responseText);
+                $('.comment-form-validation').fadeTo("slow", 1, function () {
+                    $('#alert-error').find("p").html(res.message)
+                    $('#alert-error').fadeIn();
+                });
+
+            }
+        });
     }
 }

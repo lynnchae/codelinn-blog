@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
  * Class Name : org.lynn.springbootstarter.controller
  * Description :
@@ -25,9 +28,15 @@ public class CommentController {
     private CommentService commentService;
 
     @PostMapping("sendComment")
-    public ResultEntity sendComment(Comment comment){
-        commentService.insert(comment);
-        return ResultEntity.success("success");
+    public ResultEntity sendComment(Comment comment, HttpServletResponse response) throws IOException {
+        try {
+            commentService.insert(comment);
+            return ResultEntity.success("success");
+        } catch (Exception e) {
+            response.sendError(500, "post comment error!");
+            log.error("insert comment error, para {} , e {}", comment, e);
+            return ResultEntity.error(500, "post comment error");
+        }
     }
 
 
