@@ -19,7 +19,7 @@ import java.util.List;
  * @author : cailinfeng
  * Date : 2018/9/6 14:37
  */
-@Service
+@Service("blogService")
 @Slf4j
 public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogService, ApplicationListener<TagUpdateEvent> {
 
@@ -54,6 +54,7 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
         refreshTaglistCache();
     }
 
+    @Override
     public void refreshTaglistCache() {
         taglist = this.blogDao.getTags();
         if (log.isDebugEnabled()) {
