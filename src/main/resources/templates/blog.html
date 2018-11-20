@@ -96,9 +96,24 @@
                                         <input type="text" hidden name="blogId" th:value="${blog.id}">
                                         <input type="text" hidden name="replyTo" th:value="${comment.commenter}">
                                         <input type="text" hidden name="parentId" th:value="${comment.id}">
+                                        <div class="comment-bar">
+                                            <ul>
+                                                <li class="comment-emoji">😂</li>
+                                                <li class="comment-emoji">😫</li>
+                                                <li class="comment-emoji">😭</li>
+                                                <li class="comment-emoji">🤣</li>
+                                                <li class="comment-emoji">😅</li>
+                                                <li class="comment-emoji">😣</li>
+                                                <li class="comment-emoji">😍</li>
+                                                <li class="comment-emoji">🤗</li>
+                                                <li class="comment-emoji">😜</li>
+                                                <li class="comment-emoji">👍</li>
+                                                <li class="comment-emoji">👎</li>
+                                            </ul>
+                                        </div>
                                         <button type="button" class="theme-button-one"
                                                 onclick="javascript:sendComment(this,false)"
-                                                style="margin-bottom: 20px">提交
+                                                style="margin-bottom: 20px;margin-left: 10px">提交
                                         </button>
                                     </form>
                                 </div>
@@ -122,9 +137,24 @@
                                         <input type="text" hidden name="replyTo" th:value="${childComment.commenter}">
                                         <input type="text" hidden name="parentId" th:value="${comment.id}">
                                         <p><textarea required="true" placeholder="内容" name="comment"></textarea></p>
+                                        <div class="comment-bar">
+                                            <ul>
+                                                <li class="comment-emoji">😂</li>
+                                                <li class="comment-emoji">😫</li>
+                                                <li class="comment-emoji">😭</li>
+                                                <li class="comment-emoji">🤣</li>
+                                                <li class="comment-emoji">😅</li>
+                                                <li class="comment-emoji">😣</li>
+                                                <li class="comment-emoji">😍</li>
+                                                <li class="comment-emoji">🤗</li>
+                                                <li class="comment-emoji">😜</li>
+                                                <li class="comment-emoji">👍</li>
+                                                <li class="comment-emoji">👎</li>
+                                            </ul>
+                                        </div>
                                         <button type="button" class="theme-button-one"
                                                 onclick="javascript:sendComment(this,false)"
-                                                style="margin-bottom: 20px">提交
+                                                style="margin-bottom: 20px ;margin-left:10px">提交
                                         </button>
                                     </form>
                                 </div>
@@ -140,15 +170,29 @@
                         <form method="post" class="comment-form-validation" autocomplete="off">
                             <br/>
                             <input type="text" required="true" placeholder="Name*" name="commenter">
-                            <br/>
                             <input type="text" placeholder="Email" name="commenterEmail">
                             <input type="text" hidden name="blogId" th:value="${blog.id}">
                             <input type="text" hidden name="replyTo" value="">
                             <input type="text" hidden name="parentId" value="0">
                             <br/>
                             <p><textarea required="true" placeholder="500字以内评论" name="comment"></textarea></p>
+                            <div class="comment-bar">
+                                <ul>
+                                    <li class="comment-emoji">😂</li>
+                                    <li class="comment-emoji">😫</li>
+                                    <li class="comment-emoji">😭</li>
+                                    <li class="comment-emoji">🤣</li>
+                                    <li class="comment-emoji">😅</li>
+                                    <li class="comment-emoji">😣</li>
+                                    <li class="comment-emoji">😍</li>
+                                    <li class="comment-emoji">🤗</li>
+                                    <li class="comment-emoji">😜</li>
+                                    <li class="comment-emoji">👍</li>
+                                    <li class="comment-emoji">👎</li>
+                                </ul>
+                            </div>
                             <button type="button" class="theme-button-one" onclick="javascript:sendComment(this,true)"
-                                    style="margin-bottom: 20px">Post Comment
+                                    style="margin-bottom: 20px;margin-left:10px">Post Comment
                             </button>
                         </form>
                     </div>

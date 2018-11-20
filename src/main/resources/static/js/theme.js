@@ -320,6 +320,14 @@
             });
         }
 
+        $(".comment-emoji").each(function () {
+            $(this).on('click',function(){
+                var textarea = $(this).parent().parent().parent().find('textarea');
+                var str = textarea.val() + $(this).html();
+                textarea.val(str);
+            });
+        });
+
 
         // ---------------------------------- Validation Alert
         var closeButton = $(".closeAlert");
@@ -494,7 +502,7 @@ function tagIt(tag){
                     '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
                     '            </li>\n' +
                     '        </ul>\n' +
-                    '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
+                    '        <h6 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h6>\n' +
                     '        <ul class="share-meta clearfix">\n' +
                     '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
                     '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
@@ -584,7 +592,22 @@ function sendComment(obj, isComment) {
                         '       <input type="text" hidden name="replyTo" th:value="' + form.get('replyTo') + '">\n' +
                         '       <input type="text" hidden name="parentId" th:value="' + form.get('parentId') + '">\n' +
                         '       <p><textarea  required="true" placeholder="500字以内评论" name="comment"></textarea></p>\n' +
-                        '       <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"   style="margin-bottom: 20px">提交</button>\n' +
+                        '       <div class="comment-bar">\n' +
+                        '          <ul>\n' +
+                        '              <li class="comment-emoji">😂</li>\n' +
+                        '              <li class="comment-emoji">😫</li>\n' +
+                        '              <li class="comment-emoji">😭</li>\n' +
+                        '              <li class="comment-emoji">🤣</li>\n' +
+                        '              <li class="comment-emoji">😅</li>\n' +
+                        '              <li class="comment-emoji">😣</li>\n' +
+                        '              <li class="comment-emoji">😍</li>\n' +
+                        '              <li class="comment-emoji">🤗</li>\n' +
+                        '              <li class="comment-emoji">😜</li>\n' +
+                        '              <li class="comment-emoji">👍</li>\n' +
+                        '              <li class="comment-emoji">👎</li>\n' +
+                        '          </ul>\n' +
+                        '       </div>' +
+                        '       <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"   style="margin-bottom: 20px; margin-left: 10px">提交</button>\n' +
                         '   </form>\n' +
                         ' </div>';
                     var finalAppendHtml = '<div class="reply-comment">' + appendHtml + '</div>';
@@ -604,7 +627,22 @@ function sendComment(obj, isComment) {
                         '            <input type="text" hidden name="blogId" value="' + form.get('blogId') + '">\n' +
                         '            <input type="text" hidden name="replyTo" value="' + form.get('commenter') + '">\n' +
                         '            <input type="text" hidden name="parentId" vaue="0">\n' +
-                        '            <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"    style="margin-bottom: 20px">提交</button>\n' +
+                        '            <div class="comment-bar">\n' +
+                        '               <ul>\n' +
+                        '                   <li class="comment-emoji">😂</li>\n' +
+                        '                   <li class="comment-emoji">😫</li>\n' +
+                        '                   <li class="comment-emoji">😭</li>\n' +
+                        '                   <li class="comment-emoji">🤣</li>\n' +
+                        '                   <li class="comment-emoji">😅</li>\n' +
+                        '                   <li class="comment-emoji">😣</li>\n' +
+                        '                   <li class="comment-emoji">😍</li>\n' +
+                        '                   <li class="comment-emoji">🤗</li>\n' +
+                        '                   <li class="comment-emoji">😜</li>\n' +
+                        '                   <li class="comment-emoji">👍</li>\n' +
+                        '                   <li class="comment-emoji">👎</li>\n' +
+                        '               </ul>\n' +
+                        '            </div>' +
+                        '            <button type="button"  class="theme-button-one" onclick="javascript:sendComment(this,false)"    style="margin-bottom: 20px; margin-left: 10px">提交</button>\n' +
                         '        </form>\n' +
                         '    </div>\n' +
                         '  </div>';
@@ -628,6 +666,15 @@ function sendComment(obj, isComment) {
                         }
                     });
                 }
+                $(".comment-emoji").each(function () {
+                    if (!$._data(this, 'events')) {
+                        $(this).on('click', function () {
+                            var textarea = $(this).parent().parent().parent().find('textarea');
+                            var str = textarea.val() + $(this).html();
+                            textarea.val(str);
+                        });
+                    }
+                });
             },
             error: function (data) {
                 var res = JSON.parse(data.responseText);
