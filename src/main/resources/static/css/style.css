@@ -1140,8 +1140,21 @@ body .theme-button-one:hover {background: #fff;}
   border-radius: 10px;
   display: block;
   float: left;
+}
+
+.comment-form-bottom form input[name=commenterEmail] {
+  width: 40%;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 13px;
+  border:1px solid #f1f1f1;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  display: block;
+  float: left;
   margin-left: 10px;
 }
+
 .comment-form-bottom form textarea {
   width: 100%;
   max-width: 100%;
@@ -1151,7 +1164,6 @@ body .theme-button-one:hover {background: #fff;}
   border:1px solid #f1f1f1;
   font-size: 16px;
   border-radius: 10px;
-  margin-left: 10px;
 }
 
 .comment-area {
@@ -1533,6 +1545,5 @@ body .theme-button-one:hover {background: #fff;}
 .comment-bar ul {
   float: left;
   list-style-type: none;
-  padding-left: 10px;
-  font-size: 20px;
+  font-size: 22px;
 }
