@@ -43,12 +43,19 @@ public class ControllerAspect {
         Metric metric = new Metric();
         metric.setCol(request.getRemoteAddr());
         DateTime now = DateTime.now();
-        metric.setDate(now.toString("yyyyMMdd"));
+        String nowStr = now.toString("yyyyMMdd");
+        metric.setDate(nowStr);
         metric.setType(Constant.MetricType.VISIT.name());
         if(metricService.count(metric) == 0){
             metric.setQuota("1");
             metricService.insert(metric);
         }
+        metric = new Metric();
+        metric.setCol(request.getRemoteAddr());
+        metric.setQuota(request.getRequestURI());
+        metric.setType(Constant.MetricType.URL.name());
+        metric.setDate(nowStr);
+        metricService.insert(metric);
         logger.info("class.method={}#{}", joinpoint.getSignature().getDeclaringTypeName(), joinpoint.getSignature().getName());
         logger.info("args={}", joinpoint.getArgs());
     }

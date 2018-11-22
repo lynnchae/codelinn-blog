@@ -11,7 +11,7 @@ public class Constant {
 
     public enum MetricType{
 
-        VISIT("访问");
+        VISIT("访问"),URL("请求地址");
 
         MetricType(String typeName) {
         }

@@ -20,4 +20,5 @@ public interface BlogService extends BaseService<Blog> {
 
     void updateLikes(Long id);
 
+    void refreshTaglistCache();
 }
