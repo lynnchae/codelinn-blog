@@ -182,7 +182,8 @@
    margin-bottom: 0; }
 
 .md-content img {
-   max-width: 100%; }
+   max-width: 75%;
+}
 
 .md-content span.frame {
    display: block;
