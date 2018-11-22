@@ -609,6 +609,7 @@
   /* Firefox 4.0~16.0 */
   transition: background 300ms ease-out;
   /* IE >9, FF >15, Opera >12.0 */
+  float: left;
 }
 .editormd-form input[type="submit"]:hover, .editormd-form .editormd-btn:hover, .editormd-form button:hover,
 .editormd-dialog-container input[type="submit"]:hover,
