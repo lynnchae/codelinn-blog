@@ -1521,8 +1521,8 @@ body .theme-button-one:hover {background: #fff;}
 .comment-bar {
   float: left;
   width: 100%;
-  height: 40px;
   display: block;
+  margin-bottom: 20px;
 }
 
 .comment-bar ul li {
