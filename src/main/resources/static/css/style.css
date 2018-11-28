@@ -1010,7 +1010,7 @@ body .theme-button-one:hover {background: #fff;}
 .related-blog-slider.blog-grid-style.style-two .single-blog-post {margin-bottom: 0;}
 .comment-meta .single-comment img {width: 80px;height: 80px;border-radius: 50%;}
 .comment-meta .single-comment .comment {
-  width: calc(100% - 80px);
+  width: calc(100% - 20px);
   padding-left: 20px;
   position: relative;
 }
@@ -1032,7 +1032,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .comment-meta .single-comment .reply-comment {
-  margin-left: 70px;
+  margin-left: 50px;
   margin-top : 10px;
   width: calc(100% - 80px);
   position: relative;
@@ -1107,7 +1107,6 @@ body .theme-button-one:hover {background: #fff;}
 .comment-form {
   width:100%;
   margin-top: 20px;
-  margin-left: 20px;
   display: none;
 }
 
