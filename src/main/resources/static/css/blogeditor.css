@@ -131,7 +131,7 @@ form input {
     display: block;
 }
 
-input:focus {border-bottom-color:#d0344e;}
+input:focus {border-bottom-color:#0366D6;}
 input {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
 input {
     width: 100%;
