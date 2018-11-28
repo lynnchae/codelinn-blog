@@ -19,8 +19,9 @@
 }
 body .theme-button-one,.theme-main-sidebar .sidebar-tags ul li a:hover,.main-banner-slider-two.owl-theme .owl-nav [class*=owl-],
 .blog-image-cover-post .single-blog-post .overlay .theme-button-one:hover,.comment-form form input:focus,.comment-form form textarea:focus {
-  border-style: solid;
-  border-color:#0366D6;
+  border: 2px solid #0366D6;
+  box-shadow: inset 0 1px 2px rgba(27,31,35,.075), 0 0 0 0.2em rgba(3,102,214,.3);
+  outline: none;
 }
 .contact-us .contact-form textarea:focus,.contact-us .contact-form input:focus {border-bottom-color:#0366D6;}
 .user-blog .user-blog-form textarea:focus,.user-blog .user-blog-form input:focus {border-bottom-color:#0366D6;}

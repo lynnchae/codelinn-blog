@@ -120,9 +120,6 @@
                                     <div>
                                         <a th:text="${comment.commenter}"></a><b class="date" th:text="'|'+${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}" ></b>
                                     </div>
-                                    <div>
-
-                                    </div>
                                 </h6>
 
                                 <p th:utext="${comment.comment}"></p>
@@ -202,7 +199,7 @@
                     </div>
                 </div>
                 <div class="comment-bottom-area">
-                    <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#0366D6,strength=10)" color=#0366D6
+                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#0366D6 SIZE=3>
                         SIZE=3>
                     <h3><strong>留下你的评论</strong></h3>
                     <div class="comment-form-bottom" style="margin-top: 20px">
