@@ -1,7 +1,10 @@
 package org.lynn.springbootstarter.controller;
 
 import com.vladsch.flexmark.Extension;
+import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.ext.toc.TocExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
@@ -58,9 +61,9 @@ public class BlogController {
             response.sendError(500, "Please enter the wright password to submit the article!");
             return "blogeditor";
         } else {
-            if(blog.getId() != null) {
+            if (blog.getId() != null) {
                 blogService.update(blog);
-            }else{
+            } else {
                 blog.setUserId(1L);
                 blogService.insert(blog);
             }
@@ -74,18 +77,18 @@ public class BlogController {
         Blog b = blogService.getById(id);
         MutableDataSet options = new MutableDataSet();
         options.setFrom(ParserEmulationProfile.MARKDOWN);
-        options.set(Parser.EXTENSIONS, Arrays.asList(new Extension[]{TablesExtension.create()}));
-        //此模块不支持删除线，调整为pegdown模式
-//        Parser parser = Parser.builder(options).build();
-//        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-//        Node document = parser.parse(b.getContent());
-//        String html = renderer.render(document);
+        options.set(Parser.EXTENSIONS, Arrays.asList(new Extension[]{TablesExtension.create(), TocExtension.create()}));
+//        此模块不支持删除线，调整为pegdown模式
+        Parser parser = Parser.builder(options).build();
+        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+        Node document = parser.parse(b.getContent());
+        String html = renderer.render(document);
 //        b.setContent(html);
         /**
          * pegdown模式
          * */
-         PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
-         b.setContent(pdp.markdownToHtml(b.getContent()));
+        PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
+        b.setContent(pdp.markdownToHtml(b.getContent()));
 
         model.addAttribute("blog", b);
         Comment comment = new Comment();

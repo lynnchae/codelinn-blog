@@ -1422,6 +1422,7 @@ body .theme-button-one:hover {background: #fff;}
   color:#fff;
   font-size: 18px;
   outline: none;
+  border-radius: 0px;
 }
 .switcher .switch-btn {
   position: absolute;

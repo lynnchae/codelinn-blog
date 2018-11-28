@@ -1,0 +1,4 @@
+2018-11-26 09:39:21.118 [Thread-11] DEBUG o.s.core.env.PropertySourcesPropertyResolver - Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+2018-11-26 09:39:21.122 [Thread-11] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2018-11-26 09:39:21.122 [Thread-11] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans
+2018-11-26 09:39:21.124 [Thread-11] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
