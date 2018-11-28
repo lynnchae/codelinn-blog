@@ -581,7 +581,7 @@ function sendComment(obj, isComment) {
                 var commentDiv = $(obj).parent().parent().parent();
                 if (!isComment) {
                     var appendHtml =
-                        '<h6><div><a>' + form.get('commenter') + '</a></div><div><i class="date" >'+ new Date().Format("yyyy-MM-dd HH:mm") +'</i></div></h6>\n' +
+                        '<h6><div><a>' + form.get('commenter') + '</a><b class="date" >|'+ new Date().Format("yyyy-MM-dd HH:mm") +'</b></div></h6>\n' +
                         '   <p><strong>@' + form.get('replyTo') + '</strong> ' + form.get('comment') + '</p>\n' +
                         '   <button class="reply">回复</button>\n' +
                         '   <div class="comment-form">\n' +
@@ -616,7 +616,7 @@ function sendComment(obj, isComment) {
                     var ht =
                         '  <div class="single-comment" >\n' +
                         '    <div class="comment">\n' +
-                        '    <h6><div><a>' + form.get('commenter') + '</a></div><div><i class="date" >'+ new Date().Format("yyyy-MM-dd HH:mm") + '</i></div></h6>\n' +
+                        '    <h6><div><a>' + form.get('commenter') + '</a><b class="date" >|'+ new Date().Format("yyyy-MM-dd HH:mm") + '</b></div></h6>\n' +
                         '    <p >' + form.get('comment') + '</p>\n' +
                         '    <button class="reply">回复</button>\n' +
                         '    <div class="comment-form">\n' +

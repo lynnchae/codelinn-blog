@@ -1015,7 +1015,7 @@ body .theme-button-one:hover {background: #fff;}
   position: relative;
 }
 .comment-meta .single-comment .comment h6 a {
-  color: #20c997;
+  color: #0366D7;
   margin: 10px 0 5px 0;
   font-size:17px;
 }
@@ -1039,12 +1039,14 @@ body .theme-button-one:hover {background: #fff;}
 .comment-meta .single-comment {
   padding-bottom: 40px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #f7f7f7;
+  /*border-bottom: 1px solid #f7f7f7;*/
   margin-top: 5px;
-  padding: 0;
-  border-left: dotted;
+  padding: 0px 4px 8px 0px;
   border-radius: 15px;
-  border-left-color: #E2E3E1;
+  border:2px solid #f1f1f1;
+  /*border-left-color: #E2E3E1;*/
+  /*box-shadow: 1px 1px 3px 1px rgba(0,0,0,.2)*/
+
 }
 .comment-meta .single-comment .comment .reply {
   position: relative;
@@ -1094,7 +1096,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .comment-meta .single-comment .reply-comment h6 a {
-  color: #20c997;
+  color: #0366D7;
 }
 
 .comment-meta {
@@ -1427,7 +1429,7 @@ body .theme-button-one:hover {background: #fff;}
 .switcher .switch-btn {
   position: absolute;
   right: -40px;
-  z-index: -1;
+  z-index: 999;
 }
 .switcher {
   position: fixed;
