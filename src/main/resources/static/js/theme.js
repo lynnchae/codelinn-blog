@@ -502,7 +502,7 @@ function tagIt(tag){
                     '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
                     '            </li>\n' +
                     '        </ul>\n' +
-                    '        <h6 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h6>\n' +
+                    '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
                     '        <ul class="share-meta clearfix">\n' +
                     '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
                     '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
