@@ -117,6 +117,9 @@
                         <div class="single-comment">
                             <div class="comment">
                                 <h6>
+                                    <div style="float: left; margin: -20px -10px -10px -35px">
+                                        <img style="width: 40px;height: 40px;" th:src="@{/images/logo/head.png}">
+                                    </div>
                                     <div>
                                         <a th:text="${comment.commenter}"></a><b class="date" th:text="'|'+${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}" ></b>
                                     </div>
@@ -156,6 +159,9 @@
                             </div>
                             <div class="reply-comment" th:each="childComment:${comment.comments}">
                                 <h6>
+                                    <div style="float: left; margin: -10px -15px -15px -40px">
+                                        <img style="width: 35px;height: 35px;" th:src="@{/images/logo/head.png}">
+                                    </div>
                                     <div>
                                         <a th:text="${childComment.commenter}"></a><b class="date" th:text="'|'+${#dates.format(childComment.createTime,'yyyy-MM-dd HH:mm')}" ></b>
                                     </div>
