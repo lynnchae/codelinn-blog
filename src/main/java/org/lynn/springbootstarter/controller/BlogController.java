@@ -1,7 +1,10 @@
 package org.lynn.springbootstarter.controller;
 
 import com.vladsch.flexmark.Extension;
+import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.ext.toc.TocExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
@@ -10,6 +13,7 @@ import org.lynn.springbootstarter.controller.dto.BlogCommentsDto;
 import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
+import org.lynn.springbootstarter.model.vo.CommentVO;
 import org.lynn.springbootstarter.service.BlogService;
 import org.lynn.springbootstarter.service.CommentService;
 import org.pegdown.PegDownProcessor;
@@ -58,9 +62,9 @@ public class BlogController {
             response.sendError(500, "Please enter the wright password to submit the article!");
             return "blogeditor";
         } else {
-            if(blog.getId() != null) {
+            if (blog.getId() != null) {
                 blogService.update(blog);
-            }else{
+            } else {
                 blog.setUserId(1L);
                 blogService.insert(blog);
             }
@@ -74,31 +78,26 @@ public class BlogController {
         Blog b = blogService.getById(id);
         MutableDataSet options = new MutableDataSet();
         options.setFrom(ParserEmulationProfile.MARKDOWN);
-        options.set(Parser.EXTENSIONS, Arrays.asList(new Extension[]{TablesExtension.create()}));
-        //此模块不支持删除线，调整为pegdown模式
-//        Parser parser = Parser.builder(options).build();
-//        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-//        Node document = parser.parse(b.getContent());
-//        String html = renderer.render(document);
+        options.set(Parser.EXTENSIONS, Arrays.asList(new Extension[]{TablesExtension.create(), TocExtension.create()}));
+//        此模块不支持删除线，调整为pegdown模式
+        Parser parser = Parser.builder(options).build();
+        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+        Node document = parser.parse(b.getContent());
+        String html = renderer.render(document);
 //        b.setContent(html);
         /**
          * pegdown模式
          * */
-         PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
-         b.setContent(pdp.markdownToHtml(b.getContent()));
+        PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
+        b.setContent(pdp.markdownToHtml(b.getContent()));
 
         model.addAttribute("blog", b);
-        Comment comment = new Comment();
-        comment.setBlogId(id);
-        comment.setParentId(0L);
-        List<Comment> comments = commentService.query(comment);
+        List<CommentVO> comments = commentService.queryCommentVO(id,0L);
         List<BlogCommentsDto> bcomments = new ArrayList<>();
         for (Comment c : comments) {
             BlogCommentsDto bc = new BlogCommentsDto();
             BeanUtils.copyProperties(c, bc);
-            comment.setBlogId(null);
-            comment.setParentId(bc.getId());
-            bc.setComments(commentService.query(comment));
+            bc.setComments(commentService.queryCommentVO(null,bc.getId()));
             bcomments.add(bc);
         }
         model.addAttribute("comments", bcomments);

@@ -163,7 +163,11 @@ html,body,.main-page-wrapper {
  ul {list-style-type: none;}
  body a {text-decoration: none; display: inline-block;color:#5e5e5e;}
  a:hover,a:focus,a:visited {text-decoration: none; outline: none;}
- img {max-width: 100%; display: block;}
+ img {
+   max-width: 100%;
+   display: block;
+
+ }
  button {border:none;outline: none;-webkit-box-shadow: none;box-shadow: none;display: block; padding: 0;cursor: pointer;
    -webkit-border-radius: 7px;
    -moz-border-radius: 7px;
@@ -522,7 +526,7 @@ body .theme-button-one:hover {background: #fff;}
        -o-transform: scale3D(1.1,1.1,1);
           transform: scale3D(1.1,1.1,1);
 }
-.blog-grid-style .single-blog-post .post-meta-box {padding: 10px 15px 10px 15px;}
+.blog-grid-style .single-blog-post .post-meta-box {padding: 25px 25px 20px 25px;}
 .blog-grid-style .single-blog-post .author-meta {margin: 0 -5px;}
 .blog-grid-style .single-blog-post .author-meta li {float: left;padding: 0 5px;line-height: 25px;}
 .blog-grid-style .single-blog-post .author-meta li.tag a {
@@ -748,6 +752,15 @@ body .theme-button-one:hover {background: #fff;}
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.theme-main-sidebar .about-me .head {
+  max-width:25%;
+  display: block;
+  border-radius: 50%;
+  padding:3px;
+  border: 2px #f1f1f1 dashed;
+}
+
 .theme-main-sidebar .about-me p:first-letter {font-size: 20px;}
 .theme-main-sidebar .about-me .signature {margin-top: 15px;}
 .theme-main-sidebar .sidebar-categories ul li a {
@@ -822,6 +835,11 @@ body .theme-button-one:hover {background: #fff;}
   margin: 0 12px;
 }
 .theme-footer .copyright {margin-top: 30px;font-size: 13px;}
+.theme-footer .logo img{
+  max-width: 15%;
+  display: unset;
+  margin-bottom: 25px;
+}
 /*------------------------ Theme Inner Banner ---------------------*/
 .theme-inner-banner {
   text-align: center;
@@ -1008,30 +1026,33 @@ body .theme-button-one:hover {background: #fff;}
   text-transform: capitalize;
 }
 .related-blog-slider.blog-grid-style.style-two .single-blog-post {margin-bottom: 0;}
-.comment-meta .single-comment img {width: 80px;height: 80px;border-radius: 50%;}
+/*.comment-meta .single-comment img {width: 80px;height: 80px;border-radius: 50%;}*/
 .comment-meta .single-comment .comment {
-  width: calc(100% - 80px);
-  padding-left: 20px;
+  width: calc(100% - 20px);
+  padding-left: 30px;
   position: relative;
 }
 .comment-meta .single-comment .comment h6 a {
-  color: #20c997;
+  color: #0366D7;
   margin: 10px 0 5px 0;
   font-size:17px;
 }
 .comment-meta .single-comment .comment .date {
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 13px;
   color: #999898;
+  margin-left: 5px;
+  font-family: "Meiryo UI", "YaHei Consolas Hybrid", Consolas, "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, monospace, monospace;
 }
 .comment-meta .single-comment .comment p {
   line-height: 24px;
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .comment-meta .single-comment .reply-comment {
-  margin-left: 70px;
+  margin-left: 50px;
   margin-top : 10px;
   width: calc(100% - 80px);
   position: relative;
@@ -1039,12 +1060,14 @@ body .theme-button-one:hover {background: #fff;}
 .comment-meta .single-comment {
   padding-bottom: 40px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #f7f7f7;
+  /*border-bottom: 1px solid #f7f7f7;*/
   margin-top: 5px;
-  padding: 0;
-  border-left: dotted;
+  padding: 0px 4px 8px 0px;
   border-radius: 15px;
-  border-left-color: #E2E3E1;
+  border:2px solid #f1f1f1;
+  /*border-left-color: #E2E3E1;*/
+  /*box-shadow: 1px 1px 3px 1px rgba(0,0,0,.2)*/
+
 }
 .comment-meta .single-comment .comment .reply {
   position: relative;
@@ -1062,9 +1085,11 @@ body .theme-button-one:hover {background: #fff;}
 
 .comment-meta .single-comment .reply-comment .date {
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 13px;
   color: #999898;
+  margin-left: 5px;
+  font-family: "Meiryo UI", "YaHei Consolas Hybrid", Consolas, "Malgun Gothic", "Segoe UI", "Trebuchet MS", Helvetica, monospace, monospace;
 }
 
 
@@ -1094,7 +1119,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .comment-meta .single-comment .reply-comment h6 a {
-  color: #20c997;
+  color: #0366D7;
 }
 
 .comment-meta {
@@ -1103,7 +1128,6 @@ body .theme-button-one:hover {background: #fff;}
 .comment-form {
   width:100%;
   margin-top: 20px;
-  margin-left: 20px;
   display: none;
 }
 
@@ -1354,7 +1378,6 @@ body .theme-button-one:hover {background: #fff;}
   font-weight: 600;
   text-align: right;
   color: grey;
-  font-style: italic;
 }
 /*======================= Form Validation ===================*/
 .alert-wrapper {
@@ -1422,11 +1445,12 @@ body .theme-button-one:hover {background: #fff;}
   color:#fff;
   font-size: 18px;
   outline: none;
+  border-radius: 0px;
 }
 .switcher .switch-btn {
   position: absolute;
   right: -40px;
-  z-index: -1;
+  z-index: 999;
 }
 .switcher {
   position: fixed;
@@ -1567,4 +1591,30 @@ body .theme-button-one:hover {background: #fff;}
   float: left;
   list-style-type: none;
   font-size: 22px;
+}
+
+.comment .head-div{
+  float: left;
+  margin: -16px -10px -10px -40px
+}
+
+.comment .head-img{
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border: 2px solid rgba(3,102,214,.3);
+  padding: 2px;
+}
+
+.reply-comment .head-div{
+  float: left;
+  margin: -10px -15px -15px -40px
+}
+
+.reply-comment .head-img{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(3,102,214,.3);
+  padding: 2px;
 }

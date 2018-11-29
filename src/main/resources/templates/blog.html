@@ -57,17 +57,56 @@
         </div>
     </div>
 
+    <!--<div class="switcher">-->
+        <!--&lt;!&ndash; Switcher button &ndash;&gt;-->
+        <!--<div class="switch-btn">-->
+            <!--<button><i class="fas fa-cog fa-spin"></i></button>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash; switcher body &ndash;&gt;-->
+        <!--<div class="switch-menu">-->
+            <!--<h5 class="title">目录</h5>-->
+            <!--&lt;!&ndash; Theme color changer &ndash;&gt;-->
+            <!--<div id="toc" style="position: relative" class="switcher-container">-->
+                <!--&lt;!&ndash;<h5>Color Skins</h5>&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul id="styleOptions" title="Switch Color" class="clearfix">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color" class="color1"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-2" class="color2"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-3" class="color3"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-4" class="color4"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-5" class="color5"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-6" class="color6"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-7" class="color7"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-8" class="color8"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-9" class="color9"></a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li><a href="javascript: void(0)" data-theme="color-10" class="color10"></a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;<h5>Theme Demo</h5>&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul class="theme-demo clearfix">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="img-box"><a href="sotto/"><img src="images/home/light.jpg" alt=""></a></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<h6>Light layout</h6>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="img-box"><a href="sotto-dark/"><img src="images/home/dark.jpg" alt=""></a></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<h6>Dark layout</h6>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div> &lt;!&ndash; /switch-menu &ndash;&gt;-->
+    <!--</div>-->
+
     <!-- ===================================================
         About Me Wrapper
     ==================================================== -->
     <div id="blogdetail" class="user-blog">
         <div class="back-to-home fixed"><a href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
         <div class="main-text-wrapper">
-            <div class="container">
+            <div class="container blog-container">
                 <div style="padding-top: 55px">
                     <h2 align="center" style="word-break: break-word" th:text="${blog.title}"></h2>
-                    <div class="md-content" th:utext="${blog.content}"></div>
-                    <p class="content-update" th:utext="'<i class=\'fas fa-history\'></i>  '+${#dates.format(blog.updateTime,'yyyy.MM.dd HH:mm')} + ' .updated'"></p>
+                    <div id="blog-main-content" class="md-content" th:utext="${blog.content}"></div>
+                    <p class="content-update" th:utext="'<b class=\'fas fa-calendar\'></b>  '+${#dates.format(blog.updateTime,'yyyy.MM.dd HH:mm')} + ' .updated'"></p>
                 </div>
                 <div class="comment-area">
                     <div class="comment-area-head">
@@ -78,11 +117,12 @@
                         <div class="single-comment">
                             <div class="comment">
                                 <h6>
-                                    <div>
-                                        <a th:text="${comment.commenter}"></a>
+                                    <div class="head-div">
+                                        <!--<img style="width: 37px;height: 37px;" th:src="@{/images/head/4.png}">-->
+                                        <img class="head-img" th:src="@{${comment.avatar}}">
                                     </div>
                                     <div>
-                                        <i class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}" ></i>
+                                        <a th:text="${comment.commenter}"></a><b class="date" th:text="'|'+${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}" ></b>
                                     </div>
                                 </h6>
 
@@ -120,11 +160,14 @@
                             </div>
                             <div class="reply-comment" th:each="childComment:${comment.comments}">
                                 <h6>
-                                    <div>
-                                        <a th:text="${childComment.commenter}"></a>
+                                    <div class="head-div" >
+                                        <img class="head-img" th:src="@{${childComment.avatar}}">
                                     </div>
                                     <div>
-                                        <i class="date" th:text="${#dates.format(childComment.createTime,'yyyy-MM-dd HH:mm')}" ></i>
+                                        <a th:text="${childComment.commenter}"></a><b class="date" th:text="'|'+${#dates.format(childComment.createTime,'yyyy-MM-dd HH:mm')}" ></b>
+                                    </div>
+                                    <div>
+
                                     </div>
                                 </h6>
                                 <p th:utext=" (${childComment.replyTo == ''} ? '' : '<strong>@' + ${childComment.replyTo} + '</strong>  ')  + ${childComment.comment}"></p>
@@ -163,8 +206,7 @@
                     </div>
                 </div>
                 <div class="comment-bottom-area">
-                    <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#0366D6,strength=10)" color=#0366D6
-                        SIZE=3>
+                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#0366D6 SIZE=3>
                     <h3><strong>留下你的评论</strong></h3>
                     <div class="comment-form-bottom" style="margin-top: 20px">
                         <form method="post" class="comment-form-validation" autocomplete="off">
@@ -251,6 +293,14 @@
             });
         });
     </script>
+
+    <!--<script th:src="@{/js/md-toc.min.js}"></script>-->
+    <!--<script type="text/javascript">-->
+        <!--new Toc('blog-main-content',{-->
+            <!--'level':2,-->
+            <!--'targetId':'toc'-->
+        <!--});-->
+    <!--</script>-->
 
 </div>
 </body>
