@@ -1022,7 +1022,7 @@ body .theme-button-one:hover {background: #fff;}
   text-transform: capitalize;
 }
 .related-blog-slider.blog-grid-style.style-two .single-blog-post {margin-bottom: 0;}
-.comment-meta .single-comment img {width: 80px;height: 80px;border-radius: 50%;}
+/*.comment-meta .single-comment img {width: 80px;height: 80px;border-radius: 50%;}*/
 .comment-meta .single-comment .comment {
   width: calc(100% - 20px);
   padding-left: 20px;
@@ -1586,4 +1586,24 @@ body .theme-button-one:hover {background: #fff;}
   float: left;
   list-style-type: none;
   font-size: 22px;
+}
+
+.comment .head-div{
+  float: left;
+  margin: -20px -10px -10px -35px
+}
+
+.comment .head-img{
+  width: 37px;
+  height: 37px;
+}
+
+.reply-comment .head-div{
+  float: left;
+  margin: -10px -15px -15px -40px
+}
+
+.reply-comment .head-img{
+  width: 32px;
+  height: 32px;
 }

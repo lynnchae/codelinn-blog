@@ -13,6 +13,7 @@ import org.lynn.springbootstarter.controller.dto.BlogCommentsDto;
 import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
+import org.lynn.springbootstarter.model.vo.CommentVO;
 import org.lynn.springbootstarter.service.BlogService;
 import org.lynn.springbootstarter.service.CommentService;
 import org.pegdown.PegDownProcessor;
@@ -91,17 +92,12 @@ public class BlogController {
         b.setContent(pdp.markdownToHtml(b.getContent()));
 
         model.addAttribute("blog", b);
-        Comment comment = new Comment();
-        comment.setBlogId(id);
-        comment.setParentId(0L);
-        List<Comment> comments = commentService.query(comment);
+        List<CommentVO> comments = commentService.queryCommentVO(id, 0L);
         List<BlogCommentsDto> bcomments = new ArrayList<>();
         for (Comment c : comments) {
             BlogCommentsDto bc = new BlogCommentsDto();
             BeanUtils.copyProperties(c, bc);
-            comment.setBlogId(null);
-            comment.setParentId(bc.getId());
-            bc.setComments(commentService.query(comment));
+            bc.setComments(commentService.queryCommentVO(null, bc.getId()));
             bcomments.add(bc);
         }
         model.addAttribute("comments", bcomments);

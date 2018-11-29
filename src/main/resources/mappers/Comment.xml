@@ -3,4 +3,10 @@
 <mapper namespace="org.lynn.springbootstarter.dao.CommentDao">
     <resultMap id="resultMap" type="org.lynn.springbootstarter.model.Comment">
     </resultMap>
+
+    <select id="queryCommentVO" resultType="org.lynn.springbootstarter.model.vo.CommentVO">
+        select a.*,b.avatar
+        from t_comment a left join t_visitor b on a.commenter_id=b.id
+        where blog_id = #{blogId} and parent_id = #{parentId}
+    </select>
 </mapper>

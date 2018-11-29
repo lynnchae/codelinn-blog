@@ -2,6 +2,7 @@ package org.lynn.springbootstarter.controller.dto;
 
 import lombok.Data;
 import org.lynn.springbootstarter.model.Comment;
+import org.lynn.springbootstarter.model.vo.CommentVO;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
 @Data
 public class BlogCommentsDto extends Comment {
 
-    List<Comment> comments;
+    private String avatar;
+
+    List<CommentVO> comments;
 
 }

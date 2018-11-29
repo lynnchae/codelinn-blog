@@ -34,6 +34,7 @@ public interface BaseDao<T extends Entity> {
     List<T> query(T findParam);
 
     @InsertProvider(type = SqlProvider.class, method = "insert")
+    @Options(keyProperty = "id",flushCache = Options.FlushCachePolicy.TRUE,useGeneratedKeys = true)
     int insert(T object);
 
     @UpdateProvider(type = SqlProvider.class, method = "update")
