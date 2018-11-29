@@ -8,10 +8,10 @@
         select a.*,b.avatar
         from t_comment a left join t_visitor b on a.commenter_id=b.id
         where 1=1
-        <if test="blogId != null and blogId != ''" >
+        <if test="blogId != null" >
          and blog_id = #{blogId}
         </if>
-        <if test="parentId != null and parentId != ''" >
+        <if test="parentId != null" >
             and parent_id = #{parentId}
         </if>
 
