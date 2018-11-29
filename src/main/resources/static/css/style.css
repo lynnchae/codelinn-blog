@@ -166,9 +166,7 @@ html,body,.main-page-wrapper {
  img {
    max-width: 100%;
    display: block;
-   border-radius: 50%;
-   border: 2px solid rgba(3,102,214,.3);
-   padding: 2px;
+
  }
  button {border:none;outline: none;-webkit-box-shadow: none;box-shadow: none;display: block; padding: 0;cursor: pointer;
    -webkit-border-radius: 7px;
@@ -1603,6 +1601,9 @@ body .theme-button-one:hover {background: #fff;}
 .comment .head-img{
   width: 37px;
   height: 37px;
+  border-radius: 50%;
+  border: 2px solid rgba(3,102,214,.3);
+  padding: 2px;
 }
 
 .reply-comment .head-div{
@@ -1613,4 +1614,7 @@ body .theme-button-one:hover {background: #fff;}
 .reply-comment .head-img{
   width: 32px;
   height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(3,102,214,.3);
+  padding: 2px;
 }
