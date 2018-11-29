@@ -92,12 +92,12 @@ public class BlogController {
         b.setContent(pdp.markdownToHtml(b.getContent()));
 
         model.addAttribute("blog", b);
-        List<CommentVO> comments = commentService.queryCommentVO(id, 0L);
+        List<CommentVO> comments = commentService.queryCommentVO(id,0L);
         List<BlogCommentsDto> bcomments = new ArrayList<>();
         for (Comment c : comments) {
             BlogCommentsDto bc = new BlogCommentsDto();
             BeanUtils.copyProperties(c, bc);
-            bc.setComments(commentService.queryCommentVO(null, bc.getId()));
+            bc.setComments(commentService.queryCommentVO(null,bc.getId()));
             bcomments.add(bc);
         }
         model.addAttribute("comments", bcomments);

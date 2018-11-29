@@ -161,7 +161,7 @@
                             <div class="reply-comment" th:each="childComment:${comment.comments}">
                                 <h6>
                                     <div class="head-div" >
-                                        <img class="head-img" th:src="@{/images/head/23.png}">
+                                        <img class="head-img" th:src="@{${childComment.avatar}}">
                                     </div>
                                     <div>
                                         <a th:text="${childComment.commenter}"></a><b class="date" th:text="'|'+${#dates.format(childComment.createTime,'yyyy-MM-dd HH:mm')}" ></b>
