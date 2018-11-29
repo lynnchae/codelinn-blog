@@ -522,7 +522,7 @@ body .theme-button-one:hover {background: #fff;}
        -o-transform: scale3D(1.1,1.1,1);
           transform: scale3D(1.1,1.1,1);
 }
-.blog-grid-style .single-blog-post .post-meta-box {padding: 10px 15px 10px 15px;}
+.blog-grid-style .single-blog-post .post-meta-box {padding: 25px 25px 20px 25px;}
 .blog-grid-style .single-blog-post .author-meta {margin: 0 -5px;}
 .blog-grid-style .single-blog-post .author-meta li {float: left;padding: 0 5px;line-height: 25px;}
 .blog-grid-style .single-blog-post .author-meta li.tag a {
@@ -748,6 +748,15 @@ body .theme-button-one:hover {background: #fff;}
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.theme-main-sidebar .about-me .head {
+  max-width:25%;
+  display: block;
+  border-radius: 50%;
+  padding:3px;
+  border: 2px #f1f1f1 dashed;
+}
+
 .theme-main-sidebar .about-me p:first-letter {font-size: 20px;}
 .theme-main-sidebar .about-me .signature {margin-top: 15px;}
 .theme-main-sidebar .sidebar-categories ul li a {
@@ -822,6 +831,11 @@ body .theme-button-one:hover {background: #fff;}
   margin: 0 12px;
 }
 .theme-footer .copyright {margin-top: 30px;font-size: 13px;}
+.theme-footer .logo img{
+  max-width: 10%;
+  display: unset;
+  margin-bottom: 25px;
+}
 /*------------------------ Theme Inner Banner ---------------------*/
 .theme-inner-banner {
   text-align: center;
