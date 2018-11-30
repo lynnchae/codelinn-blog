@@ -1052,7 +1052,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .comment-meta .single-comment .reply-comment {
-  margin-left: 50px;
+  margin-left: 70px;
   margin-top : 10px;
   width: calc(100% - 80px);
   position: relative;
