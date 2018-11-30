@@ -1620,3 +1620,7 @@ body .theme-button-one:hover {background: #fff;}
   border: 2px solid rgba(3,102,214,.3);
   padding: 2px;
 }
+
+.container .row {
+  margin:0 70px;
+}

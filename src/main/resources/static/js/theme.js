@@ -142,8 +142,8 @@
             var masterslider = new MasterSlider();
 
             masterslider.setup("main-slider-one", {
-                width: 1700,
-                height: 650,
+                width: 1400,
+                height: 500,
                 minHeight: 0,
                 space: 0,
                 start: 1,
