@@ -1412,7 +1412,7 @@ body .theme-button-one:hover {background: #fff;}
   vertical-align: middle;
   letter-spacing: 1px;
 }
-#success p {color: #212529;}
+#success p {color: #fff;}
 #error p {color: #fff;}
 #error button,
 #success button {
