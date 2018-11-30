@@ -1404,6 +1404,8 @@ body .theme-button-one:hover {background: #fff;}
   display: table;
   width:100%;
   height: 100%;
+  background: #0366D6;
+  border-radius: 15px;
 }
 #success .wrapper p,#error .wrapper p{
   display: table-cell;
@@ -1411,18 +1413,18 @@ body .theme-button-one:hover {background: #fff;}
   letter-spacing: 1px;
 }
 #success p {color: #212529;}
-#error p {color: #C9182B;}
+#error p {color: #fff;}
 #error button,
 #success button {
   color:#fff;
-  width:40px;
-  height:40px;
+  width:20px;
+  height:20px;
   line-height: 20px;
   background: transparent;
   border-radius: 50%;
   position: absolute;
-  top: -20px;
-  right: -20px;
+  top: -10px;
+  right: -10px;
   font-size: 20px;
 }
 .form-validation label.error {display: none !important;}
