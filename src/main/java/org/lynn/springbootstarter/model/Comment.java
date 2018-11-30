@@ -28,6 +28,6 @@ public class Comment extends Entity {
 
     private String replyTo;
 
-    private Long commenterId;
+    private Long visitorId;
 
 }

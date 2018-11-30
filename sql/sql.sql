@@ -78,7 +78,6 @@ insert  into `t_blog`(`user_id`,`title`,`tags`,`content`,`create_time`,`create_u
 CREATE TABLE t_visitor (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) DEFAULT '' COMMENT '访客名字',
-  `email` VARCHAR(255) DEFAULT '' COMMENT '访客email',
   `avatar` VARCHAR(255) DEFAULT ''  COMMENT '访客头像',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP NULL ,
   `create_user` VARCHAR(32) NULL ,
@@ -89,12 +88,15 @@ CREATE TABLE t_visitor (
 
 ALTER TABLE t_comment ADD commenter_id INT(11) COMMENT '访客id' after reply_to;
 
+
+
 insert into t_visitor (`name`,avatar,create_user,update_user)
 select commenter,concat('/images/head/',CEIL(RAND()*20),'.png'),'system','system' avatar from (select distinct(commenter) commenter from t_comment where t_comment.commenter_id is null) b;
 
 
 update t_comment a left join t_visitor b on a.commenter=b.name set a.commenter_id=b.id;
 
+-----20181130
+alter table t_visitor drop column email;
 
-update t_visitor a left join t_comment b on a.id=b.commenter_id set a.email=b.commenter_email;
-
+alter table t_comment change commenter_id visitor_id INT(11);

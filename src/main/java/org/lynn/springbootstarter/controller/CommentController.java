@@ -41,12 +41,11 @@ public class CommentController {
             visitor = visitorService.query(visitor).get(0);
         }else{
             Integer fileNameIndex = new Random().nextInt(20) + 1;
-            visitor.setEmail(comment.getCommenterEmail());
             visitor.setAvatar("/images/head/"+ fileNameIndex +".png");
             visitorService.insert(visitor);
         }
         try {
-            comment.setCommenterId(visitor.getId());
+            comment.setVisitorId(visitor.getId());
             commentService.insert(comment);
             return ResultEntity.success(visitor.getAvatar());
         } catch (Exception e) {

@@ -20,8 +20,6 @@ public class Visitor extends Entity {
 
     private String name;
 
-    private String email;
-
     private String avatar;
 
 }
