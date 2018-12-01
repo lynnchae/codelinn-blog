@@ -15,6 +15,14 @@
         select distinct(tags) from t_blog
     </select>
 
+    <select id="searchUserBlogs" resultMap="resultMap">
+        select id,user_id,title,tags,likes,create_time,content
+        from t_blog
+        where user_id=#{userId}
+        and title like concat('%',#{word},'%')
+        order by create_time desc
+    </select>
+
     <update id="updateLikes" parameterType="java.lang.Long">
         update t_blog set likes = likes + 1 where id = #{id}
     </update>
