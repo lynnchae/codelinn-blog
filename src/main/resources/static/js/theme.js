@@ -353,6 +353,7 @@
             })
         }
 
+
         // --------------------------------- Comment Form Validation
         // if ($('.comment-form-validation').length) {
         //     $('.comment-form-validation').validate({ // initialize the plugin
@@ -687,4 +688,13 @@ function sendComment(obj, isComment) {
             }
         });
     }
+}
+
+function searchfor(obj){
+    var searchWord = $(obj).parent().find("input").val();
+    if (searchWord == ''){
+        $(obj).parent().find("input").focus();
+        return;
+    }
+    
 }

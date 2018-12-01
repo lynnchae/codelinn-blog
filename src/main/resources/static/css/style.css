@@ -1620,3 +1620,50 @@ body .theme-button-one:hover {background: #fff;}
   border: 2px solid rgba(3,102,214,.3);
   padding: 2px;
 }
+
+/*-----
+ */
+.index-search .fa-search {
+  width: 18px;
+  height: 18px;
+  margin-top: 0px;
+  padding-top: 0px;
+  vertical-align: middle;
+  color: #0366d6;
+  margin-left: -45px;
+  margin-top: 12px;
+  vertical-align: middle
+}
+
+.index-search .fa-search:hover {
+  cursor: pointer;
+}
+
+.index-search input {
+  width: 100%;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 13px;
+  color: #868686;
+  border: 2px solid rgba(0,0,0,0.06);
+  margin-bottom: 15px;
+  border-radius: 10px;
+  float: left;
+}
+
+.index-search input:focus {
+  border-color: #0366d6;
+  box-shadow: inset 0 1px 2px rgba(27,31,35,.075), 0 0 0 0.2em rgba(3,102,214,.3);
+  outline: none;
+}
+
+.search-div {
+  position: relative;width: 100%;
+  text-align: center;
+}
+
+
+.search-div a {
+  float: left;
+  display: contents;
+}
