@@ -79,12 +79,12 @@
 }
 #mega-menu-holder li {position: relative;display: inline-block;}
 #mega-menu-holder>ul> li> a {
-    padding: 0 0 15px 0;
-    margin: 0 20px;
+    padding: 0 0 15px 5px;
+    margin: 0 35px 0 20px;
     display: block;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.3px;
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     color: #4a4a4a;
     -o-transition: all .3s linear;
@@ -165,7 +165,6 @@
     padding: 0 15px;
     display: block;
     border-top: 1px solid rgba(0,0,0,0.05);
-    margin: 0;
     line-height: 40px;
 }
 #mega-menu-holder li .sub-toggle {
