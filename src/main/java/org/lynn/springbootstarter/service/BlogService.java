@@ -16,6 +16,8 @@ public interface BlogService extends BaseService<Blog> {
 
     List<Blog> getUserBlogs(Long userId);
 
+    List<Blog> searchUserBlogs(Long userId,String word);
+
     List<String> getTags();
 
     void updateLikes(Long id);

@@ -1,6 +1,7 @@
 package org.lynn.springbootstarter.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.base.BaseDao;
 import org.springframework.stereotype.Repository;
@@ -23,4 +24,6 @@ public interface BlogDao extends BaseDao<Blog> {
     List<String> getTags();
 
     void updateLikes(Long id);
+
+    List<Blog> searchUserBlogs(@Param("userId") Long userId,@Param("word") String word);
 }

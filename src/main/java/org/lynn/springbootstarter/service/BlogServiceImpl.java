@@ -61,4 +61,9 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
             log.debug("taglist refreshed {}", taglist);
         }
     }
+
+    @Override
+    public List<Blog> searchUserBlogs(Long userId, String word) {
+        return blogDao.searchUserBlogs(userId, word);
+    }
 }

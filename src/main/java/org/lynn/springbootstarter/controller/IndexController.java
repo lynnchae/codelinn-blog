@@ -6,7 +6,6 @@ import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
 import org.lynn.springbootstarter.service.BlogService;
 import org.lynn.springbootstarter.service.CommentService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,13 +42,7 @@ public class IndexController {
         List<Blog> list = blogService.query(b).stream().sorted((o1, o2) -> o2.getId().compareTo(o1.getId())).collect(Collectors.toList());
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();
-        for (Blog blog : list) {
-            BlogDto bd = new BlogDto();
-            BeanUtils.copyProperties(blog, bd);
-            c.setBlogId(blog.getId());
-            bd.setComments(commentService.count(c));
-            blogs.add(bd);
-        }
+        SearchController.copyBlogAndCountComment(list, blogs, c, commentService);
         model.addAttribute("blogs", blogs);
         model.addAttribute("tags", blogService.getTags());
         return "index";

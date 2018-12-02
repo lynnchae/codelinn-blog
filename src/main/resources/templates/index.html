@@ -258,9 +258,28 @@
                     </div>
                 </div>
             </div> <!-- End of .alert_wrapper -->
+            <div class="alert-wrapper" id="alert-error">
+                <div id="error">
+                    <button class="closeAlert"><i class="fas fa-window-close"></i></button>
+                    <div class="wrapper">
+                        <p>Sorry!Something Went Wrong.</p>
+                    </div>
+                </div>
+            </div> <!-- End of .alert_wrapper -->
 
             <!-- ======================== Theme Sidebar =============================== -->
             <div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
+                <div class="sidebar-box bg-box ">
+                    <h6 class="sidebar-title">Search</h6>
+                    <form class="index-search" action="#">
+                        <div class="search-div">
+                            <input type="word" required>
+                            <a href="javascript:void(0);" onclick="searchfor(this)"> <i class="fas fa-search"></i></a>
+
+                        </div>
+
+                    </form>
+                </div> <!-- /.sidebar-newsletter -->
                 <div class="sidebar-box bg-box about-me">
                     <h6 class="sidebar-title">关于 我</h6>
                      <img class="head" src="images/home/1.jpeg" alt="">
@@ -278,13 +297,7 @@
 
                     </ul>
                 </div> <!-- /.sidebar-tags -->
-                <!--<div class="sidebar-box bg-box sidebar-newsletter">-->
-                    <!--<h6 class="sidebar-title">newsletter</h6>-->
-                    <!--<form action="#">-->
-                        <!--<input type="email" placeholder="Your email address" required>-->
-                        <!--<button class="theme-button-one">Sign up</button>-->
-                    <!--</form>-->
-                <!--</div> &lt;!&ndash; /.sidebar-newsletter &ndash;&gt;-->
+
             </div> <!-- /.theme-main-sidebar -->
         </div> <!-- /.row -->
     </div> <!-- /.container -->
