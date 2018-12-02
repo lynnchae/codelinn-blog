@@ -1667,3 +1667,8 @@ body .theme-button-one:hover {background: #fff;}
   float: left;
   display: contents;
 }
+
+.blog-editor-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

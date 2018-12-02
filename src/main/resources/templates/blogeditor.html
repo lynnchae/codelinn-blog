@@ -39,7 +39,7 @@
                 <div id="backHome" class="back-to-home fixed"><a href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
                 <div class="container" style="overflow: hidden">
                     <div class="contact-form">
-                        <form id="blog-editor-form" th:action="@{/blog/saveBlog}" method="post" class="form-validation" autocomplete="off">
+                        <form id="blog-editor-form" th:action="@{/blog/saveBlog}" method="post" class="form-validation blog-editor-form" autocomplete="off">
                                 <input type="text" name="title" placeholder="Title" th:value="${blog?.title}"  autofocus>
                                 <input type="text" name="tags" placeholder="Tag" th:value="${blog?.tags}"  autofocus>
                                 <input type="text" name="id" hidden th:value="${blog?.id}"  autofocus>
