@@ -32,7 +32,7 @@ public class RequestFrequentAspect {
 
     private static Map<String, Long> requestMap = new ConcurrentHashMap<>();
 
-    @Pointcut("execution (public * org.lynn.springbootstarter.controller.SearchController..*(..))")
+    @Pointcut("@annotation(org.lynn.springbootstarter.annotation.FrequentShielded)")
     public void requestAspect() {
     }
 

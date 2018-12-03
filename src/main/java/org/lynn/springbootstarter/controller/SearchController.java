@@ -1,5 +1,6 @@
 package org.lynn.springbootstarter.controller;
 
+import org.lynn.springbootstarter.annotation.FrequentShielded;
 import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.model.Blog;
@@ -35,6 +36,7 @@ public class SearchController {
 
     @PostMapping("/blogs")
     @ResponseBody
+    @FrequentShielded
     public ResultEntity<BlogDto> searchBlogs(String word) {
         List<Blog> list = blogService.searchUserBlogs(1L, word);
         List<BlogDto> blogs = new ArrayList<>();
