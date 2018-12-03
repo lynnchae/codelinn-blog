@@ -226,7 +226,7 @@
                     <div class="image-box"><!-- <img src="images/blog/1.jpg" alt=""> --></div>
                     <div class="post-meta-box bg-box">
                         <ul class="author-meta clearfix">
-                            <li class="tag"><a th:text="${blog.tags}"></a></li>
+                            <li class="tag"><a href="javascript:;" th:onclick="'javascript:tagIt(\''+${blog.tags}+'\')'"   th:text="${blog.tags}"></a></li>
                             <li class="date"><a th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></a>
                             </li>
                         </ul>
