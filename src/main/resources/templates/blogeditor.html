@@ -45,7 +45,7 @@
                                 <input type="text" name="tags" placeholder="Tag" th:value="${blog?.tags}"  autofocus>
                                 <input type="text" name="id" hidden th:value="${blog?.id}"  autofocus>
                                 <input type="password" name="password" placeholder="password" autofocus>
-                                <select class="select" name="done" th:field="${blog.done}" th:value="${blog?.done}">
+                                <select class="select" name="done" >
                                     <option th:selected="${blog?.done eq 0}" value="0">未完</option>
                                     <option th:selected="${blog?.done eq 1}" value="1">完成</option>
                                 </select>
