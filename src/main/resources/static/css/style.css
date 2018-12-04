@@ -145,7 +145,7 @@ html,body,.main-page-wrapper {
  body {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
-  color:#5e5e5e;
+  color:#404040;
   font-size: 14px;
   position: relative;
   background: #f9f9f9;
@@ -155,10 +155,10 @@ html,body,.main-page-wrapper {
  body h2 a,body h3 a,body h4 a,body h5 a,body h6 a {color: #1b222d;}
  h1 {font-size: 80px;font-weight: 700;}
  h2 {font-size: 40px; font-weight: 600;}
- h3 {font-size: 26px;}
- h4 {font-size: 24px;font-weight: 600;}
+ h3 {font-size: 30px;}
+ h4 {font-size: 26px;font-weight: 600;}
  h5 {font-size: 20px;}
- h6 {font-size: 13px; font-weight: 700;}
+ h6 {font-size: 16px; font-weight: 700;}
  p {line-height: 28px;}
  ul {list-style-type: none;overflow-x: hidden}
  body a {text-decoration: none; display: inline-block;color:#5e5e5e;}
@@ -190,7 +190,7 @@ html,body,.main-page-wrapper {
 }
 ::selection {
   color: #fff;
-  background: #838383;
+  background: #0366D6;
 }
 /*--------------------- Transition --------------------*/
 .tran3s,.top-header .breaking-news .list a,.top-header .social-icon li.icon a,#main-slider-one .read-more a,body .theme-button-one,

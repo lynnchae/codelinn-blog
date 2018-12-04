@@ -1,13 +1,14 @@
 .md-content body {
    font-family: Helvetica, arial, sans-serif;
-   font-size: 14px;
+   font-size: 16px;
    line-height: 1.6;
    padding-top: 10px;
    padding-bottom: 10px;
-   background-color: white;
+   background-color: #f9f9f9;
    width: 90%;
    height: 100%;
-   padding: 30px; }
+   padding: 30px;
+}
 
 .md-content body > *:first-child {
    margin-top: 0 !important; }
@@ -58,22 +59,22 @@
    font-size: inherit; }
 
 .md-content h1 {
-   font-size: 28px;
+   font-size: 30px;
    color: black; }
 
 .md-content h2 {
-   font-size: 24px;
+   font-size: 26px;
    /*border-bottom: 1px solid #cccccc;*/
    color: black; }
 
 .md-content h3 {
-   font-size: 18px; }
+   font-size: 22px; }
 
 .md-content h4 {
-   font-size: 16px; }
+   font-size: 18px; }
 
 .md-content h5 {
-   font-size: 14px; }
+   font-size: 16px; }
 
 .md-content h6 {
    /*color: #777777;*/
