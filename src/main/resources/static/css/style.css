@@ -1374,10 +1374,11 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .content-update {
-  font-size: 13px;
+  margin: 20px 0px;
+  font-size: 14px;
   font-weight: 600;
   text-align: right;
-  color: grey;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 /*======================= Form Validation ===================*/
 .alert-wrapper {
