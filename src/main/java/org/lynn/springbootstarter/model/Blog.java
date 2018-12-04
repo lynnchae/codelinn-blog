@@ -26,4 +26,6 @@ public class Blog extends Entity {
 
     private Integer likes;
 
+    private Integer done;
+
 }

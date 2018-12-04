@@ -229,6 +229,8 @@
                             <li class="tag"><a href="javascript:;" th:onclick="'javascript:tagIt(\''+${blog.tags}+'\')'"   th:text="${blog.tags}"></a></li>
                             <li class="date"><a th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></a>
                             </li>
+                            <li th:if= "${blog.done} eq 0"><a><i class="fas fa-sync-alt fa-spin"></i> </a>
+                            </li>
                         </ul>
                         <h4 class="title"><a href="blog.html" th:href="@{'/blog/'+${blog.id}+'/b'}"
                                              th:text="${blog.title}"></a></h4>

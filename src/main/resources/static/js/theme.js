@@ -494,22 +494,42 @@ function tagIt(tag){
             var totalHtml = '';
             for (var i = 0; i < jsonData.length; i++) {
                 var d = jsonData[i];
-                console.info(d);
-                var html = '<div class="single-blog-post">\n' +
-                    '    <div class="image-box"></div>\n' +
-                    '    <div class="post-meta-box bg-box">\n' +
-                    '        <ul class="author-meta clearfix">\n' +
-                    '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
-                    '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
-                    '            </li>\n' +
-                    '        </ul>\n' +
-                    '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
-                    '        <ul class="share-meta clearfix">\n' +
-                    '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
-                    '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
-                    '        </ul>\n' +
-                    '    </div> \n' +
-                    '</div>';
+                var html;
+                if(d.done ==1){
+                    var html = '<div class="single-blog-post">\n' +
+                        '    <div class="image-box"></div>\n' +
+                        '    <div class="post-meta-box bg-box">\n' +
+                        '        <ul class="author-meta clearfix">\n' +
+                        '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
+                        '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
+                        '            </li>\n' +
+                        '        </ul>\n' +
+                        '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
+                        '        <ul class="share-meta clearfix">\n' +
+                        '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
+                        '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
+                        '        </ul>\n' +
+                        '    </div> \n' +
+                        '</div>';
+                }else{
+                    html = '<div class="single-blog-post">\n' +
+                        '    <div class="image-box"></div>\n' +
+                        '    <div class="post-meta-box bg-box">\n' +
+                        '        <ul class="author-meta clearfix">\n' +
+                        '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
+                        '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
+                        '            </li>\n' +
+                        '<li ><a><i class="fas fa-cog fa-spin"></i> </a></li>\n' +
+                        '        </ul>\n' +
+                        '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
+                        '        <ul class="share-meta clearfix">\n' +
+                        '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
+                        '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
+                        '        </ul>\n' +
+                        '    </div> \n' +
+                        '</div>';
+                }
+
                 totalHtml += html;
             }
             $('#blog-outline').html(totalHtml);
@@ -712,21 +732,42 @@ function searchfor(obj){
                 var totalHtml = '';
                 for (var i = 0; i < jsonData.length; i++) {
                     var d = jsonData[i];
-                    var html = '<div class="single-blog-post">\n' +
-                        '    <div class="image-box"></div>\n' +
-                        '    <div class="post-meta-box bg-box">\n' +
-                        '        <ul class="author-meta clearfix">\n' +
-                        '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
-                        '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
-                        '            </li>\n' +
-                        '        </ul>\n' +
-                        '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
-                        '        <ul class="share-meta clearfix">\n' +
-                        '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
-                        '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
-                        '        </ul>\n' +
-                        '    </div> \n' +
-                        '</div>';
+                    var html;
+                    if(d.done == 1){
+                        html = '<div class="single-blog-post">\n' +
+                            '    <div class="image-box"></div>\n' +
+                            '    <div class="post-meta-box bg-box">\n' +
+                            '        <ul class="author-meta clearfix">\n' +
+                            '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
+                            '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
+                            '            </li>\n' +
+                            '<li ><a><i class="fas fa-cog fa-spin"></i> </a></li>\n' +
+                            '        </ul>\n' +
+                            '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
+                            '        <ul class="share-meta clearfix">\n' +
+                            '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
+                            '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
+                            '        </ul>\n' +
+                            '    </div> \n' +
+                            '</div>';
+                    }else{
+                        html = '<div class="single-blog-post">\n' +
+                            '    <div class="image-box"></div>\n' +
+                            '    <div class="post-meta-box bg-box">\n' +
+                            '        <ul class="author-meta clearfix">\n' +
+                            '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
+                            '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
+                            '            </li>\n' +
+                            '        </ul>\n' +
+                            '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
+                            '        <ul class="share-meta clearfix">\n' +
+                            '        <li><i class="icon flaticon-comment"> 评论 ('+ d.comments +')</i></li>'+
+                            '            <li><a href="javascript:;" onclick="javascript:likeIt('+ d.id +',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 ('+ d.likes +')</i></a></li>\n' +
+                            '        </ul>\n' +
+                            '    </div> \n' +
+                            '</div>';
+                    }
+
                     totalHtml += html;
                 }
                 $('#blog-outline').html(totalHtml);

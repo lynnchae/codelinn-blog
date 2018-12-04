@@ -26,6 +26,7 @@
         <!-- Theme-Color css -->
         <link rel="stylesheet" id="jssDefault" th:href="@{/css/color.css}">
         <link id="linkstyle" rel='stylesheet' th:href="@{/css/markdown.css}"/>
+        <link th:href="@{/css/select-mania.min.css}" rel="stylesheet" type="text/css">
         <!-- Fix Internet Explorer ______________________________________-->
         <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,6 +45,10 @@
                                 <input type="text" name="tags" placeholder="Tag" th:value="${blog?.tags}"  autofocus>
                                 <input type="text" name="id" hidden th:value="${blog?.id}"  autofocus>
                                 <input type="password" name="password" placeholder="password" autofocus>
+                                <select class="select" name="done" th:field="${blog.done}" th:value="${blog?.done}">
+                                    <option th:selected="${blog?.done eq 0}" value="0">未完</option>
+                                    <option th:selected="${blog?.done eq 1}" value="1">完成</option>
+                                </select>
                                 <div id="md-editor">
                                     <textarea style="display:none;" name="content" class="editormd-html-textarea"
                                               id="editormd" th:text="${blog?.content}"  > </textarea>
@@ -111,8 +116,13 @@
 
             <!-- Theme js -->
             <script th:src="@{/js/theme.min.js}"></script>
+            <script type="text/javascript" th:src="@{/js/select-mania.min.js}"></script>
             <!--<script th:src="@{/fonts/font-awesome/fontawesome-all.min.js}"></script>-->
             <script type="text/javascript">
+
+                $('.select').selectMania({
+                    themes: ['green']
+                });
                 var mdeditor;
                 $(function () {
                     mdeditor = editormd("md-editor", {

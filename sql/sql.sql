@@ -100,3 +100,5 @@ update t_comment a left join t_visitor b on a.commenter=b.name set a.commenter_i
 alter table t_visitor drop column email;
 
 alter table t_comment change commenter_id visitor_id INT(11);
+
+alter table t_blog add `done` tinyint(1) not null default '1' comment '是否完成' after content;

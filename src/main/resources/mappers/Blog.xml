@@ -5,7 +5,7 @@
     </resultMap>
 
     <select id="getUserBlogs" resultMap="resultMap">
-        select id,user_id,title,tags,likes,create_time,content
+        select id,user_id,title,tags,likes,done,create_time,content
         from t_blog
         where user_id=#{userId}
         order by create_time desc
@@ -16,7 +16,7 @@
     </select>
 
     <select id="searchUserBlogs" resultMap="resultMap">
-        select id,user_id,title,tags,likes,create_time,content
+        select id,user_id,title,tags,likes,done,create_time,content
         from t_blog
         where user_id=#{userId}
         and title like concat('%',#{word},'%')

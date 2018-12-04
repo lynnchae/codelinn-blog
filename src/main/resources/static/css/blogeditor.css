@@ -62,7 +62,6 @@ body .theme-button-one:hover {
     height: 100px;
     top: calc(50% - 50px);
     left: calc(50% - 150px);
-    background: rgba(255, 255, 255, 0.8);
     text-align: center;
     border-radius: 20px;
 }
@@ -131,7 +130,11 @@ form input {
     display: block;
 }
 
-input:focus {border-bottom-color:#0366D6;}
+input:focus {
+    border: 2px solid #0366D6;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075), 0 0 0 0.2em rgba(3,102,214,.3);
+    outline: none;
+}
 input {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
 input {
     width: 100%;
@@ -141,4 +144,34 @@ input {
     letter-spacing: 1px;
     margin-bottom: 35px;
     font-size: 13px;
+}
+
+/*form select {*/
+    /*height: 35px;*/
+    /*padding: 0 15px;*/
+    /*font-size: 15px;*/
+    /*border:1px solid #f1f1f1;*/
+    /*border-radius: 7px;*/
+    /*margin:10px auto;*/
+    /*box-shadow: 1px 1px 0px 0px #efefff;*/
+    /*display: block;*/
+    /*-webkit-appearance:none;*/
+    /*-moz-appearance:none;*/
+    /*appearance:none;*/
+/*}*/
+
+option {
+    height: 35px;
+    padding: 0 15px;
+    font-size: 15px;
+    border:1px solid #f1f1f1;
+    border-radius: 7px;
+    margin:10px auto;
+    box-shadow: 1px 1px 0px 0px #efefff;
+    display: block;
+
+}
+
+form select:focus{
+    border: 2px solid #0366D6;
 }
