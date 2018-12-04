@@ -109,12 +109,6 @@ public class BlogController {
         Node document = parser.parse(b.getContent());
         String html = renderer.render(document);
         b.setContent(html);
-        /**
-         * pegdown模式
-         * */
-//        PegDownProcessor pdp = new PegDownProcessor(Integer.MAX_VALUE);
-//        b.setContent(pdp.markdownToHtml(b.getContent()));
-
         model.addAttribute("blog", b);
         List<CommentVO> comments = commentService.queryCommentVO(id, 0L);
         List<BlogCommentsDto> bcomments = new ArrayList<>();

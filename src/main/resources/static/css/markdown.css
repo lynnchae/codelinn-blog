@@ -114,8 +114,23 @@
 .md-content li {
    margin: 0; }
 .md-content ul,.md-content ol {
-   padding-left: 30px;
+   padding-left: 15px;
    list-style-type: disc ;
+   margin: 2px 0px;
+}
+
+/*.md-content ol{list-style-type:none;counter-reset: sectioncounter;}*/
+/*.md-content ol>li:before{*/
+   /*content:counter(sectioncounter) ". ";*/
+   /*counter-increment: sectioncounter;*/
+   /*list-style-position: inside;*/
+
+/*}*/
+
+.md-content ol{list-style-type:decimal;}
+.md-content ol>li:before{
+   list-style-position: inside;
+
 }
 
 .md-content ul :first-child,.md-content ol :first-child {
