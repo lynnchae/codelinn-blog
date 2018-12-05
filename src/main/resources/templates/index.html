@@ -22,10 +22,6 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
     <!-- Theme-Color css -->
     <link rel="stylesheet" id="jssDefault" href="css/color.css">
-    <!-- fontawesome -->
-    <link rel="stylesheet"  href="css/fontawesome.min.css">
-
-
     <!-- Fix Internet Explorer ______________________________________-->
 
     <!--[if lt IE 9]>
@@ -111,7 +107,7 @@
                 <div class="ms-slide" data-delay="25" data-fill-mode="fill">
                     <img class="ms-layer"
                          src="images/blank.gif"
-                         data-src="images/home/a7.jpg"
+                         th:attr="data-src=${pic1}"
                          alt=""
                          style=""
                          data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
@@ -167,7 +163,7 @@
                 <div class="ms-slide" data-delay="25" data-fill-mode="fill">
                     <img class="ms-layer"
                          src="images/blank.gif"
-                         data-src="images/home/a6.jpg"
+                         th:attr="data-src=${pic2}"
                          alt=""
                          style=""
                          data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
