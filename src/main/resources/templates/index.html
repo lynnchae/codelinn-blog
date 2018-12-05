@@ -275,11 +275,42 @@
                         <div class="search-div">
                             <input type="word" required>
                             <a href="javascript:void(0);" onclick="searchfor(this)"> <i class="fas fa-search"></i></a>
-
                         </div>
-
                     </form>
                 </div> <!-- /.sidebar-newsletter -->
+
+                <div class="sidebar-box bg-box sidebar-tags">
+                    <h6 class="sidebar-title">标签</h6>
+                    <ul class="clearfix" >
+                        <li th:each="tag:${tags}"><a href="javascript:;"
+                                                     th:onclick="'javascript:tagIt(\''+${tag}+'\')'"  th:text="${tag}"></a></li>
+                    </ul>
+                </div> <!-- /.sidebar-tags -->
+
+                <div class="sidebar-box bg-box sidebar-trending-post">
+                    <h6 class="sidebar-title">更新日志</h6>
+                    <div class="single-trending-post clearfix">
+                        <!--<img src="images/blog/5.jpg" alt="" class="float-left">-->
+                        <div class="post float-left">
+                            <h6><a ><i class="fa fa-angle-right"></i> 首页图片随机展现（2018-12-04）</a></h6>
+                            <ul>
+                                <!--<li class="tag">16 march</li>-->
+                                <!--<li class="date">16 march</li>-->
+                            </ul>
+                        </div> <!-- /.post -->
+                    </div> <!-- /.single-trending-post -->
+                    <div class="single-trending-post clearfix">
+                        <!--<img src="images/blog/5.jpg" alt="" class="float-left">-->
+                        <div class="post float-left">
+                            <h6><a ><i class="fa fa-angle-right"></i> 更新中的文章有动态图标标识（2018-12-05）</a></h6>
+                            <ul>
+                                <!--<li class="tag">16 march</li>-->
+                                <!--<li class="date">16 march</li>-->
+                            </ul>
+                        </div> <!-- /.post -->
+                    </div> <!-- /.single-trending-post -->
+                </div> <!-- /.sidebar-trending-post -->
+
                 <div class="sidebar-box bg-box about-me">
                     <h6 class="sidebar-title">关于 我</h6>
                      <img class="head" src="images/home/1.jpeg" alt="">
@@ -289,14 +320,7 @@
                     <div class="clearfix">
                         <!-- <img src="images/home/sign.png" alt="" class="signature float-right"> --></div>
                 </div> <!-- /.about-me -->
-                <div class="sidebar-box bg-box sidebar-tags">
-                    <h6 class="sidebar-title">标签</h6>
-                    <ul class="clearfix" >
-                        <li th:each="tag:${tags}"><a href="javascript:;"
-                               th:onclick="'javascript:tagIt(\''+${tag}+'\')'"  th:text="${tag}"></a></li>
 
-                    </ul>
-                </div> <!-- /.sidebar-tags -->
 
             </div> <!-- /.theme-main-sidebar -->
         </div> <!-- /.row -->
