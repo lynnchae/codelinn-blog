@@ -742,7 +742,7 @@ body .theme-button-one:hover {background: #fff;}
   padding-left: 20px;
   margin-bottom: 10px;
 }
-.theme-main-sidebar .sidebar-title:first-letter {font-size: 16px;}
+.theme-main-sidebar .sidebar-title:first-letter {font-size: 18px;}
 .theme-main-sidebar .sidebar-title:before {
   content: '';
   width: 6px;
@@ -782,8 +782,13 @@ body .theme-button-one:hover {background: #fff;}
 .theme-main-sidebar .sidebar-trending-post .single-trending-post .post h6 a {
   font-weight: 600;
   line-height: 25px;
-  color: #333333;
+  color: #4f4f4f;
   margin: 0 0 8px 0;
+}
+
+.theme-main-sidebar .sidebar-trending-post .single-trending-post .post span {
+  margin-left: 15px;
+  border-bottom: 1px dashed #0366d6;
 }
 .theme-main-sidebar .sidebar-trending-post .single-trending-post .post ul li {display: inline-block;line-height: 15px;}
 .theme-main-sidebar .sidebar-trending-post .single-trending-post .post ul li.tag {

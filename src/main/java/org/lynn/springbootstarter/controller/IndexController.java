@@ -2,6 +2,7 @@ package org.lynn.springbootstarter.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.lynn.springbootstarter.controller.dto.BlogDto;
+import org.lynn.springbootstarter.dao.UpdateLogDao;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
 import org.lynn.springbootstarter.service.BlogService;
@@ -63,6 +64,9 @@ public class IndexController {
     @Autowired
     private CommentService commentService;
 
+    @Resource
+    private UpdateLogDao updateLogDao;
+
     @RequestMapping("/")
     public String index(@RequestParam(required = false) String tag, Model model) {
         Blog b = new Blog();
@@ -81,6 +85,7 @@ public class IndexController {
             fileNameIndex2 = new Random().nextInt(rollingPicUlrs.size());
         }
         model.addAttribute("pic2", rollingPicUlrs.get(fileNameIndex2));
+        model.addAttribute("updatelogs",updateLogDao.getRecent10Updatelog());
         return "index";
     }
 

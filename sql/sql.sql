@@ -102,3 +102,15 @@ alter table t_visitor drop column email;
 alter table t_comment change commenter_id visitor_id INT(11);
 
 alter table t_blog add `done` tinyint(1) not null default '1' comment '是否完成' after content;
+
+-----20181205
+
+CREATE TABLE t_update_log (
+`id` INT(11) NOT NULL AUTO_INCREMENT,
+`detail` VARCHAR(255) DEFAULT '' COMMENT '日志详情',
+`create_time` DATETIME DEFAULT CURRENT_TIMESTAMP NULL ,
+`create_user` VARCHAR(32) NULL ,
+`update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL ,
+`update_user` VARCHAR(32) NULL ,
+PRIMARY KEY (`id`)
+) ENGINE=INNODB COMMENT='更新日志表'  DEFAULT CHARSET=utf8;
