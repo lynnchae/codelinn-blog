@@ -789,6 +789,8 @@ body .theme-button-one:hover {background: #fff;}
 .theme-main-sidebar .sidebar-trending-post .single-trending-post .post span {
   margin-left: 15px;
   border-bottom: 1px dashed #0366d6;
+  font-size: 14px;
+  font-weight: 500;
 }
 .theme-main-sidebar .sidebar-trending-post .single-trending-post .post ul li {display: inline-block;line-height: 15px;}
 .theme-main-sidebar .sidebar-trending-post .single-trending-post .post ul li.tag {
@@ -809,12 +811,13 @@ body .theme-button-one:hover {background: #fff;}
 .theme-main-sidebar .sidebar-tags ul li {float: left;padding: 4px 4px;margin-bottom: 8px;}
 .theme-main-sidebar .sidebar-tags ul li a {
   line-height: 30px;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: uppercase;
   color: #868686;
   letter-spacing: 0.8px;
   padding: 0 15px;
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1.5px solid #f1f1f1;
+  border-radius: 7px;
 }
 .theme-main-sidebar .sidebar-tags ul li a:hover {color: #fff;}
 .theme-main-sidebar .sidebar-newsletter form input {
