@@ -128,7 +128,7 @@
 .select-mania {
 	display:inline-block;
 	position:relative;
-	width:25%;
+	width:50%;
 	margin:auto;
 	background:white;
 	vertical-align:middle;
@@ -138,6 +138,8 @@
 	z-index: 999;
 	margin-bottom: 10px;
 }
+
+
 
 .select-mania,
 .select-mania *, 

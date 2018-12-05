@@ -11,7 +11,7 @@
 		//default settings values
 		defaults: {
 			//style
-			width: '25%',
+			width: '50%',
 			size: 'medium',
 			themes: [],
 			//texts
