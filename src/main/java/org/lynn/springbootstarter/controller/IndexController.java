@@ -41,6 +41,9 @@ public class IndexController {
         String url4 = "https://ws2.sinaimg.cn/large/006tNbRwgy1fxvr2j61kxj32080goapd.jpg";
         String url5 = "https://ws1.sinaimg.cn/large/006tNbRwgy1fxvr2uw6rqj32080goq6x.jpg";
         String url8 = "https://ws1.sinaimg.cn/large/006tNbRwgy1fxvr3297xrj32080godp5.jpg";
+        String url9 = "https://ws1.sinaimg.cn/large/006tNbRwgy1fxvtxqtaxwj32080go1e2.jpg";
+        String url10 = "https://ws3.sinaimg.cn/large/006tNbRwgy1fxvu3di59oj32080go7h9.jpg";
+        String url12 ="https://ws3.sinaimg.cn/large/006tNbRwgy1fxvu9npm7gj32080go19s.jpg";
         rollingPicUlrs.add(url1);
         rollingPicUlrs.add(url2);
         rollingPicUlrs.add(url3);
@@ -49,6 +52,9 @@ public class IndexController {
         rollingPicUlrs.add(url6);
         rollingPicUlrs.add(url7);
         rollingPicUlrs.add(url8);
+        rollingPicUlrs.add(url9);
+        rollingPicUlrs.add(url10);
+        rollingPicUlrs.add(url12);
     }
 
     @Resource
@@ -68,11 +74,11 @@ public class IndexController {
         SearchController.copyBlogAndCountComment(list, blogs, c, commentService);
         model.addAttribute("blogs", blogs);
         model.addAttribute("tags", blogService.getTags());
-        Integer fileNameIndex1 = new Random().nextInt(8);
+        Integer fileNameIndex1 = new Random().nextInt(rollingPicUlrs.size());
         model.addAttribute("pic1", rollingPicUlrs.get(fileNameIndex1));
-        Integer fileNameIndex2 = new Random().nextInt(8);
+        Integer fileNameIndex2 = new Random().nextInt(rollingPicUlrs.size());
         while (fileNameIndex1 == fileNameIndex2) {
-            fileNameIndex2 = new Random().nextInt(8);
+            fileNameIndex2 = new Random().nextInt(rollingPicUlrs.size());
         }
         model.addAttribute("pic2", rollingPicUlrs.get(fileNameIndex2));
         return "index";
