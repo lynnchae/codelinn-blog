@@ -68,11 +68,11 @@ public class IndexController {
         SearchController.copyBlogAndCountComment(list, blogs, c, commentService);
         model.addAttribute("blogs", blogs);
         model.addAttribute("tags", blogService.getTags());
-        Integer fileNameIndex1 = new Random().nextInt(8) + 1;
+        Integer fileNameIndex1 = new Random().nextInt(8);
         model.addAttribute("pic1", rollingPicUlrs.get(fileNameIndex1));
-        Integer fileNameIndex2 = new Random().nextInt(8) + 1;
+        Integer fileNameIndex2 = new Random().nextInt(8);
         while (fileNameIndex1 == fileNameIndex2) {
-            fileNameIndex2 = new Random().nextInt(8) + 1;
+            fileNameIndex2 = new Random().nextInt(8);
         }
         model.addAttribute("pic2", rollingPicUlrs.get(fileNameIndex2));
         return "index";
