@@ -636,7 +636,7 @@
   height: 32px;
   margin-left: 8px;
   position: relative;
-  display: inline-block;
+  display: none;
 }
 .editormd-file-input input[type="file"] {
   width: 75px;

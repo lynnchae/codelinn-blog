@@ -70,8 +70,7 @@
             "h1", "h2", "h3", "h4", "h5", "h6", "|", 
             "list-ul", "list-ol", "hr", "|",
             "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
-            "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
-            "help", "info"
+            "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|"
         ],
         simple : [
             "undo", "redo", "|", 
@@ -162,7 +161,7 @@
         atLink               : true,           // for @link
         emailLink            : true,           // for email address auto link
         taskList             : false,          // Enable Github Flavored Markdown task lists
-        emoji                : false,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
+        emoji                : true,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
                                                // Support FontAwesome icon emoji :fa-xxx: > Using fontAwesome icon web fonts;
                                                // Support Editor.md logo icon emoji :editormd-logo: :editormd-logo-1x: > 1~8x;
         tex                  : false,          // TeX(LaTeX), based on KaTeX
@@ -2601,7 +2600,8 @@
          */
         
         fullscreen : function() {
-            $('#backhome').css("display","none");
+            $('.back-to-home').css("display","none");
+            // $('#back-to-home').removeClass("fixed");
             var _this            = this;
             var state            = this.state;
             var editor           = this.editor;
@@ -2613,6 +2613,8 @@
             if (toolbar) {
                 toolbar.find(".fa[name=fullscreen]").parent().toggleClass("active"); 
             }
+
+            $(".select-mania").css('display','none');
             
             var escHandle = function(event) {
                 if (!event.shiftKey && event.keyCode === 27) 
@@ -2658,7 +2660,7 @@
          */
         
         fullscreenExit : function() {
-            $('#backhome').css("display","block");
+            $('.back-to-home').css("display","block");
             var editor            = this.editor;
             var settings          = this.settings;
             var toolbar           = this.toolbar;
@@ -2669,6 +2671,7 @@
             if (toolbar) {
                 toolbar.find(".fa[name=fullscreen]").parent().removeClass("active"); 
             }
+            $(".select-mania").css('display','block');
 
             $("html,body").css("overflow", "");
 
@@ -3365,7 +3368,7 @@
 
     // Emoji graphics files url path
     editormd.emoji     = {
-        path  : "http://www.emoji-cheat-sheet.com/graphics/emojis/",
+        path  : "https://www.webpagefx.com/tools/emoji-cheat-sheet/graphics/emojis/",
         ext   : ".png"
     };
 
@@ -3449,15 +3452,15 @@
                         var emdlogoMathcs = $1.match(editormdLogoReg);
                         var twemojiMatchs = $1.match(twemojiReg);
 
-                        if (emdlogoMathcs)                                        
-                        {                            
+                        if (emdlogoMathcs)
+                        {
                             for (var x = 0, len2 = emdlogoMathcs.length; x < len2; x++)
                             {
                                 var logoName = emdlogoMathcs[x].replace(/:/g, "");
                                 return "<i class=\"" + logoName + "\" title=\"Editor.md logo (" + logoName + ")\"></i>";
                             }
                         }
-                        else if (twemojiMatchs) 
+                        else if (twemojiMatchs)
                         {
                             for (var t = 0, len3 = twemojiMatchs.length; t < len3; t++)
                             {
