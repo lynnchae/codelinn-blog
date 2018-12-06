@@ -523,7 +523,7 @@ function tagIt(tag){
                         '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
                         '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
                         '            </li>\n' +
-                        '<li ><a><i class="fas fa-sync-alt fa-spin"></i> </a></li>\n' +
+                        '<li ><a><i class="fas fa-spinner fa-spin"></i> </a></li>\n' +
                         '        </ul>\n' +
                         '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
                         '        <ul class="share-meta clearfix">\n' +
@@ -745,7 +745,7 @@ function searchfor(obj){
                             '            <li class="tag"><a href="#">'+ d.tags +'</a></li>\n' +
                             '            <li class="date"><a href="#">'+ d.createTime +'</a>\n' +
                             '            </li>\n' +
-                            '<li ><a><i class="fas fa-sync-alt fa-spin"></i> </a></li>\n' +
+                            '<li ><a><i class="fas fa-spinner fa-spin"></i> </a></li>\n' +
                             '        </ul>\n' +
                             '        <h4 class="title"><a href="/blog/' + d.id + '/b">'+d.title+'</a></h4>\n' +
                             '        <ul class="share-meta clearfix">\n' +
