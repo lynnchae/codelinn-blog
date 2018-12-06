@@ -14,11 +14,15 @@
         // -------------------- Navigation Scroll
         $(window).scroll(function () {
             var sticky = $('.theme-main-header'),
-                scroll = $(window).scrollTop(), stickyBackHome = $('.back-to-home')
+                scroll = $(window).scrollTop(), stickyBackHome = $('#blogdetail-backhome'),stickyBackHomeA = $('#backhome-a');
             if (scroll >= 100) {
                 sticky.addClass('fixed');
+                stickyBackHome.removeClass("fixed");
+                stickyBackHomeA.css("display","none");
             } else {
+                stickyBackHome.addClass("fixed");
                 sticky.removeClass('fixed');
+                stickyBackHomeA.css("display","block");
             }
         });
 
