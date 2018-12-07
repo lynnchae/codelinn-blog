@@ -1483,7 +1483,7 @@ body .theme-button-one:hover {background: #fff;}
   position: fixed;
   top:70px;
   z-index: 999;
-  left:-220px;
+  left:-250px;
   -webkit-transition: all .4s ease-in-out;
      -moz-transition: all .4s ease-in-out;
       -ms-transition: all .4s ease-in-out;
@@ -1491,7 +1491,7 @@ body .theme-button-one:hover {background: #fff;}
           transition: all .4s ease-in-out;
 }
 .switcher .switch-menu {
-  width:220px;
+  width:250px;
   background: #3e3e3e;
   position: relative;
   padding-bottom: 20px;
@@ -1499,15 +1499,16 @@ body .theme-button-one:hover {background: #fff;}
 .switcher.switcher-show {
   left:0;
 }
-.switcher .switch-menu .switcher-container {padding: 0 10px;}
+/*.switcher .switch-menu .switcher-container {padding: 0 10px;}*/
 .switcher .switch-menu h5.title {
   margin:0 0 10px 0;
   line-height: 35px;
   text-align: center;
-  font-size:14px;
+  font-size:17px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color:#fff;
+  font-weight: 500;
 }
 .switcher .switch-menu .switcher-container h5 {
   color:#fff;
@@ -1547,6 +1548,7 @@ body .theme-button-one:hover {background: #fff;}
   color: #fff;
   margin-top: 5px;
   font-weight: normal;
+  font-size: 17px;
 }
 .switcher .theme-demo li a {border: 1px solid rgba(255,255,255,0.6);}
 
@@ -1712,4 +1714,55 @@ body .theme-button-one:hover {background: #fff;}
   position: absolute;
   left:0px;
   margin-left:5px;
+}
+
+/** toc **/
+.toc-div {
+  background-clip: padding-box;
+  border-radius: 4px;
+  /*float: left;*/
+  font-size: 15px;
+  list-style: none outside none;
+  margin: 2px 0 0;
+  min-width: 160px;
+  position: absolute;
+  padding: 5px 0 20px;
+  top: 100%;
+  z-index: 1000;
+}
+
+.table-of-contents {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 450px;
+  padding: 5px 5px;
+}
+
+.toc>ul{
+  margin:0;
+}
+.toc ul{
+  margin-left: 15px;
+  list-style-type: none;
+}
+
+.toc ul ul,.toc ul ol,.toc ol ol,.toc ol ul{
+  margin-bottom: 0;
+}
+
+.toc li{
+  line-height: 25px;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.toc a{
+  color: #FFFFFF;
+  font-size: 16px;
+}
+.toc a:hover{
+  color:#0366d6;
+}
+
+.table-of-contents::-webkit-scrollbar {
+  display: none;
 }

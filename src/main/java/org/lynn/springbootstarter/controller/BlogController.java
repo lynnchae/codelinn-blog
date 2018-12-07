@@ -8,10 +8,14 @@ import com.vladsch.flexmark.ext.emoji.EmojiShortcutType;
 import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
 import com.vladsch.flexmark.ext.gfm.tasklist.TaskListExtension;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.ext.toc.TocExtension;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.lynn.springbootstarter.common.ResultEntity;
 import org.lynn.springbootstarter.controller.dto.BlogCommentsDto;
 import org.lynn.springbootstarter.controller.dto.BlogDto;
@@ -50,6 +54,8 @@ public class BlogController {
 
     private static Parser parser;
 
+    private static String toc_option = "[TOC levels=1-4,html] \n";
+
     static {
         MutableDataSet options = new MutableDataSet()
                 .set(Parser.LISTS_ORDERED_LIST_MANUAL_START, true)
@@ -58,7 +64,8 @@ public class BlogController {
                         EmojiExtension.create(),
                         StrikethroughExtension.create(),
                         TaskListExtension.create(),
-                        TablesExtension.create()))
+                        TablesExtension.create(),
+                        TocExtension.create()))
                 .set(TablesExtension.WITH_CAPTION, false)
                 .set(TablesExtension.COLUMN_SPANS, false)
                 .set(TablesExtension.MIN_HEADER_ROWS, 1)
@@ -67,7 +74,10 @@ public class BlogController {
                 .set(TablesExtension.DISCARD_EXTRA_COLUMNS, true)
                 .set(TablesExtension.HEADER_SEPARATOR_COLUMN_MATCH, true)
                 .set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.GITHUB)
-                .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.IMAGE_ONLY);
+                .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.IMAGE_ONLY)
+                .set(TocExtension.LEVELS,4)
+                .set(TocExtension.IS_TEXT_ONLY,true)
+                .set(TocExtension.LIST_CLASS,"ul-class");
         options.setFrom(ParserEmulationProfile.MARKDOWN);
         parser = Parser.builder(options).build();
         renderer = HtmlRenderer.builder(options).build();
@@ -106,6 +116,11 @@ public class BlogController {
     @RequestMapping("/{id}/b")
     public String getUserBlogs(@PathVariable Long id, Model model) {
         Blog b = blogService.getById(id);
+        StringBuffer tocedContent = new StringBuffer(toc_option).append(b.getContent());
+        Node tocDocument = parser.parse(tocedContent.toString());
+        String tocHtml = renderer.render(tocDocument);
+        Document doc = Jsoup.parse(tocHtml);
+        Elements toc = doc.select("ul.ul-class");
         Node document = parser.parse(b.getContent());
         String html = renderer.render(document);
         b.setContent(html);
@@ -119,6 +134,7 @@ public class BlogController {
             bcomments.add(bc);
         }
         model.addAttribute("comments", bcomments);
+        model.addAttribute("toc",toc.toString());
         return "blog";
     }
 
