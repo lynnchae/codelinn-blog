@@ -17,12 +17,28 @@
                 scroll = $(window).scrollTop(), stickyBackHome = $('#blogdetail-backhome'),stickyBackHomeA = $('#backhome-a');
             if (scroll >= 100) {
                 sticky.addClass('fixed');
+                stickyBackHome.addClass("fixed");
+                stickyBackHomeA.css("display","block");
+            } else {
+                sticky.removeClass('fixed');
                 stickyBackHome.removeClass("fixed");
                 stickyBackHomeA.css("display","none");
-            } else {
-                stickyBackHome.addClass("fixed");
-                sticky.removeClass('fixed');
-                stickyBackHomeA.css("display","block");
+            }
+            var commentArea = $('.comment-area-head');
+            if(commentArea){
+                var maxoffset = commentArea.offset().top;
+                var midoffset = maxoffset - 100;
+                if((maxoffset - scroll)>= 60 && (maxoffset-scroll) < midoffset){
+                    stickyBackHome.removeClass("fixed");
+                    stickyBackHomeA.css("display","none");
+                }else{
+                    stickyBackHome.addClass("fixed");
+                    stickyBackHomeA.css("display","block");
+                }
+                if(Math.abs(scroll+$(window).height()-$(document).height()) <= 5 ){
+                    stickyBackHome.addClass("fixed");
+                    stickyBackHomeA.css("display","block");
+                }
             }
         });
 
