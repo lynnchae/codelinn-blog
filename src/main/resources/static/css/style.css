@@ -547,7 +547,8 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 
-.blog-grid-style .single-blog-post .share-meta {margin: 0 -15px;}
+.blog-grid-style .single-blog-post .share-meta {margin: 0 -15px;
+  height: 50px}
 .blog-grid-style .single-blog-post .share-meta>li {
   float: left;
   padding: 0 15px;

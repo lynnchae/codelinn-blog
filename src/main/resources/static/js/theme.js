@@ -25,7 +25,7 @@
                 stickyBackHomeA.css("display","none");
             }
             var commentArea = $('.comment-area-head');
-            if(commentArea){
+            if(commentArea.length){
                 var maxoffset = commentArea.offset().top;
                 var midoffset = maxoffset - 100;
                 if((maxoffset - scroll)>= 60 && (maxoffset-scroll) < midoffset){

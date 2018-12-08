@@ -282,23 +282,25 @@
 
                 <div class="sidebar-box bg-box sidebar-trending-post">
                     <h6 class="sidebar-title">更新日志</h6>
-                    <div class="single-trending-post clearfix" th:each="log:${updatelogs}">
-                        <!--<img src="images/blog/5.jpg" alt="" class="float-left">-->
-                        <div class="post ">
-                            <h6>
-                                <div class="div-angle">
-                                    <i style="color:#0366d6" class="fa fa-caret-right"></i>
-                                </div>
-                                <div class="div-detail">
-                                    <h7 th:text="${log.detail}+' （'+${#dates.format(log.createTime, 'yyyy-MM-dd')}+'）'" ></h7>
-                                </div>
-                            </h6>
-                            <ul>
-                                <!--<li class="tag">16 march</li>-->
-                                <!--<li class="date">16 march</li>-->
-                            </ul>
-                        </div> <!-- /.post -->
-                    </div> <!-- /.single-trending-post -->
+                    <div>
+                        <div class="single-trending-post clearfix" th:each="log:${updatelogs}">
+                            <!--<img src="images/blog/5.jpg" alt="" class="float-left">-->
+                            <div class="post ">
+                                <h6>
+                                    <div class="div-angle">
+                                        <i style="color:#0366d6" class="fa fa-caret-right"></i>
+                                    </div>
+                                    <div class="div-detail">
+                                        <h7 th:text="${log.detail}+' （'+${#dates.format(log.createTime, 'yyyy-MM-dd')}+'）'" ></h7>
+                                    </div>
+                                </h6>
+                                <ul>
+                                    <!--<li class="tag">16 march</li>-->
+                                    <!--<li class="date">16 march</li>-->
+                                </ul>
+                            </div> <!-- /.post -->
+                        </div> <!-- /.single-trending-post -->
+                    </div>
                 </div> <!-- /.sidebar-trending-post -->
 
                 <div class="sidebar-box bg-box about-me">
