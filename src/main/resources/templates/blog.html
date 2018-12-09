@@ -94,11 +94,11 @@
         About Me Wrapper
     ==================================================== -->
     <div id="blogdetail" class="user-blog">
-        <div id="blogdetail-backhome" class="back-to-home fixed"><a id="backhome-a" href="/"><i class="flaticon-left-arrow"></i> HOME</a></div>
+        <div id="blogdetail-backhome" class="back-to-home fixed"><a id="backhome-a" href="/"><i class="fas fa-angle-double-left"></i> HOME</a></div>
         <div class="main-text-wrapper">
             <div class="container blog-container">
                 <div style="padding-top: 55px">
-                    <h2 align="center" style="word-break: break-word" th:text="${blog.title}"></h2>
+                    <h2 align="center" style="word-break: break-word;font-family: 'Lato';" th:text="${blog.title}"></h2>
                     <p class="content-update" th:utext="'<b class=\'fab fa-markdown\'></b>  '+${#dates.format(blog.updateTime,'yyyy.MM.dd HH:mm')}"></p>
                     <div id="blog-main-content" class="md-content" th:utext="${blog.content}"></div>
                 </div>

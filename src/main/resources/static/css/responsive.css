@@ -39,7 +39,7 @@
   .blog-fullwidth-post .single-blog-post {margin-bottom: 40px;}
   .blog-image-cover-post .grid-item-double.grid-item {width: 100%;}
   .blog-full-width {padding: 0;}
-} 
+}
 /*(max-width: 991px)*/
 
 @media (min-width: 768px) and (max-width: 991px) {

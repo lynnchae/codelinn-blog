@@ -37,6 +37,10 @@ Developed:      heloshape (http://heloshape.com/)
 * Importing necessary  Styles.
 **/
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import url('https://fonts.font.im/css?family=Ubuntu:300,400,500,700');
+@import url('https://fonts.font.im/css?family=Josefin+Sans:400,300,600,700');
+@import url('https://fonts.font.im/css?family=Lato:400,300,700');
+@import url('https://fonts.font.im/css?family=Damion');
 /*----bootstrap css ----- */
 @import url('../vendor/bootstrap/css/bootstrap.min.css');
 /*---- Master Slider ---*/
@@ -111,16 +115,16 @@ animation-delay: .8s;
 
 /*==================== Click Top ====================*/
 .scroll-top {
-  width:22px;
-  height:22px;
+  width:25px;
+  height:25px;
   line-height: 22px;
   position: fixed;
-  bottom: 20px;
-  right: 5px;
+  bottom: 25px;
+  right: 10px;
   z-index: 99;
   text-align: center;
   color: #fff;
-  font-size: 15px;
+  font-size: 20px;
   display: none;
   cursor: pointer;
   border-radius: 3px;
@@ -526,7 +530,7 @@ body .theme-button-one:hover {background: #fff;}
        -o-transform: scale3D(1.1,1.1,1);
           transform: scale3D(1.1,1.1,1);
 }
-.blog-grid-style .single-blog-post .post-meta-box {padding: 25px 25px 20px 25px;border-radius: 10px}
+.blog-grid-style .single-blog-post .post-meta-box {padding: 25px 25px 0px 25px;border-radius: 10px}
 .blog-grid-style .single-blog-post .author-meta {margin: 0 -5px;}
 .blog-grid-style .single-blog-post .author-meta li {float: left;padding: 0 5px;line-height: 25px;}
 .blog-grid-style .single-blog-post .author-meta li.tag a {
@@ -1730,6 +1734,7 @@ body .theme-button-one:hover {background: #fff;}
   padding: 5px 0 20px;
   top: 100%;
   z-index: 1000;
+  font-family: 'Ubuntu','Open Sans';
 }
 
 .table-of-contents {
