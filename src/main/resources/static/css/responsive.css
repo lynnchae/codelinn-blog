@@ -166,7 +166,7 @@
   } 
 }
 @media (max-width: 500px) {
-  .blog-grid-style .single-blog-post .post-meta-box {padding: 25px 20px 30px 20px;}
+  .blog-grid-style .single-blog-post .post-meta-box {padding: 25px 20px 0px 20px;}
 }
 @media (max-width: 450px) {
   .theme-main-sidebar .sidebar-box {padding-left: 15px;padding-right: 15px;}
