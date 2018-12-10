@@ -19,11 +19,15 @@ import java.util.List;
 @Repository
 public interface BlogDao extends BaseDao<Blog> {
 
-    List<Blog> getUserBlogs(Long userId);
+    Integer getMaxUserblogid(@Param("userId") Long userId);
+
+    List<Long> getLastPageIds(@Param("userId") Long userId, @Param("pageSize") Integer pageSize);
 
     List<String> getTags();
 
     void updateLikes(Long id);
 
-    List<Blog> searchUserBlogs(@Param("userId") Long userId,@Param("word") String word);
+    List<Blog> searchUserBlogs(@Param("userId") Long userId, @Param("word") String word);
+
+    List<Blog> getUserblogsPage(@Param("userId") Long userId, @Param("lastId") Integer lastId, @Param("pageSize") Integer pageSize);
 }

@@ -808,3 +808,70 @@ $("#searchIput").keydown(function (event) {
         searchfor(this);
     }
 });
+
+function loadMore(lastId) {
+    $.ajax({
+        url: "/blog/loadMore",
+        data: {
+            lastId: lastId
+        },
+        type: "post",
+        dataType: "text",
+        success: function (data) {
+            var jsonData = JSON.parse(data); //jsonData是该下路下的所有区间（json格式）
+            var totalHtml = '';
+            var dataList = jsonData.list;
+            for (var i = 0; i < dataList.length; i++) {
+                var d = dataList[i];
+                var html;
+                if (d.done == 1) {
+                    var html = '<div class="single-blog-post">\n' +
+                        '    <div class="image-box"></div>\n' +
+                        '    <div class="post-meta-box bg-box">\n' +
+                        '        <ul class="author-meta clearfix">\n' +
+                        '            <li class="tag"><a href="#">' + d.tags + '</a></li>\n' +
+                        '            <li class="date"><a href="#">' + d.createTime + '</a>\n' +
+                        '            </li>\n' +
+                        '        </ul>\n' +
+                        '        <h4 class="title"><a href="/blog/' + d.id + '/b">' + d.title + '</a></h4>\n' +
+                        '        <ul class="share-meta clearfix">\n' +
+                        '        <li><i class="icon flaticon-comment"> 评论 (' + d.comments + ')</i></li>' +
+                        '            <li><a href="javascript:;" onclick="javascript:likeIt(' + d.id + ',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 (' + d.likes + ')</i></a></li>\n' +
+                        '        </ul>\n' +
+                        '    </div> \n' +
+                        '</div>';
+                } else {
+                    html = '<div class="single-blog-post">\n' +
+                        '    <div class="image-box"></div>\n' +
+                        '    <div class="post-meta-box bg-box">\n' +
+                        '        <ul class="author-meta clearfix">\n' +
+                        '            <li class="tag"><a href="#">' + d.tags + '</a></li>\n' +
+                        '            <li class="date"><a href="#">' + d.createTime + '</a>\n' +
+                        '            </li>\n' +
+                        '<li ><a><i class="fas fa-spinner fa-spin"></i> </a></li>\n' +
+                        '        </ul>\n' +
+                        '        <h4 class="title"><a href="/blog/' + d.id + '/b">' + d.title + '</a></h4>\n' +
+                        '        <ul class="share-meta clearfix">\n' +
+                        '        <li><i class="icon flaticon-comment"> 评论 (' + d.comments + ')</i></li>' +
+                        '            <li><a href="javascript:;" onclick="javascript:likeIt(' + d.id + ',' + d.likes + ',this)"><i class="icon flaticon-like-heart"> 赞 (' + d.likes + ')</i></a></li>\n' +
+                        '        </ul>\n' +
+                        '    </div> \n' +
+                        '</div>';
+                }
+
+                totalHtml += html;
+            }
+            $(".theme-pagination").prev().append($(totalHtml));
+            var loadmoreHtml = '';
+            if(!jsonData.lastPage){
+                loadmoreHtml = '<a hre="javascript:void(0);" onclick="javascript:loadMore('+jsonData.lastId+')"><i class="fas fa-info-circle" style="margin-right: 7px;"></i>load more</a>';
+            }else{
+                loadmoreHtml ='<a hre="javascript:void(0);" th:case="true"><i class="fas fa-exclamation-circle" style="margin-right: 7px;"></i>end</a>';
+            }
+            $('.pagination-div').html($(loadmoreHtml));
+        },
+        error: function (jqHXR) {
+
+        }
+    });
+}

@@ -5,6 +5,7 @@ import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.dao.UpdateLogDao;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
+import org.lynn.springbootstarter.model.base.Page;
 import org.lynn.springbootstarter.service.BlogService;
 import org.lynn.springbootstarter.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  * Class Name : org.lynn.springbootstarter.controller
@@ -44,7 +44,7 @@ public class IndexController {
         String url8 = "https://ws1.sinaimg.cn/large/006tNbRwgy1fxvr3297xrj32080godp5.jpg";
         String url9 = "https://ws1.sinaimg.cn/large/006tNbRwgy1fxvtxqtaxwj32080go1e2.jpg";
         String url10 = "https://ws3.sinaimg.cn/large/006tNbRwgy1fxvu3di59oj32080go7h9.jpg";
-        String url12 ="https://ws3.sinaimg.cn/large/006tNbRwgy1fxvu9npm7gj32080go19s.jpg";
+        String url12 = "https://ws3.sinaimg.cn/large/006tNbRwgy1fxvu9npm7gj32080go19s.jpg";
         rollingPicUlrs.add(url1);
         rollingPicUlrs.add(url2);
         rollingPicUlrs.add(url3);
@@ -68,15 +68,24 @@ public class IndexController {
     private UpdateLogDao updateLogDao;
 
     @RequestMapping("/")
-    public String index(@RequestParam(required = false) String tag, Model model) {
+    public String index(@RequestParam(required = false) String tag,
+                        @RequestParam(required = false) Integer pageSize,
+                        Model model) {
         Blog b = new Blog();
         b.setUserId(1L);
         b.setTags(tag);
-        List<Blog> list = blogService.query(b).stream().sorted((o1, o2) -> o2.getId().compareTo(o1.getId())).collect(Collectors.toList());
+        if (pageSize == null || pageSize <= 0) {
+            pageSize = 10;
+        }
+        Page blogPage = blogService.getUserblogsPage(1L, null, pageSize);
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();
-        SearchController.copyBlogAndCountComment(list, blogs, c, commentService);
-        model.addAttribute("blogs", blogs);
+        SearchController.copyBlogAndCountComment(blogPage.getList(), blogs, c, commentService);
+        blogPage.setList(blogs);
+        if (blogPage.getList() != null && blogPage.getList().size() > 0) {
+            blogPage.setLastId(((Blog)blogPage.getList().get(blogPage.getList().size() - 1)).getId());
+        }
+        model.addAttribute("blogs", blogPage);
         model.addAttribute("tags", blogService.getTags());
         Integer fileNameIndex1 = new Random().nextInt(rollingPicUlrs.size());
         model.addAttribute("pic1", rollingPicUlrs.get(fileNameIndex1));
@@ -85,7 +94,7 @@ public class IndexController {
             fileNameIndex2 = new Random().nextInt(rollingPicUlrs.size());
         }
         model.addAttribute("pic2", rollingPicUlrs.get(fileNameIndex2));
-        model.addAttribute("updatelogs",updateLogDao.getRecent10Updatelog());
+        model.addAttribute("updatelogs", updateLogDao.getRecent10Updatelog());
         return "index";
     }
 

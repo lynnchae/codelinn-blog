@@ -21,6 +21,7 @@ import org.lynn.springbootstarter.controller.dto.BlogCommentsDto;
 import org.lynn.springbootstarter.controller.dto.BlogDto;
 import org.lynn.springbootstarter.model.Blog;
 import org.lynn.springbootstarter.model.Comment;
+import org.lynn.springbootstarter.model.base.Page;
 import org.lynn.springbootstarter.model.vo.CommentVO;
 import org.lynn.springbootstarter.service.BlogService;
 import org.lynn.springbootstarter.service.CommentService;
@@ -75,9 +76,9 @@ public class BlogController {
                 .set(TablesExtension.HEADER_SEPARATOR_COLUMN_MATCH, true)
                 .set(EmojiExtension.USE_SHORTCUT_TYPE, EmojiShortcutType.GITHUB)
                 .set(EmojiExtension.USE_IMAGE_TYPE, EmojiImageType.IMAGE_ONLY)
-                .set(TocExtension.LEVELS,4)
-                .set(TocExtension.IS_TEXT_ONLY,true)
-                .set(TocExtension.LIST_CLASS,"ul-class");
+                .set(TocExtension.LEVELS, 4)
+                .set(TocExtension.IS_TEXT_ONLY, true)
+                .set(TocExtension.LIST_CLASS, "ul-class");
         options.setFrom(ParserEmulationProfile.MARKDOWN);
         parser = Parser.builder(options).build();
         renderer = HtmlRenderer.builder(options).build();
@@ -134,7 +135,7 @@ public class BlogController {
             bcomments.add(bc);
         }
         model.addAttribute("comments", bcomments);
-        model.addAttribute("toc",toc.toString());
+        model.addAttribute("toc", toc.toString());
         return "blog";
     }
 
@@ -152,17 +153,28 @@ public class BlogController {
         b.setUserId(1L);
         b.setTags(tag);
         List<Blog> blogs = blogService.query(b);
-        BlogDto bdto;
         List<BlogDto> resultList = new ArrayList<>();
         Comment c = new Comment();
-        for (Blog bl : blogs) {
-            bdto = new BlogDto();
-            BeanUtils.copyProperties(bl, bdto);
-            c.setBlogId(bl.getId());
-            bdto.setComments(commentService.count(c));
-            resultList.add(bdto);
-        }
+        SearchController.copyBlogAndCountComment(blogs, resultList, c, commentService);
         Collections.reverse(resultList);
         return resultList;
+    }
+
+    @PostMapping("/loadMore")
+    @ResponseBody
+    public Page<BlogDto> loadMore(@RequestParam(required = false) Integer lastId,
+                                  @RequestParam(required = false) Integer pageSize) {
+        if (pageSize == null || pageSize <= 0) {
+            pageSize = 10;
+        }
+        Page blogs = blogService.getUserblogsPage(1L, lastId, pageSize);
+        List<BlogDto> resultList = new ArrayList<>();
+        Comment c = new Comment();
+        SearchController.copyBlogAndCountComment(blogs.getList(), resultList, c, commentService);
+        blogs.setList(resultList);
+        if (blogs.getList() != null && blogs.getList().size() > 0) {
+            blogs.setLastId(((Blog)blogs.getList().get(blogs.getList().size() - 1)).getId());
+        }
+        return blogs;
     }
 }

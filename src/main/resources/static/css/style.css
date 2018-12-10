@@ -232,9 +232,30 @@ body .theme-button-one:hover {background: #fff;}
   display: block;
   padding: 4px 12px;
   background: #fff;
+  border-radius: 7px;
 }
 .theme-pagination ul li a:hover,.theme-pagination ul li.active a {color: #fff;}
 .theme-pagination ul li.active a {cursor: default;}
+.theme-pagination div {
+  border: 1px solid #0366d6;
+  height: 40px;
+  width: 150px;
+  margin: 0 auto;
+  background: #0366d6;
+  border-radius: 7px;
+  color: #fff;
+}
+
+.theme-pagination div:hover {
+  box-shadow: 1px 1px 10px #434343;
+}
+
+.theme-pagination a {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
 /*----------------------- Top Header -----------------*/
 .top-header {border-bottom: 1px solid #efefef;}
 .top-header .news-bell {

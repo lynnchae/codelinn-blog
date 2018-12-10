@@ -4,26 +4,52 @@
     <resultMap id="resultMap" type="org.lynn.springbootstarter.model.Blog">
     </resultMap>
 
-    <select id="getUserBlogs" resultMap="resultMap">
-        select id,user_id,title,tags,likes,done,create_time,content
+    <select id="getMaxUserblogid" resultType="java.lang.Integer">
+        select id
         from t_blog
-        where user_id=#{userId}
-        order by create_time desc
+        where user_id = #{userId}
+        order by id desc limit 1
     </select>
 
-    <select id="getTags" resultType="java.lang.String">
-        select distinct(tags) from t_blog
+    <select id="getLastPageIds" resultType="java.lang.Long">
+      select id from t_blog where user_id = #{userId} order by id asc limit #{pageSize}
     </select>
 
     <select id="searchUserBlogs" resultMap="resultMap">
         select id,user_id,title,tags,likes,done,create_time,content
         from t_blog
         where user_id=#{userId}
-        and (match(title,content) against(#{word}) or title like concat('%',#{word},'%'))
+        <if test="word != null and word != '' ">
+            and (match(title,content) against(#{word}) or title like concat('%',#{word},'%'))
+        </if>
         order by create_time desc
     </select>
 
+    <select id="getUserblogsPage" resultMap="resultMap">
+        <![CDATA[
+        select id,
+               user_id,
+               title,
+               tags,
+               likes,
+               done,
+               create_time,
+               content
+        from t_blog
+        where id <= #{lastId}
+        order by id desc limit #{pageSize}
+        ]]>
+
+    </select>
+
+    <select id="getTags" resultType="java.lang.String">
+        select distinct(tags)
+        from t_blog
+    </select>
+
     <update id="updateLikes" parameterType="java.lang.Long">
-        update t_blog set likes = likes + 1 where id = #{id}
+        update t_blog
+        set likes = likes + 1
+        where id = #{id}
     </update>
 </mapper>
