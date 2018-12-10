@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:wb="http://open.weibo.com/wb">
 <head>
     <meta property="wb:webmaster" content="17d22ebcfb15ce28" />
     <meta charset="UTF-8">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" id="jssDefault" href="css/color.css">
 
     <link href='https://fonts.font.im/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+
+    <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 
@@ -241,12 +243,12 @@
                                 <li><a href="javascript:;"
                                        th:onclick="'javascript:likeIt('+${blog.id}+','+${blog.likes}+',this)'"><i
                                         class="icon flaticon-like-heart" th:text="${' 赞 ('+blog.likes+')'}"></i></a></li>
-                                <!--<li class="share-option">-->
-                                <!--<button><i class="icon flaticon-arrows"></i> Share</button>-->
-                                <!--<ul class="share-icon">-->
-                                <!--<li><a href="#"><i class="fab fa-weibo"></i></a></li>-->
-                                <!--</ul>-->
-                                <!--</li> &lt;!&ndash; /.share-option &ndash;&gt;-->
+                                <li class="share-option">
+                                <button><i class="icon flaticon-arrows"></i> Share</button>
+                                <ul class="share-icon">
+                                <li><a id="shareWeibo" th:href="${'http://service.weibo.com/share/share.php?url=https://www.codelinn.com/blog/'+blog.id+'/b&appkey=3579457880&title='+blog.title+'&pic=&ralateUid=1891342293&language=zh_cn'}" target="_blank"><i class="fab fa-weibo"></i></a></li>
+                                </ul>
+                                </li> <!-- /.share-option -->
                             </ul>
                             <!--<p th:utext="${#strings.abbreviate(blog.content,66)}" ></p>-->
                         </div> <!-- /.post-meta-box -->
@@ -401,6 +403,6 @@
 
     <!-- Theme js -->
     <script src="js/theme.min.js"></script>
-</div> <!-- /.main-page-wrapper -->
+</div>
 </body>
 </html>
