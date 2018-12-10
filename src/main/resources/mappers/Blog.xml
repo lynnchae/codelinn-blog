@@ -19,7 +19,7 @@
         select id,user_id,title,tags,likes,done,create_time,content
         from t_blog
         where user_id=#{userId}
-        and title like concat('%',#{word},'%')
+        and (match(title,content) against(#{word}) or title like concat('%',#{word},'%'))
         order by create_time desc
     </select>
 

@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
 
     <title>Home</title>
-    <link rel="shortcut icon" href="static/images/logo/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="static/images/logo/favicon.ico" type="image/x-icon"/>
     <!-- Main style sheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <!-- responsive style sheet -->
@@ -76,10 +76,18 @@
                 <div class="menu-wrapper">
                     <nav id="mega-menu-holder" class="clearfix">
                         <ul class="clearfix">
-                            <li><a href="/"><div ><i class="fab fa-fort-awesome"></i></div>主页</a></li>
-                            <li><a href="/aboutMe"><div ><i class="fas fa-user-astronaut"></i></div>关于我</a></li>
-                            <li><a href="/contact"><div ><i class="fas fa-envelope-open"></i></div>联系我</a></li>
-                            <li><a href="/blogeditor"><div ><i class="fas fa-marker"></i></div>WriteOne</a></li>
+                            <li><a href="/">
+                                <div><i class="fab fa-fort-awesome"></i></div>
+                                主页</a></li>
+                            <li><a href="/aboutMe">
+                                <div><i class="fas fa-user-astronaut"></i></div>
+                                关于我</a></li>
+                            <li><a href="/contact">
+                                <div><i class="fas fa-envelope-open"></i></div>
+                                联系我</a></li>
+                            <li><a href="/blogeditor">
+                                <div><i class="fas fa-marker"></i></div>
+                                WriteOne</a></li>
                         </ul>
                     </nav> <!-- /#mega-menu-holder -->
                 </div> <!-- /.menu-wrapper -->
@@ -216,24 +224,26 @@
                     <div class="image-box"><!-- <img src="images/blog/1.jpg" alt=""> --></div>
                     <div class="post-meta-box bg-box">
                         <ul class="author-meta clearfix">
-                            <li class="tag"><a href="javascript:;" th:onclick="'javascript:tagIt(\''+${blog.tags}+'\')'"   th:text="${blog.tags}"></a></li>
-                            <li class="date"><a th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></a>
+                            <li class="tag"><a href="javascript:;" th:onclick="'javascript:tagIt(\''+${blog.tags}+'\')'"
+                                               th:text="${blog.tags}"></a></li>
+                            <li class="date"><a href="javascript:;"
+                                                th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></a>
                             </li>
-                            <li th:if= "${blog.done} eq 0"><a><i class="fas fa-spinner fa-spin"></i> </a>
+                            <li th:if="${blog.done} eq 0"><a><i class="fas fa-spinner fa-spin"></i> </a>
                             </li>
                         </ul>
                         <h4 class="title"><a href="blog.html" th:href="@{'/blog/'+${blog.id}+'/b'}"
                                              th:text="${blog.title}"></a></h4>
                         <ul class="share-meta clearfix">
-                            <li><i class="icon flaticon-comment" th:text="${' 评论 ('+ blog.comments +')'}" ></i></li>
+                            <li><i class="icon flaticon-comment" th:text="${' 评论 ('+ blog.comments +')'}"></i></li>
                             <li><a href="javascript:;"
                                    th:onclick="'javascript:likeIt('+${blog.id}+','+${blog.likes}+',this)'"><i
                                     class="icon flaticon-like-heart" th:text="${' 赞 ('+blog.likes+')'}"></i></a></li>
                             <!--<li class="share-option">-->
-                                <!--<button><i class="icon flaticon-arrows"></i> Share</button>-->
-                                <!--<ul class="share-icon">-->
-                                    <!--<li><a href="#"><i class="fab fa-weibo"></i></a></li>-->
-                                <!--</ul>-->
+                            <!--<button><i class="icon flaticon-arrows"></i> Share</button>-->
+                            <!--<ul class="share-icon">-->
+                            <!--<li><a href="#"><i class="fab fa-weibo"></i></a></li>-->
+                            <!--</ul>-->
                             <!--</li> &lt;!&ndash; /.share-option &ndash;&gt;-->
                         </ul>
                         <!--<p th:utext="${#strings.abbreviate(blog.content,66)}" ></p>-->
@@ -262,19 +272,20 @@
             <div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
                 <div class="sidebar-box bg-box ">
                     <h6 class="sidebar-title">Search</h6>
-                    <form class="index-search" action="#">
+                    <div class="index-search">
                         <div class="search-div">
-                            <input type="word" required>
+                            <input id="searchIput" type="word" required>
                             <a href="javascript:void(0);" onclick="searchfor(this)"> <i class="fas fa-search"></i></a>
                         </div>
-                    </form>
+                    </div>
                 </div> <!-- /.sidebar-newsletter -->
 
                 <div class="sidebar-box bg-box sidebar-tags">
                     <h6 class="sidebar-title">标签</h6>
-                    <ul class="clearfix" >
+                    <ul class="clearfix">
                         <li th:each="tag:${tags}"><a href="javascript:;"
-                                                     th:onclick="'javascript:tagIt(\''+${tag}+'\')'"  th:text="${tag}"></a></li>
+                                                     th:onclick="'javascript:tagIt(\''+${tag}+'\')'"
+                                                     th:text="${tag}"></a></li>
                     </ul>
                 </div> <!-- /.sidebar-tags -->
 
@@ -289,7 +300,7 @@
                                         <i style="color:#0366d6" class="fa fa-caret-right"></i>
                                     </div>
                                     <div class="div-detail">
-                                        <h7 th:text="${log.detail}+' （'+${#dates.format(log.createTime, 'yyyy-MM-dd')}+'）'" ></h7>
+                                        <h7 th:text="${log.detail}+' （'+${#dates.format(log.createTime, 'yyyy-MM-dd')}+'）'"></h7>
                                     </div>
                                 </h6>
                                 <ul>
@@ -303,8 +314,9 @@
 
                 <div class="sidebar-box bg-box about-me">
                     <h6 class="sidebar-title">关于 我</h6>
-                     <img class="head" src="images/home/1.jpeg" alt="">
-                    <p>Hi，我是一位来自魔都的程序员，这是我的第一个简单博客网站，很久没接触前端，springboot+thymeleaf也是第一次尝试，还请各位多多指教，本站仅支持本人发表文章，您可以阅览点赞、评论哦~
+                    <img class="head" src="images/home/1.jpeg" alt="">
+                    <p>
+                        Hi，我是一位来自魔都的程序员，这是我的第一个简单博客网站，很久没接触前端，springboot+thymeleaf也是第一次尝试，还请各位多多指教，本站仅支持本人发表文章，您可以阅览点赞、评论哦~
                         本站文章使用Markdown语法编辑。
                     </p>
                     <div class="clearfix">
@@ -326,13 +338,15 @@
         <div class="container">
             <div class="logo"><img src="images/logo/logo.png" alt=""></div>
             <ul class="social-icon">
-                <li class="icon"><a href="javascript:wechat();" ><i class="fab fa-weixin"></i></a></li>
-                <li class="icon"><a href="https://www.weibo.com/lynnchae" target="_blank"><i class="fab fa-weibo"></i></a></li>
+                <li class="icon"><a href="javascript:wechat();"><i class="fab fa-weixin"></i></a></li>
+                <li class="icon"><a href="https://www.weibo.com/lynnchae" target="_blank"><i
+                        class="fab fa-weibo"></i></a></li>
             </ul>
             <div style="margin:0 auto;width:100px;display: none" class="wechat-block">
-                <img class="wechat-img" src="images/wechat.jpg" height="100" width="100" />
+                <img class="wechat-img" src="images/wechat.jpg" height="100" width="100"/>
             </div>
-            <p class="copyright" style="font-family: 'Gloria Hallelujah'">Copyright &copy; 2018.LynnChae All rights reserved.</p>
+            <p class="copyright" style="font-family: 'Gloria Hallelujah'">Copyright &copy; 2018.LynnChae All rights
+                reserved.</p>
         </div> <!-- /.container -->
     </footer> <!-- /.theme-footer -->
 
@@ -360,7 +374,7 @@
     <!-- jquery easing -->
     <script src="vendor/jquery.easing.1.3.js"></script>
     <!-- Font Awesome -->
-    <script src="https://lib.baomitu.com/font-awesome/5.5.0/advanced-options/use-with-node-js/fontawesome-free/js/all.min.js" ></script>
+    <script src="https://lib.baomitu.com/font-awesome/5.5.0/advanced-options/use-with-node-js/fontawesome-free/js/all.min.js"></script>
     <!--<script src="https://lib.baomitu.com/font-awesome/5.5.0/advanced-options/use-with-node-js/fontawesome-free/js/brands.min.js" ></script>-->
     <!--<script src="https://lib.baomitu.com/font-awesome/5.5.0/advanced-options/use-with-node-js/fontawesome-free/js/regular.min.js" ></script>-->
     <!--<script src="https://lib.baomitu.com/font-awesome/5.5.0/advanced-options/use-with-node-js/fontawesome-free/js/solid.min.js" ></script>-->

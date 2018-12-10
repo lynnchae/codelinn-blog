@@ -802,3 +802,9 @@ function searchfor(obj){
     });
 
 }
+
+$("#searchIput").keydown(function (event) {
+    if (event.keyCode == 13) {
+        searchfor(this);
+    }
+});

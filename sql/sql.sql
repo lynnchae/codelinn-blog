@@ -114,3 +114,5 @@ CREATE TABLE t_update_log (
 `update_user` VARCHAR(32) NULL ,
 PRIMARY KEY (`id`)
 ) ENGINE=INNODB COMMENT='更新日志表'  DEFAULT CHARSET=utf8;
+
+alter table t_blog add fulltext ft_title_content(`title`,`content`);
