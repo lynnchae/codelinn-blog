@@ -584,6 +584,7 @@ body .theme-button-one:hover {background: #fff;}
   font-size: 12px;
   margin-right: 10px;
   font-weight: normal;
+  color: #737373;
 }
 .blog-grid-style .single-blog-post .share-meta li a,
 .blog-grid-style .single-blog-post .share-meta li button {
