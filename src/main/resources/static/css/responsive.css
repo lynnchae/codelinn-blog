@@ -151,7 +151,7 @@
   .contact-us .contact-form {padding: 40px 15px;}
   .user-blog .contact-form {padding: 0px 15px;}
   .single-blog-post .share-meta li.share-option .share-icon {margin: 0;left:auto;right: auto;min-width: 1px;width: 40px;
-    margin-left: 25px;padding-left: 7px}
+    padding-left: 7px}
   .single-blog-post .share-meta li.share-option .share-icon li {display: block;}
   .blog-editor-form input{ width: 80%; }
 }
