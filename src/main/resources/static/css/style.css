@@ -248,13 +248,13 @@ body .theme-button-one:hover {background: #fff;}
 
 .theme-pagination div:hover {
   box-shadow: 1px 1px 10px #434343;
+  cursor: pointer;
 }
 
 .theme-pagination a {
   text-align: center;
   margin-top: 4px;
   font-size: 20px;
-  cursor: pointer;
 }
 /*----------------------- Top Header -----------------*/
 .top-header {border-bottom: 1px solid #efefef;}

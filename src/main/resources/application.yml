@@ -54,3 +54,5 @@ server:
     key-store-password: 901126clf
     key-store-type: JKS
     key-alias: 1
+    enabled: true
+
