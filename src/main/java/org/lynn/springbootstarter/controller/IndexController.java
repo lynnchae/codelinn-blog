@@ -69,22 +69,16 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(@RequestParam(required = false) String tag,
-                        @RequestParam(required = false) Integer pageSize,
+                        @RequestParam(required = false, defaultValue = "10") Integer pageSize,
                         Model model) {
         Blog b = new Blog();
         b.setUserId(1L);
         b.setTags(tag);
-        if (pageSize == null || pageSize <= 0) {
-            pageSize = 10;
-        }
         Page blogPage = blogService.getUserblogsPage(1L, null, pageSize);
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();
         SearchController.copyBlogAndCountComment(blogPage.getList(), blogs, c, commentService);
         blogPage.setList(blogs);
-        if (blogPage.getList() != null && blogPage.getList().size() > 0) {
-            blogPage.setLastId(((Blog)blogPage.getList().get(blogPage.getList().size() - 1)).getId());
-        }
         model.addAttribute("blogs", blogPage);
         model.addAttribute("tags", blogService.getTags());
         Integer fileNameIndex1 = new Random().nextInt(rollingPicUlrs.size());

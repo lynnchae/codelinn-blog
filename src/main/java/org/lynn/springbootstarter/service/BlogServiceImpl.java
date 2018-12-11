@@ -73,7 +73,6 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
         Page<Blog> blogPage = new Page<>();
         //用户博客最大id
         Integer maxId = blogDao.getMaxUserblogid(userId);
-
         //为了处理id不连续的情况
         Integer processedId;
         if (lastId == null || lastId <= 0 || lastId == maxId) {
@@ -100,6 +99,9 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
             blogPage.setPages((userTotalBlogs / pageSize) + 1);
         }
         blogPage.setList(list);
+        if(list!=null && list.size() > 0){
+            blogPage.setLastId(list.get(list.size()-1).getId());
+        }
         return blogPage;
     }
 }

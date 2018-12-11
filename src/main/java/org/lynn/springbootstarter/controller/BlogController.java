@@ -163,18 +163,12 @@ public class BlogController {
     @PostMapping("/loadMore")
     @ResponseBody
     public Page<BlogDto> loadMore(@RequestParam(required = false) Integer lastId,
-                                  @RequestParam(required = false) Integer pageSize) {
-        if (pageSize == null || pageSize <= 0) {
-            pageSize = 10;
-        }
+                                  @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         Page blogs = blogService.getUserblogsPage(1L, lastId, pageSize);
         List<BlogDto> resultList = new ArrayList<>();
         Comment c = new Comment();
         SearchController.copyBlogAndCountComment(blogs.getList(), resultList, c, commentService);
         blogs.setList(resultList);
-        if (blogs.getList() != null && blogs.getList().size() > 0) {
-            blogs.setLastId(((Blog)blogs.getList().get(blogs.getList().size() - 1)).getId());
-        }
         return blogs;
     }
 }
