@@ -9,7 +9,9 @@
    height: 100%;
    padding: 30px;
 }
-
+.md-content {
+   word-break: break-all;
+}
 .md-content body > *:first-child {
    margin-top: 0 !important; }
 .md-content body > *:last-child {
