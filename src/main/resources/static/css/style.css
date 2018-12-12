@@ -1263,7 +1263,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .comment-area {
-  margin-top:100px;
+  margin-top:60px;
 }
 
 .blog-full-width {padding: 0 70px;}
@@ -1425,7 +1425,7 @@ body .theme-button-one:hover {background: #fff;}
 }
 
 .content-update {
-  margin: 20px 0px;
+  /*margin: 20px 0px;*/
   font-size: 14px;
   font-weight: 600;
   text-align: right;

@@ -99,8 +99,15 @@
             <div class="container blog-container">
                 <div style="padding-top: 55px">
                     <h2 align="center" style="word-break: break-word;font-family: 'Lato';" th:text="${blog.title}"></h2>
-                    <p class="content-update" th:utext="'<b class=\'fab fa-markdown\'></b>  '+${#dates.format(blog.updateTime,'yyyy.MM.dd HH:mm')}"></p>
+                    <div style="margin-top: 25px">
+                        <p class="content-update" th:utext="'<b class=\'fab fa-markdown\'></b>  <b class=\'fas fa-tags\'></b>  '+${blog.tags}"></p>
+                        <!--<p class="content-update" th:utext="'<b class=\'far fa-calendar\'></b>  '+${#dates.format(blog.createTime,'yyyy.MM.dd')}"></p>-->
+                        <p class="content-update" th:utext="'<b class=\'far fa-calendar\'></b>  '+${#dates.format(blog.createTime,'yyyy.MM.dd')}"></p>
+                    </div>
                     <div id="blog-main-content" class="md-content" th:utext="${blog.content}"></div>
+                    <div style="margin-top: 45px">
+                        <p class="content-update" th:utext="'<b class=\'far fa-calendar-check\'></b>  '+${#dates.format(blog.updateTime,'yyyy.MM.dd HH:mm')}"></p>
+                    </div>
                 </div>
                 <div class="comment-area">
                     <div class="comment-area-head">
