@@ -104,12 +104,18 @@
             });
         }
 
-
+        var times=1;
         // ---------------------------- Style Switcher
         var switcher = $('.switch-menu');
         if (switcher.length) {
             $('.switch-btn button').on('click', function () {
-                $('.switcher').toggleClass('switcher-show')
+                $('.switcher').toggleClass('switcher-show');
+                if(times%2 == 1){
+                    $('.switch-button').html("<i class='fas fa-angle-left'></i>");
+                }else{
+                    $('.switch-button').html("<i class='fas fa-angle-right'></i>");
+                }
+                times ++;
             });
 
             $('#styleOptions').styleSwitcher({

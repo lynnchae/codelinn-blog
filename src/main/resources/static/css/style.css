@@ -1493,7 +1493,7 @@ body .theme-button-one:hover {background: #fff;}
 
 /*----------------------- Style Switcher -----------------*/
 .switcher .switch-btn button {
-  width:40px;
+  width:35px;
   height:35px;
   border:none;
   color:#fff;
@@ -1503,12 +1503,12 @@ body .theme-button-one:hover {background: #fff;}
 }
 .switcher .switch-btn {
   position: absolute;
-  right: -40px;
+  right: -35px;
   z-index: 999;
 }
 .switcher {
   position: fixed;
-  top:70px;
+  top:90px;
   z-index: 999;
   left:-250px;
   -webkit-transition: all .4s ease-in-out;
