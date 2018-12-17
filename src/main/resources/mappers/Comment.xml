@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.lynn.springbootstarter.dao.CommentDao">
-    <resultMap id="resultMap" type="org.lynn.springbootstarter.model.Comment">
+<mapper namespace="com.codelinn.blog.dao.CommentDao">
+    <resultMap id="resultMap" type="com.codelinn.blog.model.Comment">
     </resultMap>
 
-    <select id="queryCommentVO" resultType="org.lynn.springbootstarter.model.vo.CommentVO">
+    <select id="queryCommentVO" resultType="com.codelinn.blog.model.vo.CommentVO">
         select a.*,b.avatar
         from t_comment a left join t_visitor b on a.visitor_id=b.id
         where 1=1

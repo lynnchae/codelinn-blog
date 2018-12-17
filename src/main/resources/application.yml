@@ -41,7 +41,7 @@ mybatis:
     #数据库执行超时时间
     default-statement-timeout: 30000
   mapper-locations: classpath:mappers/*.xml
-  type-aliases-package: org.lynn.springbootstarter.model
+  type-aliases-package: com.codelinn.blog.model
 
 server:
   port: 443

@@ -6,7 +6,7 @@ A personal springboot framework project，may be a personal blog site.
 
 + 修改resources目录下application.yml -> spring:datasource:url 为自己的数据库，并修改对应的用户名密码
 + 执行sql目录下sql.sql
-+ main方法启动SpringBootStarterApplication
++ main方法启动CodelinnApplication
 
 ### 功能模块
 + 基本功能 ( > . <持续开发中，目前完成了部分功能 )
