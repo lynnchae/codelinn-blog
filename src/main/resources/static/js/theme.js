@@ -618,6 +618,11 @@ function sendComment(obj, isComment) {
     if (checkResult) {
         setCookie('commenter',form.get('commenter'),'d30');
         setCookie('commenterEmail',form.get('commenterEmail'),'d30');
+        var commentContent = form.get('comment');
+        var regLeft = /\<[\s]*script[\s]*\>/i;
+        var regRight = /\<[\s]*\/[\s]*script[\s]*\>/i;
+        commentContent = commentContent.replace(eval(regLeft),"&lt;script&gt;").replace(eval(regRight),"&lt;/script&gt;");
+        form.set('comment',commentContent);
         $.ajax({
             url: "/comment/sendComment",
             type: "post",
@@ -630,7 +635,7 @@ function sendComment(obj, isComment) {
                     var appendHtml =
                         '<h6><div class="head-div"><img class="head-img" src="'+ data.data +'"></div>' +
                         '<div><a>' + form.get('commenter') + '</a><b class="date" >|'+ new Date().Format("yyyy-MM-dd HH:mm") +'</b></div></h6>\n' +
-                        '   <p><strong>@' + form.get('replyTo') + '</strong> ' + form.get('comment') + '</p>\n' +
+                        '   <p><strong>@' + form.get('replyTo') + '</strong> ' + commentContent + '</p>\n' +
                         '   <button class="reply">回复</button>\n' +
                         '   <div class="comment-form">\n' +
                         '   <form method="post" class="comment-form-validation" autocomplete="off">\n' +
@@ -665,7 +670,7 @@ function sendComment(obj, isComment) {
                         '  <div class="single-comment" >\n' +
                         '    <div class="comment">\n' +
                         '    <h6><div class="head-div"><img class="head-img" src="'+ data.data +'"></div><div><a>' + form.get('commenter') + '</a><b class="date" >|'+ new Date().Format("yyyy-MM-dd HH:mm") + '</b></div></h6>\n' +
-                        '    <p >' + form.get('comment') + '</p>\n' +
+                        '    <p >' + commentContent + '</p>\n' +
                         '    <button class="reply">回复</button>\n' +
                         '    <div class="comment-form">\n' +
                         '        <form method="post" class="comment-form-validation" autocomplete="off">\n' +
