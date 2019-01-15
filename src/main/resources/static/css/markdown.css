@@ -10,7 +10,7 @@
    padding: 30px;
 }
 .md-content {
-   word-break: break-all;
+   word-break: break-word;
 }
 .md-content body > *:first-child {
    margin-top: 0 !important; }
