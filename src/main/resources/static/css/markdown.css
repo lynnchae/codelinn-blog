@@ -83,7 +83,9 @@
    font-size: 14px; }
 
 .md-content p,.md-content blockquote,.md-content ul,.md-content ol,.md-content dl,.md-content li,.md-content table,.md-content pre {
-   margin: 15px 0; }
+   margin: 15px 0;
+   font-size: 15px;
+}
 
 .md-content hr {
    border: 0 none;
@@ -291,7 +293,7 @@
 .md-content pre {
    background-color: #eeeeee;
    border: 1px solid #cccccc;
-   font-size: 13px;
+   font-size: 14px;
    line-height: 19px;
    overflow: auto;
    padding: 6px 10px;

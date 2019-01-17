@@ -5,7 +5,7 @@
 /* Atelier-Cave Comment */
 .hljs-comment,
 .hljs-quote {
-    color: #8C9397;
+    color: #767a7d;
 }
 
 /* Atelier-Cave Red */
@@ -44,7 +44,8 @@
 /* Atelier-Cave Blue */
 .hljs-title,
 .hljs-section {
-    color: #576ddb;
+    color: #0366d6;
+    font-weight: 600;
 }
 
 /* Atelier-Cave Purple */
