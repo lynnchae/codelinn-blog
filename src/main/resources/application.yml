@@ -50,9 +50,9 @@ server:
 #    key-store-type: JKS
 #    key-store-password: 901126clf
 #    key-alias: www.codelinn.com
-    key-store: classpath:codelinn.p12
+    key-store: /etc/letsencrypt/live/codelinn.com/codelinn.jks
     key-store-password: 901126clf
     key-store-type: JKS
-    key-alias: 1
+    key-alias: codelinn
     enabled: true
 
