@@ -32,7 +32,7 @@ public class MessageController {
         param.append("codelinn站内信--来自（").append(message.getSender()).append("）").append("&desp=").append(message.getMessage());
         try {
             HttpClientUtils.post("https://sc.ftqq.com/SCU36514Tab24b05f1de7f799500afff8bbe4d2af5bfcf72467b44.send"
-                    , param.toString(), 5000);
+                    , new String(param.toString().getBytes("UTF-8")), 5000);
         } catch (Exception e) {
             log.warn("serverchan sendmessage error, e {}", e);
         }
