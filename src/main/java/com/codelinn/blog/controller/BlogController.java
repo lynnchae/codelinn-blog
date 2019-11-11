@@ -1,6 +1,7 @@
 package com.codelinn.blog.controller;
 
 import com.codelinn.blog.common.ResultEntity;
+import com.codelinn.blog.controller.dto.BlogDetailDto;
 import com.codelinn.blog.model.Blog;
 import com.codelinn.blog.model.Comment;
 import com.codelinn.blog.model.base.Page;
@@ -138,6 +139,34 @@ public class BlogController {
         model.addAttribute("toc", toc.toString());
         return "blog";
     }
+
+    @RequestMapping("/gBlog")
+    @ResponseBody
+    public BlogDetailDto getBlogById(@RequestParam Long id) {
+        Blog b = blogService.getById(id);
+        BlogDetailDto blogTarget = new BlogDetailDto();
+        StringBuffer tocedContent = new StringBuffer(toc_option).append(b.getContent());
+        Node tocDocument = parser.parse(tocedContent.toString());
+        String tocHtml = renderer.render(tocDocument);
+        Document doc = Jsoup.parse(tocHtml);
+        Elements toc = doc.select("ul.ul-class");
+        Node document = parser.parse(b.getContent());
+        String html = renderer.render(document);
+        BeanUtils.copyProperties(b, blogTarget);
+        blogTarget.setContent(html);
+        List<CommentVO> comments = commentService.queryCommentVO(id, 0L);
+        List<BlogCommentsDto> bcomments = new ArrayList<>();
+        for (Comment c : comments) {
+            BlogCommentsDto bc = new BlogCommentsDto();
+            BeanUtils.copyProperties(c, bc);
+            bc.setComments(commentService.queryCommentVO(null, bc.getId()));
+            bcomments.add(bc);
+        }
+        blogTarget.setComments(bcomments);
+        blogTarget.setToc(toc.toString());
+        return blogTarget;
+    }
+
 
     @PostMapping("/likeIt")
     @ResponseBody
