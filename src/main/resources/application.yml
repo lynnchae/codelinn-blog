@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/lynn?serverTimezone=GMT%2b8&useSSL=false
     username: root
-    password: 12345678
+    password: 901126clf
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat,wall,log4j
@@ -44,15 +44,17 @@ mybatis:
   type-aliases-package: com.codelinn.blog.model
 
 server:
-  port: 443
-  ssl:
+  port: 8080
+  servlet:
+    context-path: /api
+#  ssl:
 #    key-store: classpath:www.codelinn.com.jks
 #    key-store-type: JKS
 #    key-store-password: 901126clf
 #    key-alias: www.codelinn.com
-    key-store: /etc/letsencrypt/live/codelinn.com/codelinn.jks
-    key-store-password: 901126clf
-    key-store-type: JKS
-    key-alias: codelinn
-    enabled: true
+#    key-store: /etc/letsencrypt/live/codelinn.com/codelinn.jks
+#    key-store-password: 901126clf
+#    key-store-type: JKS
+#    key-alias: codelinn
+#    enabled: true
 
