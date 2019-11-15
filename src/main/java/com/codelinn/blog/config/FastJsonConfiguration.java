@@ -39,7 +39,7 @@ public class FastJsonConfiguration {
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat,
                 SerializerFeature.WriteNullStringAsEmpty);
-        fastJsonConfig.setDateFormat("yyyy-MM-dd");
+        fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm");
         //3.在convert中添加配置信息
         fastConverter.setFastJsonConfig(fastJsonConfig);
         List<MediaType> fastMediaTypes = new ArrayList<>();
