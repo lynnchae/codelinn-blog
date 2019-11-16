@@ -1,13 +1,12 @@
 package com.codelinn.blog.controller;
 
+import com.codelinn.blog.controller.dto.BlogDto;
 import com.codelinn.blog.dao.UpdateLogDao;
-import com.codelinn.blog.model.Blog;
 import com.codelinn.blog.model.Comment;
 import com.codelinn.blog.model.base.Page;
 import com.codelinn.blog.service.BlogService;
 import com.codelinn.blog.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
-import com.codelinn.blog.controller.dto.BlogDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,9 +70,6 @@ public class IndexController {
     public String index(@RequestParam(required = false) String tag,
                         @RequestParam(required = false, defaultValue = "10") Integer pageSize,
                         Model model) {
-        Blog b = new Blog();
-        b.setUserId(1L);
-        b.setTags(tag);
         Page blogPage = blogService.getUserblogsPage(1L, null, pageSize);
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();

@@ -93,8 +93,15 @@ public class BlogController {
 
     @RequestMapping("/getUserBlogs")
     @ResponseBody
-    public ResultEntity<List<Blog>> getUserBlogs(Long userId) {
-        return ResultEntity.success(blogService.getUserBlogs(userId));
+    public ResultEntity<Page<BlogDto>> getUserBlogs(@RequestParam Long userId,
+                                                 @RequestParam(required = false) String tag,
+                                                 @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+        Page blogPage = blogService.getUserblogsPage(userId, null, pageSize);
+        List<BlogDto> blogs = new ArrayList<>();
+        Comment c = new Comment();
+        SearchController.copyBlogAndCountComment(blogPage.getList(), blogs, c, commentService);
+        blogPage.setList(blogs);
+        return ResultEntity.success(blogPage);
     }
 
     @RequestMapping(value = "/saveBlog", method = RequestMethod.POST)
