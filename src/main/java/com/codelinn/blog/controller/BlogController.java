@@ -94,8 +94,8 @@ public class BlogController {
     @RequestMapping("/getUserBlogs")
     @ResponseBody
     public ResultEntity<Page<BlogDto>> getUserBlogs(@RequestParam Long userId,
-                                                 @RequestParam(required = false) String tag,
-                                                 @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+                                                    @RequestParam(required = false) String tag,
+                                                    @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         Page blogPage = blogService.getUserblogsPage(userId, null, pageSize);
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();
@@ -121,6 +121,19 @@ public class BlogController {
         }
 
     }
+
+    @RequestMapping(value = "/sBlog", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public ResultEntity<Boolean> saveBlog(@RequestBody Blog blog) {
+        if (blog.getId() != null) {
+            blogService.update(blog);
+        } else {
+            blog.setUserId(1L);
+            blogService.insert(blog);
+        }
+        return ResultEntity.success(true);
+    }
+
 
     @RequestMapping("/{id}/b")
     public String getUserBlogs(@PathVariable Long id, Model model) {
