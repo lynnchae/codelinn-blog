@@ -164,6 +164,7 @@ public class BlogController {
     @ResponseBody
     public BlogDetailDto getBlogById(@RequestParam Long id) {
         Blog b = blogService.getById(id);
+        String originContent = b.getContent();
         BlogDetailDto blogTarget = new BlogDetailDto();
         StringBuffer tocedContent = new StringBuffer(toc_option).append(b.getContent());
         Node tocDocument = parser.parse(tocedContent.toString());
@@ -184,6 +185,7 @@ public class BlogController {
         }
         blogTarget.setComments(bcomments);
         blogTarget.setToc(toc.toString());
+        blogTarget.setContentOrigin(originContent);
         return blogTarget;
     }
 

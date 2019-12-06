@@ -17,6 +17,8 @@ public class BlogDetailDto extends Blog {
 
     private String toc;
 
+    private String contentOrigin;
+
     List<BlogCommentsDto> comments;
 
 }
