@@ -7,7 +7,11 @@
     <select id="getMaxUserblogid" resultType="java.lang.Integer">
         select id
         from t_blog
-        where user_id = #{userId}
+        <where>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+        </where>
         order by id desc limit 1
     </select>
 
@@ -26,7 +30,6 @@
     </select>
 
     <select id="getUserblogsPage" resultMap="resultMap">
-        <![CDATA[
         select id,
                user_id,
                title,
@@ -36,10 +39,11 @@
                create_time,
                content
         from t_blog
-        where id <= #{lastId}
+        where id <![CDATA[<=]]> #{lastId}
+        <if test="userId !=null">
+            and user_id = #{userId}
+        </if>
         order by id desc limit #{pageSize}
-        ]]>
-
     </select>
 
     <select id="getTags" resultType="java.lang.String">

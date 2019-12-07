@@ -38,7 +38,7 @@ public class SearchController {
     @ResponseBody
     @FrequentShielded
     public ResultEntity<BlogDto> searchBlogs(String word) {
-        List<Blog> list = blogService.searchUserBlogs(1L, word);
+        List<Blog> list = blogService.searchUserBlogs(null, word);
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();
         copyBlogAndCountComment(list, blogs, c, commentService);

@@ -6,13 +6,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.codelinn.blog.common.ResultEntity;
 import com.codelinn.blog.model.User;
 import com.codelinn.blog.service.UserService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+
+import static cn.hutool.core.util.StrUtil.isBlank;
 
 /**
  * Class Name : com.codelinn.blog.controller.dto
@@ -21,7 +25,8 @@ import java.util.Map;
  * @author : LiNn Cai
  * Date : 2019/12/7 1:48 下午
  */
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private static String CLIENT_ID = "6efcfbe7062c229dc622";
@@ -31,8 +36,18 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @GetMapping("/info")
+    public ResultEntity<User> userInfo(@RequestParam String accessToken) {
+        User user = new User();
+        if(isBlank(accessToken)){
+            return ResultEntity.success(user);
+        }
+        user.setToken(accessToken);
+        return ResultEntity.success(userService.getByObject(user));
+    }
+
     @PostMapping("/auth/github")
-    public ResultEntity<User> githubOauth(@RequestParam String code) {
+    public ResultEntity<User> githubOauth(String code) {
         Map<String, Object> param = new HashMap<>();
         param.put("client_id", CLIENT_ID);
         param.put("client_secret", CLIENT_SECRET);
@@ -53,7 +68,7 @@ public class UserController {
         }
         user.setName(name);
         user.setEmail(email);
-        user.setGithubToken(accessToken);
+        user.setToken(accessToken);
         user.setAvatarUrl(avatarUrl);
         userService.insert(user);
         return ResultEntity.success(user);

@@ -30,6 +30,6 @@ public class User extends Entity {
 
     private String avatarUrl;
 
-    private String githubToken;
+    private String token;
 
 }

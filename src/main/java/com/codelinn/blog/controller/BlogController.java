@@ -93,7 +93,7 @@ public class BlogController {
 
     @RequestMapping("/getUserBlogs")
     @ResponseBody
-    public ResultEntity<Page<BlogDto>> getUserBlogs(@RequestParam Long userId,
+    public ResultEntity<Page<BlogDto>> getUserBlogs(@RequestParam(required = false) Long userId,
                                                     @RequestParam(required = false) String tag,
                                                     @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         Page blogPage = blogService.getUserblogsPage(userId, null, pageSize);
