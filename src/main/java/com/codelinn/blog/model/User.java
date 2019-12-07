@@ -26,4 +26,10 @@ public class User extends Entity {
 
     private String birthday;
 
+    private String email;
+
+    private String avatarUrl;
+
+    private String githubToken;
+
 }
