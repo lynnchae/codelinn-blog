@@ -22,7 +22,10 @@
     <select id="searchUserBlogs" resultMap="resultMap">
         select id,user_id,title,tags,likes,done,create_time,content
         from t_blog
-        where user_id=#{userId}
+        where 1 = 1
+        <if test="userId != null">
+            and user_id=#{userId}
+        </if>
         <if test="word != null and word != '' ">
             and (match(title,content) against(#{word}) or title like concat('%',#{word},'%'))
         </if>

@@ -4,10 +4,12 @@ import com.codelinn.blog.common.ResultEntity;
 import com.codelinn.blog.controller.dto.BlogDetailDto;
 import com.codelinn.blog.model.Blog;
 import com.codelinn.blog.model.Comment;
+import com.codelinn.blog.model.User;
 import com.codelinn.blog.model.base.Page;
 import com.codelinn.blog.model.vo.CommentVO;
 import com.codelinn.blog.service.BlogService;
 import com.codelinn.blog.service.CommentService;
+import com.codelinn.blog.service.UserService;
 import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.ext.autolink.AutolinkExtension;
 import com.vladsch.flexmark.ext.emoji.EmojiExtension;
@@ -40,6 +42,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static cn.hutool.core.util.StrUtil.isBlank;
 
 /**
  * Class Name : com.codelinn.blog.controller
@@ -91,6 +95,9 @@ public class BlogController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/getUserBlogs")
     @ResponseBody
     public ResultEntity<Page<BlogDto>> getUserBlogs(@RequestParam(required = false) Long userId,
@@ -124,11 +131,24 @@ public class BlogController {
 
     @RequestMapping(value = "/sBlog", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public ResultEntity<Boolean> saveBlog(@RequestBody Blog blog) {
+    public ResultEntity<Boolean> saveBlog(HttpServletRequest request, @RequestBody Blog blog) {
+        String token = request.getHeader("token");
+        if(isBlank(token)){
+            return ResultEntity.success(false);
+        }
+        User user = new User();
+        user.setToken(token);
+        if(userService.count(user) == 0){
+            return ResultEntity.success(false);
+        }
+        user = userService.getByObject(user);
+        if(isBlank(blog.getContent()) || isBlank(blog.getTitle()) || isBlank(blog.getTags())){
+            return ResultEntity.success(false);
+        }
+        blog.setUserId(user.getUserId());
         if (blog.getId() != null) {
             blogService.update(blog);
         } else {
-            blog.setUserId(1L);
             blogService.insert(blog);
         }
         return ResultEntity.success(true);
