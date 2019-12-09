@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @ToString
 public class Visitor extends Entity {
 
+    private Long visitorId;
+
     private String name;
 
     private String avatar;

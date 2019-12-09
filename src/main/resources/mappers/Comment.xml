@@ -6,7 +6,7 @@
 
     <select id="queryCommentVO" resultType="com.codelinn.blog.model.vo.CommentVO">
         select a.*,b.avatar
-        from t_comment a left join t_visitor b on a.visitor_id=b.id
+        from t_comment a left join t_visitor b on a.visitor_id=b.visitor_id
         where 1=1
         <if test="blogId != null" >
          and blog_id = #{blogId}

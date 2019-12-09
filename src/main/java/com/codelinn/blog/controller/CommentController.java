@@ -2,8 +2,10 @@ package com.codelinn.blog.controller;
 
 import com.codelinn.blog.common.ResultEntity;
 import com.codelinn.blog.model.Comment;
+import com.codelinn.blog.model.User;
 import com.codelinn.blog.model.Visitor;
 import com.codelinn.blog.service.CommentService;
+import com.codelinn.blog.service.UserService;
 import com.codelinn.blog.service.VisitorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +38,10 @@ public class CommentController {
     @Autowired
     private VisitorService visitorService;
 
-    private static List<String> headFileNameList;
+    @Autowired
+    private UserService userService;
 
-    private static String IMG_PATH = "/images/head/";
+    private static List<String> headFileNameList;
 
     static {
         headFileNameList = new ArrayList<>();
@@ -71,16 +74,41 @@ public class CommentController {
     @PostMapping(value = "sendComment",produces = "application/json")
     public ResultEntity sendComment(@RequestBody Comment comment, HttpServletResponse response) throws IOException {
         Visitor visitor = new Visitor();
-        visitor.setName(comment.getCommenter().trim());
-        if (visitorService.count(visitor) > 0) {
-            visitor = visitorService.query(visitor).get(0);
-        } else {
-            Integer fileNameIndex = new Random().nextInt(24) + 1;
-            visitor.setAvatar(headFileNameList.get(fileNameIndex));
-            visitorService.insert(visitor);
+        if(comment.getVisitorId() != null && comment.getVisitorId() > 0){
+            visitor.setVisitorId(comment.getVisitorId());
+            //如果已存在visitor
+            if(visitorService.count(visitor) > 0){
+                visitor = visitorService.getByObject(visitor);
+            }else{
+                //不存在，从user查询
+                User user = new User();
+                user.setUserId(comment.getVisitorId());
+                //如果存在
+                if(userService.count(user) > 0){
+                    user = userService.getByObject(user);
+                    visitor.setAvatar(user.getAvatarUrl());
+                    visitor.setName(user.getName());
+                    visitorService.insert(visitor);
+                }else{
+                    return ResultEntity.error(400, "please re-login from the home page!");
+                }
+            }
+        }else{
+            //访客
+            visitor.setName(comment.getCommenter().trim());
+            if(visitorService.count(visitor) > 0){
+                visitor = visitorService.getByObject(visitor);
+            }else{
+                Integer fileNameIndex = new Random().nextInt(24) + 1;
+                visitor.setAvatar(headFileNameList.get(fileNameIndex));
+                visitorService.insert(visitor);
+                //todo 更新visitorId，待优化逻辑
+                visitor.setVisitorId(visitor.getId());
+                visitorService.update(visitor);
+            }
         }
         try {
-            comment.setVisitorId(visitor.getId());
+            comment.setVisitorId(visitor.getVisitorId());
             commentService.insert(comment);
             return ResultEntity.success(visitor.getAvatar());
         } catch (Exception e) {

@@ -149,7 +149,7 @@ public class BlogController {
         model.addAttribute("blog", b);
         List<CommentVO> comments = commentService.queryCommentVO(id, 0L);
         List<BlogCommentsDto> bcomments = new ArrayList<>();
-        for (Comment c : comments) {
+        for (CommentVO c : comments) {
             BlogCommentsDto bc = new BlogCommentsDto();
             BeanUtils.copyProperties(c, bc);
             bc.setComments(commentService.queryCommentVO(null, bc.getId()));
@@ -177,7 +177,7 @@ public class BlogController {
         blogTarget.setContent(html);
         List<CommentVO> comments = commentService.queryCommentVO(id, 0L);
         List<BlogCommentsDto> bcomments = new ArrayList<>();
-        for (Comment c : comments) {
+        for (CommentVO c : comments) {
             BlogCommentsDto bc = new BlogCommentsDto();
             BeanUtils.copyProperties(c, bc);
             bc.setComments(commentService.queryCommentVO(null, bc.getId()));
