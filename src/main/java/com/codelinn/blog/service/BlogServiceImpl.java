@@ -1,5 +1,6 @@
 package com.codelinn.blog.service;
 
+import com.codelinn.blog.controller.dto.BlogDto;
 import lombok.extern.slf4j.Slf4j;
 import com.codelinn.blog.dao.BlogDao;
 import com.codelinn.blog.model.Blog;
@@ -69,8 +70,8 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
     }
 
     @Override
-    public Page<Blog> getUserblogsPage(Long userId, Integer lastId, Integer pageSize) {
-        Page<Blog> blogPage = new Page<>();
+    public Page<BlogDto> getUserblogsPage(Long userId, Integer lastId, Integer pageSize) {
+        Page<BlogDto> blogPage = new Page<>();
         //用户博客最大id
         Integer maxId = blogDao.getMaxUserblogid(userId);
         //为了处理id不连续的情况
@@ -87,7 +88,7 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
         if(lastId!=null && ids.contains(Long.valueOf(lastId))){
             blogPage.setLastPage(true);
         }
-        List<Blog> list = blogDao.getUserblogsPage(userId, processedId, pageSize);
+        List<BlogDto> list = blogDao.getUserblogsPage(userId, processedId, pageSize);
         blogPage.setPages(pageSize);
         Blog blog = new Blog();
         blog.setUserId(userId);

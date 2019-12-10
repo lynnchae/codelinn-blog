@@ -1,5 +1,6 @@
 package com.codelinn.blog.service;
 
+import com.codelinn.blog.controller.dto.BlogDto;
 import com.codelinn.blog.service.base.BaseService;
 import com.codelinn.blog.model.Blog;
 import com.codelinn.blog.model.base.Page;
@@ -25,5 +26,5 @@ public interface BlogService extends BaseService<Blog> {
 
     void refreshTaglistCache();
 
-    Page<Blog> getUserblogsPage(Long userId, Integer lastId, Integer pageSize);
+    Page<BlogDto> getUserblogsPage(Long userId, Integer lastId, Integer pageSize);
 }

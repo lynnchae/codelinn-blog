@@ -134,19 +134,22 @@ public class BlogController {
     public ResultEntity<Boolean> saveBlog(HttpServletRequest request, @RequestBody Blog blog) {
         String token = request.getHeader("token");
         if(isBlank(token)){
-            return ResultEntity.success(false);
+            return ResultEntity.error(400,"permission denied!");
         }
         User user = new User();
         user.setToken(token);
         if(userService.count(user) == 0){
-            return ResultEntity.success(false);
+            return ResultEntity.error(400,"unknown user!");
         }
         user = userService.getByObject(user);
         if(isBlank(blog.getContent()) || isBlank(blog.getTitle()) || isBlank(blog.getTags())){
-            return ResultEntity.success(false);
+            return ResultEntity.error(400,"blog incomplete!");
         }
         blog.setUserId(user.getUserId());
         if (blog.getId() != null) {
+            if(user.getUserId() != blog.getUserId()){
+                return ResultEntity.error(400,"not your blog!");
+            }
             blogService.update(blog);
         } else {
             blogService.insert(blog);

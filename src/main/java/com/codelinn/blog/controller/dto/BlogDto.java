@@ -15,4 +15,6 @@ public class BlogDto extends Blog {
 
     private Integer comments;
 
+    private String name;
+
 }

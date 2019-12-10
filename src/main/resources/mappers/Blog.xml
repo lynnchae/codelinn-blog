@@ -32,21 +32,21 @@
         order by create_time desc
     </select>
 
-    <select id="getUserblogsPage" resultMap="resultMap">
-        select id,
-               user_id,
-               title,
-               tags,
-               likes,
-               done,
-               create_time,
-               content
-        from t_blog
-        where id <![CDATA[<=]]> #{lastId}
+    <select id="getUserblogsPage" resultType="com.codelinn.blog.controller.dto.BlogDto">
+        select a.id,
+        a.user_id,
+        a.title,
+        a.tags,
+        a.likes,
+        a.done,
+        a.create_time,
+        a.content,b.name
+        from t_blog a right join t_user b on a.user_id = b.user_id
+        where a.id <![CDATA[<=]]> #{lastId}
         <if test="userId !=null">
-            and user_id = #{userId}
+            and a.user_id = #{userId}
         </if>
-        order by id desc limit #{pageSize}
+        order by a.id desc limit #{pageSize}
     </select>
 
     <select id="getTags" resultType="java.lang.String">

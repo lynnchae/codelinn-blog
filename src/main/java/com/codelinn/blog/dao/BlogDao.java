@@ -1,5 +1,6 @@
 package com.codelinn.blog.dao;
 
+import com.codelinn.blog.controller.dto.BlogDto;
 import com.codelinn.blog.model.Blog;
 import com.codelinn.blog.model.base.BaseDao;
 import org.apache.ibatis.annotations.Mapper;
@@ -29,5 +30,5 @@ public interface BlogDao extends BaseDao<Blog> {
 
     List<Blog> searchUserBlogs(@Param("userId") Long userId, @Param("word") String word);
 
-    List<Blog> getUserblogsPage(@Param("userId") Long userId, @Param("lastId") Integer lastId, @Param("pageSize") Integer pageSize);
+    List<BlogDto> getUserblogsPage(@Param("userId") Long userId, @Param("lastId") Integer lastId, @Param("pageSize") Integer pageSize);
 }
