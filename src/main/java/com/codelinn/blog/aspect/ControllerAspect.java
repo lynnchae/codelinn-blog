@@ -39,9 +39,10 @@ public class ControllerAspect {
     public void doBefore(JoinPoint joinpoint) {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
-        logger.info("request uri={{}}, method={{}}, ip={{}}", request.getRequestURI(), request.getMethod(), request.getRemoteAddr());
+        String ip = request.getHeader("X-Forwarded-For");
+        logger.info("request uri={{}}, method={{}}, ip={{}}", request.getRequestURI(), request.getMethod(), ip);
         Metric metric = new Metric();
-        metric.setCol(request.getRemoteAddr());
+        metric.setCol(ip);
         DateTime now = DateTime.now();
         String nowStr = now.toString("yyyyMMdd");
         metric.setDate(nowStr);
@@ -51,7 +52,7 @@ public class ControllerAspect {
             metricService.insert(metric);
         }
         metric = new Metric();
-        metric.setCol(request.getRemoteAddr());
+        metric.setCol(ip);
         metric.setQuota(request.getRequestURI());
         metric.setType(Constant.MetricType.URL.name());
         metric.setDate(nowStr);
