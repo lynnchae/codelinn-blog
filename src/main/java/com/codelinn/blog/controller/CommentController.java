@@ -71,36 +71,43 @@ public class CommentController {
         headFileNameList.add("https://pic.codelinn.com//random/header24.png");
     }
 
-    @PostMapping(value = "sendComment",produces = "application/json")
+    @PostMapping(value = "sendComment", produces = "application/json")
     public ResultEntity sendComment(@RequestBody Comment comment, HttpServletResponse response) throws IOException {
         Visitor visitor = new Visitor();
-        if(comment.getVisitorId() != null && comment.getVisitorId() > 0){
+        if (comment.getVisitorId() != null && comment.getVisitorId() > 0) {
             visitor.setVisitorId(comment.getVisitorId());
             //如果已存在visitor
-            if(visitorService.count(visitor) > 0){
+            if (visitorService.count(visitor) > 0) {
                 visitor = visitorService.getByObject(visitor);
-            }else{
+            } else {
                 //不存在，从user查询
                 User user = new User();
                 user.setUserId(comment.getVisitorId());
                 //如果存在
-                if(userService.count(user) > 0){
+                if (userService.count(user) > 0) {
                     user = userService.getByObject(user);
                     visitor.setAvatar(user.getAvatarUrl());
                     visitor.setName(user.getName());
                     visitorService.insert(visitor);
-                }else{
+                } else {
                     return ResultEntity.error(400, "please re-login from the home page!");
                 }
             }
-        }else{
-            //访客
-            visitor.setName(comment.getCommenter().trim());
-            if(visitorService.count(visitor) > 0){
-                visitor = visitorService.getByObject(visitor);
-            }else{
+        } else {
+            //访客，通过commenter和email查询是否已发不过的用户，如果存在，通过这条comment的visitorId字段去找visitor
+            Comment oldComment = new Comment();
+            oldComment.setCommenter(comment.getCommenter().trim());
+            oldComment.setCommenterEmail(comment.getCommenterEmail().trim());
+            List<Comment> comments = commentService.query(oldComment);
+            if (comments != null && comments.size() > 0) {
+                Visitor visitorOld = new Visitor();
+                visitorOld.setVisitorId(comments.get(0).getVisitorId());
+                visitor = visitorService.getByObject(visitorOld);
+            } else {
+                //否则，判断为新的visitor
                 Integer fileNameIndex = new Random().nextInt(24) + 1;
                 visitor.setAvatar(headFileNameList.get(fileNameIndex));
+                visitor.setName(comment.getCommenter().trim());
                 visitorService.insert(visitor);
                 //todo 更新visitorId，待优化逻辑
                 visitor.setVisitorId(visitor.getId());
