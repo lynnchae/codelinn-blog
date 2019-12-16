@@ -24,6 +24,9 @@ spring:
     date-format: yyyy-MM-dd
   thymeleaf:
     prefix: classpath:/templates/
+  servlet:
+    multipart:
+      enabled: true
 
 
 ###########################mybatis配置###############################
