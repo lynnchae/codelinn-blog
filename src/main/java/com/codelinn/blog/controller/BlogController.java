@@ -120,9 +120,10 @@ public class BlogController {
     @RequestMapping("/getUserBlogs")
     @ResponseBody
     public ResultEntity<Page<BlogDto>> getUserBlogs(@RequestParam(required = false) Long userId,
+                                                    @RequestParam(required = false) Integer lastId,
                                                     @RequestParam(required = false) String tag,
-                                                    @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
-        Page blogPage = blogService.getUserblogsPage(userId, null, pageSize);
+                                                    @RequestParam(required = false, defaultValue = "20") Integer pageSize) {
+        Page blogPage = blogService.getUserblogsPage(userId, lastId, pageSize);
         List<BlogDto> blogs = new ArrayList<>();
         Comment c = new Comment();
         SearchController.copyBlogAndCountComment(blogPage.getList(), blogs, c, commentService);
