@@ -1,12 +1,12 @@
 package com.codelinn.blog.service;
 
 import com.codelinn.blog.controller.dto.BlogDto;
-import lombok.extern.slf4j.Slf4j;
 import com.codelinn.blog.dao.BlogDao;
 import com.codelinn.blog.model.Blog;
 import com.codelinn.blog.model.base.Page;
 import com.codelinn.blog.mybatis.TagUpdateEvent;
 import com.codelinn.blog.service.base.BaseServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
@@ -85,7 +85,7 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
         //id顺序的前面page+1个id，为了判断是不是最后一页
         List<Long> ids = blogDao.getLastPageIds(userId, pageSize + 1);
         blogPage.setLastPage(false);
-        if(lastId!=null && ids.contains(Long.valueOf(lastId))){
+        if (lastId != null && ids.contains(Long.valueOf(lastId))) {
             blogPage.setLastPage(true);
         }
         List<BlogDto> list = blogDao.getUserblogsPage(userId, processedId, pageSize);
@@ -100,8 +100,8 @@ public class BlogServiceImpl extends BaseServiceImpl<Blog> implements BlogServic
             blogPage.setPages((userTotalBlogs / pageSize) + 1);
         }
         blogPage.setList(list);
-        if(list!=null && list.size() > 0){
-            blogPage.setLastId(list.get(list.size()-1).getId());
+        if (list != null && list.size() > 0) {
+            blogPage.setLastId(list.get(list.size() - 1).getId());
         }
         return blogPage;
     }
