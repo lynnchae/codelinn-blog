@@ -36,8 +36,8 @@
     <logger name="org.hibernate.validator" level="OFF"></logger>
     <logger name="org.thymeleaf" level="ERROR"></logger>
 
-    <root level="ERROR">
-<!--        <appender-ref ref="STDOUT"/>-->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
 </configuration>

@@ -11,7 +11,6 @@ import com.codelinn.blog.common.ResultEntity;
 import com.codelinn.blog.model.Message;
 import com.codelinn.blog.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +36,7 @@ import java.util.stream.Collectors;
 @RestController()
 @Slf4j
 @RequestMapping("/message")
-public class MessageController implements InitializingBean {
+public class MessageController{
 
     @Autowired
     private MessageService messageService;
@@ -48,10 +47,9 @@ public class MessageController implements InitializingBean {
 
     private static final String SECRET = "my04cL1P4IQjFWLq1axnWtu8W0XzgRexNwcYpIbSRcwV1ftulL74l6oa73Vt9vJO";
 
-    private BigDecimal latestFree = BigDecimal.ZERO;
+    private static BigDecimal latestFree = BigDecimal.ZERO;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    public static void main(String[] args) {
         executorService.scheduleAtFixedRate(() -> {
             Long currentMillis = System.currentTimeMillis();
             String sign = SecureUtil.hmac(HmacAlgorithm.HmacSHA256, SECRET).digestHex("recvWindow=5000&timestamp=" + currentMillis);
@@ -62,10 +60,11 @@ public class MessageController implements InitializingBean {
             if (array != null && array.size() > 0) {
                 Object bnbObj = array.stream().filter(item -> JSONObject.parseObject(item.toString()).getString("asset").equalsIgnoreCase("BNB")).collect(Collectors.toList()).get(0);
                 String bnbFree = JSONObject.parseObject(bnbObj.toString()).getString("free");
+                log.info("bnb free: {}", bnbFree);
                 if (new BigDecimal(bnbFree).compareTo(latestFree) != 0) {
                     String url = "https://sc.ftqq.com/SCU36514T84104f04eeffb86aa9baa794c763d8b15c7e3f57cf400.send";
                     Map<String, Object> param = new HashMap<>();
-                    param.put("text", DateUtil.format(new Date(), "HH:mm ") + "BNB持仓变动，之前持仓：【" + latestFree + "】，当前持仓：【" + bnbFree + "】");
+                    param.put("text", DateUtil.format(new Date(), "HH时mm分 ") + "BNB持仓变动，之前持仓：【" + latestFree + "】，当前持仓：【" + bnbFree + "】");
                     param.put("desp", "持仓变动");
                     latestFree = new BigDecimal(bnbFree);
                     String result = HttpUtil.post(url, param);
